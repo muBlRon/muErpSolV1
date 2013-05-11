@@ -43,9 +43,14 @@ class School extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sch_dean', 'numerical', 'integerOnly'=>true),
-			array('sch_code', 'length', 'max'=>10),
+			
+                        array('sch_code, sch_name', 'required'),
+			array('sch_code, sch_name', 'unique'),
+			
+                        array('sch_code', 'length', 'max'=>10),
 			array('sch_name', 'length', 'max'=>100),
+                        
+                    array('sch_dean', 'numerical', 'integerOnly'=>true),
 			array('sch_deanStatus', 'length', 'max'=>14),
 			array('sch_remarks', 'safe'),
 			// The following rule is used by search().
