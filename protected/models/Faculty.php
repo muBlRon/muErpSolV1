@@ -52,15 +52,20 @@ class Faculty extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('facultyID, departmentID', 'numerical', 'integerOnly'=>true),
+                    
 			array('fac_designation', 'length', 'max'=>19),
 			array('fac_position', 'length', 'max'=>25),
 			array('fac_loginName', 'length', 'max'=>50),
-			array('fac_password', 'length', 'max'=>150),
+			array('fac_password', 'length', 'max'=>255),
 			array('fac_accessLevel', 'length', 'max'=>1),
-			array('fac_joining, fac_leave', 'safe'),
+			
+                        array('fac_joining, fac_leave', 'date'),
+                        array('fac_loginName, departmentID, fac_joining', 'required'),
+                        array('fac_accessLevel', 'in', 'range'=>array('0','1','2','3')),
+                        array('fac_designation', 'in', 'range'=>array('Teachers Assistant','Lecturer','Senior Lecturer','Assistant Professor','Associate Professor','Professor')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('facultyID, fac_designation, fac_position, fac_joining, fac_leave, fac_loginName, fac_password, fac_accessLevel, departmentID', 'safe', 'on'=>'search'),
+			array('facultyID, fac_designation, fac_position, fac_joining, fac_loginName, fac_accessLevel, departmentID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -88,15 +93,15 @@ class Faculty extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'facultyID' => 'Faculty',
-			'fac_designation' => 'Fac Designation',
-			'fac_position' => 'Fac Position',
-			'fac_joining' => 'Fac Joining',
-			'fac_leave' => 'Fac Leave',
-			'fac_loginName' => 'Fac Login Name',
-			'fac_password' => 'Fac Password',
-			'fac_accessLevel' => 'Fac Access Level',
-			'departmentID' => 'Department',
+			'facultyID' => 'FacultyID',
+			'fac_designation' => 'Designation',
+			'fac_position' => 'Position',
+			'fac_joining' => 'Joining',
+			'fac_leave' => 'Leave',
+			'fac_loginName' => 'Login Name',
+			'fac_password' => 'Password',
+			'fac_accessLevel' => 'Access Level',
+			'departmentID' => 'DepartmentID',
 		);
 	}
 
@@ -113,11 +118,11 @@ class Faculty extends CActiveRecord
 
 		$criteria->compare('facultyID',$this->facultyID);
 		$criteria->compare('fac_designation',$this->fac_designation,true);
-		$criteria->compare('fac_position',$this->fac_position,true);
+		
 		$criteria->compare('fac_joining',$this->fac_joining,true);
-		$criteria->compare('fac_leave',$this->fac_leave,true);
+		
 		$criteria->compare('fac_loginName',$this->fac_loginName,true);
-		$criteria->compare('fac_password',$this->fac_password,true);
+		
 		$criteria->compare('fac_accessLevel',$this->fac_accessLevel,true);
 		$criteria->compare('departmentID',$this->departmentID);
 

@@ -65,6 +65,7 @@ class Person extends CActiveRecord
 	public function tableName()
 	{
 		return '{{person}}';
+            
 	}
 
 	/**
@@ -75,8 +76,21 @@ class Person extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('per_criminalConviction', 'numerical', 'integerOnly'=>true),
-			array('per_title', 'length', 'max'=>5),
+                    
+                        array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile, per_entryDate', 'required'),
+			array(' per_telephone, per_mobile, per_refereeOneMobile, per_refereeTwoMobile ', 'numerical', 'integerOnly'=>true),
+			array('per_email, per_refereeOneEmail, per_refereeTwoEmail', 'email'),
+                        array('per_dateofBirth', 'date'),
+                        array('per_criminalConviction', 'boolean'),
+                    
+                        array('per_title', 'in', 'range'=>array('Mr.','Ms.','Mrs.','Dr.','Prof.','Engr.','Adv.')),
+                        array('per_bloodGroup', 'in', 'range'=>array('O','A+','B+','AB+','O-','A-','B-','AB-')),
+                        array('per_maritulStatus', 'in', 'range'=>array('single','married')),
+                        array('per_englishLanguageProficiency', 'in', 'range'=>array('poor','medium','good','excelent')),
+                    
+                        
+                    
+                        array('per_title', 'length', 'max'=>5),
 			array('per_firstName, per_lastName, per_refereeOneOccupation, per_refereeTwoOccupation', 'length', 'max'=>50),
 			array('per_gender', 'length', 'max'=>6),
 			array('per_bloodGroup', 'length', 'max'=>3),
@@ -87,10 +101,10 @@ class Person extends CActiveRecord
 			array('per_telephone, per_mobile, per_refereeOneMobile, per_refereeTwoMobile', 'length', 'max'=>15),
 			array('per_maritulStatus', 'length', 'max'=>7),
 			array('per_englishLanguageProficiency', 'length', 'max'=>8),
-			array('per_dateofBirth, per_personalStatment, per_convictionDetails, per_entryDate', 'safe'),
+			array('per_personalStatment, per_convictionDetails', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('personID, per_title, per_firstName, per_lastName, per_gender, per_dateofBirth, per_bloodGroup, per_nationality, per_fathersName, per_mothersName, per_husbandsName, per_parmanentAddress, per_postCode, per_telephone, per_mobile, per_email, per_presentAddress, per_maritulStatus, per_englishLanguageProficiency, per_computerLiteracy, per_otherActivities, per_personalStatment, per_criminalConviction, per_convictionDetails, per_refereeOneName, per_refereeOneOccupation, per_refereeOneAddress, per_refereeOneEmail, per_refereeOneMobile, per_refereeTwoName, per_refereeTwoOccupation, per_refereeTwoAddress, per_refereeTwoEmail, per_refereeTwoMobile, per_entryDate', 'safe', 'on'=>'search'),
+			array('personID, per_title, per_firstName, per_lastName, per_gender, per_dateofBirth, per_bloodGroup, per_telephone, per_mobile, per_email, per_maritulStatus, per_criminalConviction, per_entryDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -102,10 +116,12 @@ class Person extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'academichistories' => array(self::HAS_MANY, 'Academichistory', 'personID'),
-			'employee' => array(self::HAS_ONE, 'Employee', 'employeeID'),
+			'academichistories' => array(self::HAS_MANY, 'AcademicHistory', 'personID'),
+                        'jobexperiances' => array(self::HAS_MANY, 'JobExperiance', 'personID'),
+			
+                        'employee' => array(self::HAS_ONE, 'Employee', 'employeeID'),
 			'faculty' => array(self::HAS_ONE, 'Faculty', 'facultyID'),
-			'jobexperiances' => array(self::HAS_MANY, 'Jobexperiance', 'personID'),
+			
 			'students' => array(self::HAS_MANY, 'Student', 'personID'),
 		);
 	}
@@ -116,41 +132,41 @@ class Person extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'personID' => 'Person',
-			'per_title' => 'Per Title',
-			'per_firstName' => 'Per First Name',
-			'per_lastName' => 'Per Last Name',
-			'per_gender' => 'Per Gender',
-			'per_dateofBirth' => 'Per Dateof Birth',
-			'per_bloodGroup' => 'Per Blood Group',
-			'per_nationality' => 'Per Nationality',
-			'per_fathersName' => 'Per Fathers Name',
-			'per_mothersName' => 'Per Mothers Name',
-			'per_husbandsName' => 'Per Husbands Name',
-			'per_parmanentAddress' => 'Per Parmanent Address',
-			'per_postCode' => 'Per Post Code',
-			'per_telephone' => 'Per Telephone',
-			'per_mobile' => 'Per Mobile',
-			'per_email' => 'Per Email',
-			'per_presentAddress' => 'Per Present Address',
-			'per_maritulStatus' => 'Per Maritul Status',
-			'per_englishLanguageProficiency' => 'Per English Language Proficiency',
-			'per_computerLiteracy' => 'Per Computer Literacy',
-			'per_otherActivities' => 'Per Other Activities',
-			'per_personalStatment' => 'Per Personal Statment',
-			'per_criminalConviction' => 'Per Criminal Conviction',
-			'per_convictionDetails' => 'Per Conviction Details',
-			'per_refereeOneName' => 'Per Referee One Name',
-			'per_refereeOneOccupation' => 'Per Referee One Occupation',
-			'per_refereeOneAddress' => 'Per Referee One Address',
-			'per_refereeOneEmail' => 'Per Referee One Email',
-			'per_refereeOneMobile' => 'Per Referee One Mobile',
-			'per_refereeTwoName' => 'Per Referee Two Name',
-			'per_refereeTwoOccupation' => 'Per Referee Two Occupation',
-			'per_refereeTwoAddress' => 'Per Referee Two Address',
-			'per_refereeTwoEmail' => 'Per Referee Two Email',
-			'per_refereeTwoMobile' => 'Per Referee Two Mobile',
-			'per_entryDate' => 'Per Entry Date',
+			'personID' => 'personID',
+			'per_title' => 'Title',
+			'per_firstName' => 'First Name',
+			'per_lastName' => 'Last Name',
+			'per_gender' => 'Gender',
+			'per_dateofBirth' => 'Date Of Birth',
+			'per_bloodGroup' => 'Blood Group',
+			'per_nationality' => 'Nationality',
+			'per_fathersName' => 'Fathers Name',
+			'per_mothersName' => 'Mothers Name',
+			'per_husbandsName' => 'Husbands Name',
+			'per_parmanentAddress' => 'Parmanent Address',
+			'per_postCode' => 'Post Code',
+			'per_telephone' => 'Telephone',
+			'per_mobile' => 'Mobile',
+			'per_email' => 'Email',
+			'per_presentAddress' => 'Present Address',
+			'per_maritulStatus' => 'Maritul Status',
+			'per_englishLanguageProficiency' => 'English Language Proficiency',
+			'per_computerLiteracy' => 'Computer Literacy',
+			'per_otherActivities' => 'Other Activities',
+			'per_personalStatment' => 'Personal Statment',
+			'per_criminalConviction' => 'Criminal Conviction',
+			'per_convictionDetails' => 'Conviction Details',
+			'per_refereeOneName' => 'Referee One Name',
+			'per_refereeOneOccupation' => 'Referee One Occupation',
+			'per_refereeOneAddress' => 'Referee One Address',
+			'per_refereeOneEmail' => 'Referee One Email',
+			'per_refereeOneMobile' => 'Referee One Mobile',
+			'per_refereeTwoName' => 'Referee Two Name',
+			'per_refereeTwoOccupation' => 'Referee Two Occupation',
+			'per_refereeTwoAddress' => 'Referee Two Address',
+			'per_refereeTwoEmail' => 'Referee Two Email',
+			'per_refereeTwoMobile' => 'Referee Two Mobile',
+			'per_entryDate' => 'Entry Date',
 		);
 	}
 
@@ -172,33 +188,11 @@ class Person extends CActiveRecord
 		$criteria->compare('per_gender',$this->per_gender,true);
 		$criteria->compare('per_dateofBirth',$this->per_dateofBirth,true);
 		$criteria->compare('per_bloodGroup',$this->per_bloodGroup,true);
-		$criteria->compare('per_nationality',$this->per_nationality,true);
-		$criteria->compare('per_fathersName',$this->per_fathersName,true);
-		$criteria->compare('per_mothersName',$this->per_mothersName,true);
-		$criteria->compare('per_husbandsName',$this->per_husbandsName,true);
-		$criteria->compare('per_parmanentAddress',$this->per_parmanentAddress,true);
-		$criteria->compare('per_postCode',$this->per_postCode,true);
 		$criteria->compare('per_telephone',$this->per_telephone,true);
 		$criteria->compare('per_mobile',$this->per_mobile,true);
 		$criteria->compare('per_email',$this->per_email,true);
-		$criteria->compare('per_presentAddress',$this->per_presentAddress,true);
 		$criteria->compare('per_maritulStatus',$this->per_maritulStatus,true);
-		$criteria->compare('per_englishLanguageProficiency',$this->per_englishLanguageProficiency,true);
-		$criteria->compare('per_computerLiteracy',$this->per_computerLiteracy,true);
-		$criteria->compare('per_otherActivities',$this->per_otherActivities,true);
-		$criteria->compare('per_personalStatment',$this->per_personalStatment,true);
 		$criteria->compare('per_criminalConviction',$this->per_criminalConviction);
-		$criteria->compare('per_convictionDetails',$this->per_convictionDetails,true);
-		$criteria->compare('per_refereeOneName',$this->per_refereeOneName,true);
-		$criteria->compare('per_refereeOneOccupation',$this->per_refereeOneOccupation,true);
-		$criteria->compare('per_refereeOneAddress',$this->per_refereeOneAddress,true);
-		$criteria->compare('per_refereeOneEmail',$this->per_refereeOneEmail,true);
-		$criteria->compare('per_refereeOneMobile',$this->per_refereeOneMobile,true);
-		$criteria->compare('per_refereeTwoName',$this->per_refereeTwoName,true);
-		$criteria->compare('per_refereeTwoOccupation',$this->per_refereeTwoOccupation,true);
-		$criteria->compare('per_refereeTwoAddress',$this->per_refereeTwoAddress,true);
-		$criteria->compare('per_refereeTwoEmail',$this->per_refereeTwoEmail,true);
-		$criteria->compare('per_refereeTwoMobile',$this->per_refereeTwoMobile,true);
 		$criteria->compare('per_entryDate',$this->per_entryDate,true);
 
 		return new CActiveDataProvider($this, array(
