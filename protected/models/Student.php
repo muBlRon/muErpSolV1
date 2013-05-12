@@ -58,18 +58,32 @@ class Student extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('personID, stu_academicYear, employeeID', 'numerical', 'integerOnly'=>true),
+                    
+			array('personID, stu_academicYear, employeeID, stu_guardiansTelephone, stu_guardiansMobile', 'numerical', 'integerOnly'=>true),
 			array('stu_totalScore, stu_optainedScore', 'numerical'),
 			array('studentID, stu_previousID, stu_guardiansTelephone, stu_guardiansMobile', 'length', 'max'=>15),
 			array('stu_academicTerm', 'length', 'max'=>1),
+                        
 			array('stu_previousDegree', 'length', 'max'=>50),
 			array('stu_guardiansName, stu_guardiansEmail', 'length', 'max'=>100),
 			array('stu_guardiansPostcode, stu_financialSource, programmeCode', 'length', 'max'=>10),
 			array('stu_financialSourceDescription', 'length', 'max'=>300),
-			array('stu_testDate, stu_conditions', 'safe'),
+			array('studentID, stu_previousID', 'length', 'max'=>11),
+                        array('stu_conditions, stu_financialSourceDescription', 'safe'),
+                    
+                        array('stu_guardiansEmail', 'email'),
+                        
+                        array('stu_testDate', 'date'),
+                        array('stu_academicTerm', 'in', 'range'=>array('1','2','3')),
+                        array('studentID, personID, stu_academicTerm, stu_academicYear, programmeCode', 'required'),
+                    
+                        
+                    
+                        array('studentID, stu_previousID', 'match', 'pattern'=>'/^([0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9])$/',
+                        'message'=>'ID has specific format like [111-115-001] .'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('studentID, personID, stu_academicTerm, stu_academicYear, stu_testDate, stu_totalScore, stu_optainedScore, stu_conditions, stu_previousID, stu_previousDegree, stu_guardiansName, stu_guardiansPostcode, stu_guardiansTelephone, stu_guardiansMobile, stu_guardiansEmail, stu_financialSource, stu_financialSourceDescription, employeeID, programmeCode', 'safe', 'on'=>'search'),
+			array('studentID, personID, stu_academicTerm, stu_academicYear,stu_testDate, stu_optainedScore, stu_previousID, stu_previousDegree, employeeID, programmeCode', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -94,25 +108,25 @@ class Student extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'studentID' => 'Student',
-			'personID' => 'Person',
-			'stu_academicTerm' => 'Stu Academic Term',
-			'stu_academicYear' => 'Stu Academic Year',
-			'stu_testDate' => 'Stu Test Date',
-			'stu_totalScore' => 'Stu Total Score',
-			'stu_optainedScore' => 'Stu Optained Score',
-			'stu_conditions' => 'Stu Conditions',
-			'stu_previousID' => 'Stu Previous',
-			'stu_previousDegree' => 'Stu Previous Degree',
-			'stu_guardiansName' => 'Stu Guardians Name',
-			'stu_guardiansPostcode' => 'Stu Guardians Postcode',
-			'stu_guardiansTelephone' => 'Stu Guardians Telephone',
-			'stu_guardiansMobile' => 'Stu Guardians Mobile',
-			'stu_guardiansEmail' => 'Stu Guardians Email',
-			'stu_financialSource' => 'Stu Financial Source',
-			'stu_financialSourceDescription' => 'Stu Financial Source Description',
-			'employeeID' => 'Employee',
-			'programmeCode' => 'Programme Code',
+			'studentID' => 'StudentID',
+			'personID' => 'PersonID',
+			'stu_academicTerm' => 'Academic Term',
+			'stu_academicYear' => 'Academic Year',
+			'stu_testDate' => 'Test Date',
+			'stu_totalScore' => 'Total Score',
+			'stu_optainedScore' => 'Optained Score',
+			'stu_conditions' => 'Conditions',
+			'stu_previousID' => 'Previous',
+			'stu_previousDegree' => 'Previous Degree',
+			'stu_guardiansName' => 'Guardians Name',
+			'stu_guardiansPostcode' => 'Guardians Postcode',
+			'stu_guardiansTelephone' => 'Guardians Telephone',
+			'stu_guardiansMobile' => 'Guardians Mobile',
+			'stu_guardiansEmail' => 'Guardians Email',
+			'stu_financialSource' => 'Financial Source',
+			'stu_financialSourceDescription' => 'Financial Source Description',
+			'employeeID' => 'EmployeeID',
+			'programmeCode' => 'ProgrammeCode',
 		);
 	}
 
@@ -132,18 +146,12 @@ class Student extends CActiveRecord
 		$criteria->compare('stu_academicTerm',$this->stu_academicTerm,true);
 		$criteria->compare('stu_academicYear',$this->stu_academicYear);
 		$criteria->compare('stu_testDate',$this->stu_testDate,true);
-		$criteria->compare('stu_totalScore',$this->stu_totalScore);
+		
 		$criteria->compare('stu_optainedScore',$this->stu_optainedScore);
-		$criteria->compare('stu_conditions',$this->stu_conditions,true);
+		
 		$criteria->compare('stu_previousID',$this->stu_previousID,true);
 		$criteria->compare('stu_previousDegree',$this->stu_previousDegree,true);
-		$criteria->compare('stu_guardiansName',$this->stu_guardiansName,true);
-		$criteria->compare('stu_guardiansPostcode',$this->stu_guardiansPostcode,true);
-		$criteria->compare('stu_guardiansTelephone',$this->stu_guardiansTelephone,true);
-		$criteria->compare('stu_guardiansMobile',$this->stu_guardiansMobile,true);
-		$criteria->compare('stu_guardiansEmail',$this->stu_guardiansEmail,true);
-		$criteria->compare('stu_financialSource',$this->stu_financialSource,true);
-		$criteria->compare('stu_financialSourceDescription',$this->stu_financialSourceDescription,true);
+		
 		$criteria->compare('employeeID',$this->employeeID);
 		$criteria->compare('programmeCode',$this->programmeCode,true);
 

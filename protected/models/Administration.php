@@ -47,9 +47,14 @@ class Administration extends CActiveRecord
 			array('adm_location', 'length', 'max'=>300),
 			array('adm_contactNo', 'length', 'max'=>25),
 			array('adm_remarks', 'safe'),
+                    
+                        array('adm_email', 'email'),
+                        array('administrationCode, adm_name', 'unique'),
+                        
+                        array('adm_contactNo', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('administrationCode, adm_name, adm_location, adm_remarks, adm_contactNo, adm_email', 'safe', 'on'=>'search'),
+			array('administrationCode, adm_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,12 +76,12 @@ class Administration extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'administrationCode' => 'Administration Code',
-			'adm_name' => 'Adm Name',
-			'adm_location' => 'Adm Location',
-			'adm_remarks' => 'Adm Remarks',
-			'adm_contactNo' => 'Adm Contact No',
-			'adm_email' => 'Adm Email',
+			'administrationCode' => 'AdministrationCode',
+			'adm_name' => 'Name',
+			'adm_location' => 'Location',
+			'adm_remarks' => 'Remarks',
+			'adm_contactNo' => 'Contact No',
+			'adm_email' => 'Email',
 		);
 	}
 
@@ -93,10 +98,7 @@ class Administration extends CActiveRecord
 
 		$criteria->compare('administrationCode',$this->administrationCode,true);
 		$criteria->compare('adm_name',$this->adm_name,true);
-		$criteria->compare('adm_location',$this->adm_location,true);
-		$criteria->compare('adm_remarks',$this->adm_remarks,true);
-		$criteria->compare('adm_contactNo',$this->adm_contactNo,true);
-		$criteria->compare('adm_email',$this->adm_email,true);
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
