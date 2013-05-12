@@ -52,13 +52,19 @@ class Employee extends CActiveRecord
 			array('employeeID', 'numerical', 'integerOnly'=>true),
 			array('emp_designations, emp_suppervisoryRole', 'length', 'max'=>25),
 			array('emp_loginName', 'length', 'max'=>50),
-			array('emp_password', 'length', 'max'=>150),
+			array('emp_password', 'length', 'max'=>255),
 			array('emp_accessLevel', 'length', 'max'=>1),
 			array('administrationCode', 'length', 'max'=>10),
-			array('emp_joining, emp_leave', 'safe'),
+			
+                        array('emp_joining, emp_leave', 'date'),
+                    
+                        array('emp_joining, emp_designations, administrationCode, emp_accessLevel', 'required'),
+                        array('emp_accessLevel', 'in', 'range'=>array('0','1','2','3')),
+                        array('emp_loginName', 'unique'),
+                    
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('employeeID, emp_designations, emp_suppervisoryRole, emp_joining, emp_leave, emp_loginName, emp_password, emp_accessLevel, administrationCode', 'safe', 'on'=>'search'),
+			array('employeeID, emp_designations, emp_suppervisoryRole, emp_joining, emp_leave, emp_accessLevel, administrationCode', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +77,7 @@ class Employee extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'admissions' => array(self::HAS_MANY, 'Admission', 'employeeID'),
-			'administrationCode0' => array(self::BELONGS_TO, 'Administration', 'administrationCode'),
+			'administrationCode' => array(self::BELONGS_TO, 'Administration', 'administrationCode'),
 			'employee' => array(self::BELONGS_TO, 'Person', 'employeeID'),
 			'students' => array(self::HAS_MANY, 'Student', 'employeeID'),
 			'termadmissions' => array(self::HAS_MANY, 'Termadmission', 'employeeID'),
@@ -84,15 +90,15 @@ class Employee extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'employeeID' => 'Employee',
-			'emp_designations' => 'Emp Designations',
-			'emp_suppervisoryRole' => 'Emp Suppervisory Role',
-			'emp_joining' => 'Emp Joining',
-			'emp_leave' => 'Emp Leave',
-			'emp_loginName' => 'Emp Login Name',
-			'emp_password' => 'Emp Password',
-			'emp_accessLevel' => 'Emp Access Level',
-			'administrationCode' => 'Administration Code',
+			'employeeID' => 'EmployeeID',
+			'emp_designations' => 'Designations',
+			'emp_suppervisoryRole' => 'Suppervisory Role',
+			'emp_joining' => 'Joining',
+			'emp_leave' => 'Leave',
+			'emp_loginName' => 'Login Name',
+			'emp_password' => 'Password',
+			'emp_accessLevel' => 'Access Level',
+			'administrationCode' => 'AdministrationCode',
 		);
 	}
 
@@ -111,9 +117,7 @@ class Employee extends CActiveRecord
 		$criteria->compare('emp_designations',$this->emp_designations,true);
 		$criteria->compare('emp_suppervisoryRole',$this->emp_suppervisoryRole,true);
 		$criteria->compare('emp_joining',$this->emp_joining,true);
-		$criteria->compare('emp_leave',$this->emp_leave,true);
-		$criteria->compare('emp_loginName',$this->emp_loginName,true);
-		$criteria->compare('emp_password',$this->emp_password,true);
+		
 		$criteria->compare('emp_accessLevel',$this->emp_accessLevel,true);
 		$criteria->compare('administrationCode',$this->administrationCode,true);
 
