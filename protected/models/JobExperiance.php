@@ -21,7 +21,7 @@ class JobExperiance extends CActiveRecord
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Jobexperiance the static model class
+	 * @return JobExperiance the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -46,17 +46,18 @@ class JobExperiance extends CActiveRecord
 		return array(
 			array('jobExperianceID, personID, joe_contact', 'numerical', 'integerOnly'=>true),
 			array('joe_employer', 'length', 'max'=>200),
-			array('joe_address', 'length', 'max'=>300),
+			array('joe_address', 'length', 'max'=>1000),
 			array('joe_position', 'length', 'max'=>50),
 			array('joe_contact', 'length', 'max'=>15),
-                    
-			array('joe_startDate, joe_endDate', 'date'),
+			
+                        array('joe_startDate, joe_endDate', 'date'),
+                        array('joe_address', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('jobExperianceID, joe_employer, joe_position, joe_startDate, personID', 'safe', 'on'=>'search'),
+			array('jobExperianceID, joe_employer, joe_position, personID', 'safe', 'on'=>'search'),
 		);
 	}
-/**/
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -101,8 +102,6 @@ class JobExperiance extends CActiveRecord
 		$criteria->compare('joe_employer',$this->joe_employer,true);
 		
 		$criteria->compare('joe_position',$this->joe_position,true);
-		$criteria->compare('joe_startDate',$this->joe_startDate,true);
-		
 		
 		$criteria->compare('personID',$this->personID);
 

@@ -17,12 +17,12 @@
  * The followings are the available model relations:
  * @property Person $person
  */
-class Academichistory extends CActiveRecord
+class AcademicHistory extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Academichistory the static model class
+	 * @return AcademicHistory the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
