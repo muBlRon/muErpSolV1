@@ -22,12 +22,12 @@
  * @property Admission $programmeCode0
  * @property Employee $employee
  */
-class Termadmission extends CActiveRecord
+class TermAdmission extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Termadmission the static model class
+	 * @return TermAdmission the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

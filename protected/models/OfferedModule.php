@@ -21,12 +21,12 @@
  * @property Faculty $faculty
  * @property Module $moduleCode0
  */
-class Offeredmodule extends CActiveRecord
+class OfferedModule extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Offeredmodule the static model class
+	 * @return OfferedModule the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
