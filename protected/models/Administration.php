@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "{{administration}}".
- *
+ * * -update --ron--13-05-2013-
  * The followings are the available columns in table '{{administration}}':
  * @property string $administrationCode
  * @property string $adm_name

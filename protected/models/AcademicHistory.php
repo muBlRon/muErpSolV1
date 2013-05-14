@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * * -update --ron--13-05-2013-
  * This is the model class for table "{{academichistory}}".
  *
  * The followings are the available columns in table '{{academichistory}}':

@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "{{employee}}".
- *
+ * * -update --ron--13-05-2013-
  * The followings are the available columns in table '{{employee}}':
  * @property integer $employeeID
  * @property string $emp_designations
