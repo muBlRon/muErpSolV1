@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "{{department}}".
- *
+ * * -update --ron--14-05-2013-
  * The followings are the available columns in table '{{department}}':
  * @property string $dpt_code
  * @property string $dpt_name
@@ -49,16 +49,23 @@ class Department extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dpt_head, schoolID', 'numerical', 'integerOnly'=>true),
+			
+                        array('dpt_head, schoolID, dpt_contactNo', 'numerical', 'integerOnly'=>true),
+                    
 			array('dpt_code', 'length', 'max'=>10),
 			array('dpt_name, dpt_email', 'length', 'max'=>100),
 			array('dpt_location', 'length', 'max'=>350),
 			array('dpt_contactNo', 'length', 'max'=>15),
 			array('dpt_headStatus', 'length', 'max'=>14),
-			array('dpt_remarks', 'safe'),
+			array('dpt_remarks, dpt_location', 'safe'),
+                    
+                        array('dpt_code, dpt_name', 'required'),
+                        array('dpt_code, dpt_name', 'unique'),
+                        array('sch_headStatus', 'in', 'range'=>array('Head', 'Head in Charge')),
+                        array('dpt_name, dpt_email', 'email'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('dpt_code, dpt_name, dpt_location, dpt_contactNo, dpt_email, dpt_remarks, dpt_head, dpt_headStatus, departmentID, schoolID', 'safe', 'on'=>'search'),
+			array('dpt_code, dpt_name, departmentID, schoolID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,16 +90,16 @@ class Department extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'dpt_code' => 'Dpt Code',
-			'dpt_name' => 'Dpt Name',
-			'dpt_location' => 'Dpt Location',
-			'dpt_contactNo' => 'Dpt Contact No',
-			'dpt_email' => 'Dpt Email',
-			'dpt_remarks' => 'Dpt Remarks',
-			'dpt_head' => 'Dpt Head',
-			'dpt_headStatus' => 'Dpt Head Status',
-			'departmentID' => 'Department',
-			'schoolID' => 'School',
+			'dpt_code' => 'Code',
+			'dpt_name' => 'Name',
+			'dpt_location' => 'Location',
+			'dpt_contactNo' => 'Contact No',
+			'dpt_email' => 'Email',
+			'dpt_remarks' => 'Remarks',
+			'dpt_head' => 'Head',
+			'dpt_headStatus' => 'Head Status',
+			'departmentID' => 'DepartmentID',
+			'schoolID' => 'SchoolID',
 		);
 	}
 
@@ -109,12 +116,7 @@ class Department extends CActiveRecord
 
 		$criteria->compare('dpt_code',$this->dpt_code,true);
 		$criteria->compare('dpt_name',$this->dpt_name,true);
-		$criteria->compare('dpt_location',$this->dpt_location,true);
-		$criteria->compare('dpt_contactNo',$this->dpt_contactNo,true);
-		$criteria->compare('dpt_email',$this->dpt_email,true);
-		$criteria->compare('dpt_remarks',$this->dpt_remarks,true);
-		$criteria->compare('dpt_head',$this->dpt_head);
-		$criteria->compare('dpt_headStatus',$this->dpt_headStatus,true);
+		
 		$criteria->compare('departmentID',$this->departmentID);
 		$criteria->compare('schoolID',$this->schoolID);
 

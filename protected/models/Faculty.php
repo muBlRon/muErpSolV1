@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "{{faculty}}".
- *
+ * * -update --ron--13-05-2013-
  * The followings are the available columns in table '{{faculty}}':
  * @property integer $facultyID
  * @property string $fac_designation

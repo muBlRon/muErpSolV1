@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "{{person}}".
- *
+ * * -update --ron--13-05-2013-
  * The followings are the available columns in table '{{person}}':
  * @property integer $personID
  * @property string $per_title
