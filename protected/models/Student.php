@@ -2,7 +2,8 @@
 
 /**
  * This is the model class for table "{{student}}".
- *
+ * * -update --ron--13-05-2013-
+ * 
  * The followings are the available columns in table '{{student}}':
  * @property string $studentID
  * @property integer $personID
