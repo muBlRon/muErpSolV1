@@ -22,12 +22,12 @@
  * @property Markingschame $markingSchame
  * @property Offeredmodule $offeredModule
  */
-class Moduleregistration extends CActiveRecord
+class ModuleRegistration extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Moduleregistration the static model class
+	 * @return ModuleRegistration the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

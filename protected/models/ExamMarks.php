@@ -1,25 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "{{examregistration}}".
+ * This is the model class for table "{{exammarks}}".
  *
- * The followings are the available columns in table '{{examregistration}}':
+ * The followings are the available columns in table '{{exammarks}}':
  * @property integer $examinationID
  * @property integer $moduleRegistrationID
- * @property string $exr_date
- * @property string $exr_issueAdmit
- * @property integer $employeeID
+ * @property string $emr_date
+ * @property double $emr_mark
+ * @property integer $facultyID
  *
  * The followings are the available model relations:
- * @property Exammarks[] $exammarks
- * @property Exammarks[] $exammarks1
+ * @property Examregistration $examination
+ * @property Examregistration $moduleRegistration
  */
-class Examregistration extends CActiveRecord
+class ExamMarks extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Examregistration the static model class
+	 * @return ExamMarks the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +31,7 @@ class Examregistration extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{examregistration}}';
+		return '{{exammarks}}';
 	}
 
 	/**
@@ -42,12 +42,12 @@ class Examregistration extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('examinationID, moduleRegistrationID, employeeID', 'numerical', 'integerOnly'=>true),
-			array('exr_issueAdmit', 'length', 'max'=>1),
-			array('exr_date', 'safe'),
+			array('examinationID, moduleRegistrationID, facultyID', 'numerical', 'integerOnly'=>true),
+			array('emr_mark', 'numerical'),
+			array('emr_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('examinationID, moduleRegistrationID, exr_date, exr_issueAdmit, employeeID', 'safe', 'on'=>'search'),
+			array('examinationID, moduleRegistrationID, emr_date, emr_mark, facultyID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +59,8 @@ class Examregistration extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'exammarks' => array(self::HAS_MANY, 'Exammarks', 'examinationID'),
-			'exammarks1' => array(self::HAS_MANY, 'Exammarks', 'moduleRegistrationID'),
+			'examination' => array(self::BELONGS_TO, 'Examregistration', 'examinationID'),
+			'moduleRegistration' => array(self::BELONGS_TO, 'Examregistration', 'moduleRegistrationID'),
 		);
 	}
 
@@ -72,9 +72,9 @@ class Examregistration extends CActiveRecord
 		return array(
 			'examinationID' => 'Examination',
 			'moduleRegistrationID' => 'Module Registration',
-			'exr_date' => 'Exr Date',
-			'exr_issueAdmit' => 'Exr Issue Admit',
-			'employeeID' => 'Employee',
+			'emr_date' => 'Emr Date',
+			'emr_mark' => 'Emr Mark',
+			'facultyID' => 'Faculty',
 		);
 	}
 
@@ -91,9 +91,9 @@ class Examregistration extends CActiveRecord
 
 		$criteria->compare('examinationID',$this->examinationID);
 		$criteria->compare('moduleRegistrationID',$this->moduleRegistrationID);
-		$criteria->compare('exr_date',$this->exr_date,true);
-		$criteria->compare('exr_issueAdmit',$this->exr_issueAdmit,true);
-		$criteria->compare('employeeID',$this->employeeID);
+		$criteria->compare('emr_date',$this->emr_date,true);
+		$criteria->compare('emr_mark',$this->emr_mark);
+		$criteria->compare('facultyID',$this->facultyID);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

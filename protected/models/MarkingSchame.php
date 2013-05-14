@@ -19,12 +19,12 @@
  * The followings are the available model relations:
  * @property Moduleregistration[] $moduleregistrations
  */
-class Markingschame extends CActiveRecord
+class MarkingSchame extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Markingschame the static model class
+	 * @return MarkingSchame the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
