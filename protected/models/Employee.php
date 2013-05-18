@@ -83,6 +83,7 @@ class Employee extends CActiveRecord
 			'termadmissions' => array(self::HAS_MANY, 'Termadmission', 'employeeID'),
 		);
 	}
+        
 
 	/**
 	 * @return array customized attribute labels (name=>label)

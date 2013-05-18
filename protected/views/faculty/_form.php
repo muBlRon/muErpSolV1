@@ -1,27 +1,23 @@
 <?php
-/* @var $this EmployeeController */
-/* @var $model Employee */
+/* @var $this FacultyController */
+/* @var $model Faculty */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'employee-form',
+	'id'=>'faculty-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-        
-        <?php echo $form->errorSummary($persons); ?>
+
+	<?php echo $form->errorSummary($persons); ?>
 	<?php echo $form->errorSummary($model); ?>
         <?php echo $form->errorSummary($academicHistory); ?>
-        
-       
          <!-- Persons Details --!>
         
-         <h2>Personal Details</h2>
-         
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_title'); ?>
                 <?php echo CHtml::activeDropDownList( $persons,'per_title',ZHtml::enumItem($persons, 'per_title') ); ?>
@@ -193,9 +189,7 @@
 	</div>
 
          <!--Referees Details --!>
-
-        <h2>Referees Details</h2>     
-
+                  
         <div class="row">
 		<?php echo $form->labelEx($persons,'per_refereeOneName'); ?>
 		<?php echo $form->textField($persons,'per_refereeOneName'); ?>
@@ -264,33 +258,31 @@
 	</div>
 
 
-        <!-- Employee Details --!>
-      
-        <h2>Job Details</h2>
-
+         <!-- Faculty Details --!>
+         
 	<div class="row">
-		<?php //echo $form->labelEx($model,'employeeID'); ?>
-		<?php //echo $form->textField($model,'employeeID'); ?>
-		<?php //echo $form->error($model,'employeeID'); ?>
+		<?php //echo $form->labelEx($model,'facultyID'); ?>
+		<?php //echo $form->textField($model,'facultyID'); ?>
+		<?php //echo $form->error($model,'facultyID'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_designations'); ?>
-		<?php echo $form->textField($model,'emp_designations',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'emp_designations'); ?>
+		<?php echo $form->labelEx($model,'fac_designation'); ?>
+		<?php echo $form->textField($model,'fac_designation',array('size'=>19,'maxlength'=>19)); ?>
+		<?php echo $form->error($model,'fac_designation'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_suppervisoryRole'); ?>
-		<?php echo $form->textField($model,'emp_suppervisoryRole',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'emp_suppervisoryRole'); ?>
+		<?php echo $form->labelEx($model,'fac_position'); ?>
+		<?php echo $form->textField($model,'fac_position',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->error($model,'fac_position'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_joining'); ?>
+		<?php echo $form->labelEx($model,'fac_joining'); ?>
                 <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
                 		array(
-                                        'attribute'=>'emp_joining',
+                                        'attribute'=>'fac_joining',
                                         'model'=>$model,
                                         'options' => array(
                                         'mode'=>'focus',
@@ -300,15 +292,15 @@
                                         'htmlOptions'=>array('size'=>30,'class'=>'date'),
 		)
 		);?>
-		<?php //echo $form->textField($model,'emp_joining'); ?>
-		<?php echo $form->error($model,'emp_joining'); ?>
+		<?php //echo $form->textField($model,'fac_joining'); ?>
+		<?php echo $form->error($model,'fac_joining'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_leave'); ?>
+		<?php echo $form->labelEx($model,'fac_leave'); ?>
                 <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
                 		array(
-                                        'attribute'=>'emp_leave',
+                                        'attribute'=>'fac_leave',
                                         'model'=>$model,
                                         'options' => array(
                                         'mode'=>'focus',
@@ -318,36 +310,35 @@
                                         'htmlOptions'=>array('size'=>30,'class'=>'date'),
 		)
 		);?>
-		<?php //echo $form->textField($model,'emp_leave'); ?>
-		<?php echo $form->error($model,'emp_leave'); ?>
+		<?php //echo $form->textField($model,'fac_leave'); ?>
+		<?php echo $form->error($model,'fac_leave'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_loginName'); ?>
-		<?php echo $form->textField($model,'emp_loginName',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'emp_loginName'); ?>
+		<?php echo $form->labelEx($model,'fac_loginName'); ?>
+		<?php echo $form->textField($model,'fac_loginName',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'fac_loginName'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_password'); ?>
-		<?php echo $form->textField($model,'emp_password',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'emp_password'); ?>
+		<?php echo $form->labelEx($model,'fac_password'); ?>
+		<?php echo $form->textField($model,'fac_password',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'fac_password'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'emp_accessLevel'); ?>
-                <?php echo CHtml::activeDropDownList( $model,'emp_accessLevel',ZHtml::enumItem($model, 'emp_accessLevel') ); ?>        
-		<?php echo $form->error($model,'emp_accessLevel'); ?>
+		<?php echo $form->labelEx($model,'fac_accessLevel'); ?>
+                <?php echo CHtml::activeDropDownList( $model,'fac_accessLevel',ZHtml::enumItem($model, 'fac_accessLevel') ); ?>
+		<?php echo $form->error($model,'fac_accessLevel'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'administrationCode'); ?>
-		<?php echo $form->textField($model,'administrationCode',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'administrationCode'); ?>
+		<?php echo $form->labelEx($model,'departmentID'); ?>
+		<?php echo $form->textField($model,'departmentID'); ?>
+		<?php echo $form->error($model,'departmentID'); ?>
 	</div>
 
-        
-        <h2>Academic Records</h2>
+         
 
         <div class="row">
 		<?php //echo $form->labelEx($model,'academicHistoryID'); ?>
@@ -419,9 +410,6 @@
 		<?php //echo $form->error($jobExperiance,'personID'); ?>
 	</div>
 
-        <h2>Employment Details</h2>
-
-
 	<div class="row">
 		<?php echo $form->labelEx($jobExperiance,'joe_employer'); ?>
 		<?php echo $form->textField($jobExperiance,'joe_employer'); ?>
@@ -481,8 +469,6 @@
 		<?php //echo $form->textField($jobExperiance,'joe_endDate'); ?>
 		<?php echo $form->error($jobExperiance,'joe_endDate'); ?>
 	</div>
-
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

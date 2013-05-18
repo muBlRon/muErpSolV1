@@ -62,61 +62,44 @@ class EmployeeController extends Controller
 	 */
 	public function actionCreate()
 	{
-		
-                if (isset($_POST['cancel'])) 
-                {
-            
-                  $this->redirect(array('index'));
-                }
-                elseif (isset($_POST['step2'])) 
-                {
-                
-                $this->setPageState('step1',$_POST['Person']); // save step1 into form state
-                $model=new Person('step1');
-                $model->attributes = $_POST['Person'];
-                $employee = new Employee;
-                //if($model->validate())
-                   $this->render('_form',array('employee'=>$employee));
-                //else {
-                        //$this->render('_form1',array('model'=>$model));
-                  //  }
-                }
+		$model=new Employee;
+                $persons = new Person;
+                $academicHistory = new Academichistory;
+                $jobExperiance = new Jobexperiance;
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
-              elseif (isset($_POST['finish'])) 
-                {
-             
-                $emp=new Employee('finish');
-                 $emp->attributes = $this->getPageState('step2',array()); //get the info from step 1
-                $emp->attributes = $_POST['Employee']; // then the info from step2
-                //if ($model->save())
-        		$this->redirect(array('view','id'=>$model->personID));        
-                //else 
-               // {
-        
-                 //   $this->render('Student',array('model'=>$model));
-               // }
-               }
-            
-	        else 
-                { 
-        
-                $model=new Person;
-                
-                $this->render('_person',array('model'=>$model));
-                
-                }
-
-	/*	if(isset($_POST['Person']))
+		 if(!empty($_POST))
 		{
-			$model->attributes=$_POST['Person'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->employeeID));
+                     
+                        $persons->attributes = $_POST['Person'];
+                        $model->attributes=$_POST['Employee'];
+                        $academicHistory->attributes=$_POST['Academichistory'];
+                        $jobExperiance->attributes = $_POST['Jobexperiance'];
+                        
+                        if($persons->validate() || $model->validate() || $academicHistory->validate() || $jobExperiance->validate())
+                        {
+                                                 	                        
+                            $persons->save(false);
+                            $model->employeeID = $persons->personID;
+                            $model->save(false);
+                            $academicHistory->personID = $persons->personID;
+                            $academicHistory->save(false);
+                            $jobExperiance->personID = $persons->personID;
+                            $jobExperiance->save(false);
+                            
+                                $this->redirect(array('view','id'=>$model->employeeID));
+                        }
 		}
-
-		$this->render('create',array(
+                $this->render('create',array(
 			'model'=>$model,
-		));*/
+                        'persons'=>$persons,                   
+                        'academicHistory'=>$academicHistory,
+                        'jobExperiance'=>$jobExperiance,
+		));
+		
 	}
+        
 
 	/**
 	 * Updates a particular model.
@@ -126,7 +109,7 @@ class EmployeeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -138,7 +121,7 @@ class EmployeeController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,              
 		));
 	}
 

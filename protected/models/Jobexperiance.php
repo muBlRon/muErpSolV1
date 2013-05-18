@@ -44,6 +44,7 @@ class Jobexperiance extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('jobExperianceID, personID', 'required'),
 			array('jobExperianceID, personID', 'numerical', 'integerOnly'=>true),
 			array('joe_employer', 'length', 'max'=>200),
 			array('joe_address', 'length', 'max'=>300),
@@ -75,12 +76,12 @@ class Jobexperiance extends CActiveRecord
 	{
 		return array(
 			'jobExperianceID' => 'Job Experiance',
-			'joe_employer' => 'Joe Employer',
-			'joe_address' => 'Joe Address',
-			'joe_position' => 'Joe Position',
-			'joe_startDate' => 'Joe Start Date',
-			'joe_endDate' => 'Joe End Date',
-			'joe_contact' => 'Joe Contact',
+			'joe_employer' => 'Job Employer',
+			'joe_address' => 'Job Address',
+			'joe_position' => 'Job Position',
+			'joe_startDate' => 'Job Start Date',
+			'joe_endDate' => 'Job End Date',
+			'joe_contact' => 'Job Contact',
 			'personID' => 'Person',
 		);
 	}

@@ -38,12 +38,23 @@
 		<?php echo $form->textField($model,'per_gender',array('size'=>6,'maxlength'=>6)); ?>
 		<?php echo $form->error($model,'per_gender'); ?>
 	</div>
-
-	<div class="row">
+        <div class="row">
 		<?php echo $form->labelEx($model,'per_dateofBirth'); ?>
-		<?php echo $form->textField($model,'per_dateofBirth'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker',
+		array(
+        'attribute'=>'per_dateofBirth',
+        'model'=>$model,
+        'options' => array(
+                          'mode'=>'focus',
+                          'dateFormat'=>'d MM, yy',
+                          'showAnim' => 'slideDown',
+                          ),
+			'htmlOptions'=>array('size'=>30,'class'=>'date'),
+		)
+		);?>
 		<?php echo $form->error($model,'per_dateofBirth'); ?>
 	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'per_bloodGroup'); ?>
@@ -215,7 +226,18 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'per_entryDate'); ?>
-		<?php echo $form->textField($model,'per_entryDate'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker',
+		array(
+        'attribute'=>'per_entryDate',
+        'model'=>$model,
+        'options' => array(
+                          'mode'=>'focus',
+                          'dateFormat'=>'d MM, yy',
+                          'showAnim' => 'slideDown',
+                          ),
+			'htmlOptions'=>array('size'=>30,'class'=>'date'),
+		)
+		);?>
 		<?php echo $form->error($model,'per_entryDate'); ?>
 	</div>
 

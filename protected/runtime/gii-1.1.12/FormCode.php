@@ -1,5 +1,5 @@
 <?php
 return array (
   'template' => 'default',
-  'viewPath' => 'application.views.employee',
+  'viewPath' => 'application.views.faculty',
 );

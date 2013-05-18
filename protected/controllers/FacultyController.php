@@ -1,6 +1,6 @@
 <?php
 
-class PersonController extends Controller
+class FacultyController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,20 +62,41 @@ class PersonController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Person;
-
+		$model=new Faculty;
+                $persons = new Person;
+                $academicHistory = new Academichistory;
+                $jobExperiance = new Jobexperiance;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Person']))
+		             
+                  if(!empty($_POST))
 		{
-			$model->attributes=$_POST['Person'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->personID));
+                     
+                        $persons->attributes = $_POST['Person'];
+                        $model->attributes=$_POST['Faculty'];
+                        $academicHistory->attributes=$_POST['Academichistory'];
+                        $jobExperiance->attributes = $_POST['Jobexperiance'];
+                        
+                        if($persons->validate() || $model->validate() || $academicHistory->validate() || $jobExperiance->validate())
+                        {
+                                                 	                        
+                            $persons->save(false);
+                            $model->facultyID = $persons->personID;
+                            $model->save(false);
+                            $academicHistory->personID = $persons->personID;
+                            $academicHistory->save(false);
+                            $jobExperiance->personID = $persons->personID;
+                            $jobExperiance->save(false);
+                            
+                                $this->redirect(array('view','id'=>$model->facultyID));
+                        }
 		}
-
-		$this->render('create',array(
+                $this->render('create',array(
 			'model'=>$model,
+                        'persons'=>$persons,                   
+                        'academicHistory'=>$academicHistory,
+                        'jobExperiance'=>$jobExperiance,
 		));
 	}
 
@@ -91,11 +112,11 @@ class PersonController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Person']))
+		if(isset($_POST['Faculty']))
 		{
-			$model->attributes=$_POST['Person'];
+			$model->attributes=$_POST['Faculty'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->personID));
+				$this->redirect(array('view','id'=>$model->facultyID));
 		}
 
 		$this->render('update',array(
@@ -122,7 +143,7 @@ class PersonController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Person');
+		$dataProvider=new CActiveDataProvider('Faculty');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +154,10 @@ class PersonController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Person('search');
+		$model=new Faculty('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Person']))
-			$model->attributes=$_GET['Person'];
+		if(isset($_GET['Faculty']))
+			$model->attributes=$_GET['Faculty'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -150,7 +171,7 @@ class PersonController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Person::model()->findByPk($id);
+		$model=Faculty::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -162,7 +183,7 @@ class PersonController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='person-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='faculty-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
