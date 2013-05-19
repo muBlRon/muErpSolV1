@@ -466,7 +466,7 @@
                                         'htmlOptions'=>array('size'=>30,'class'=>'date'),
 		)
 		);?>
-		<?php //echo $form->textField($jobExperiance,'joe_endDate'); ?>
+		
 		<?php echo $form->error($jobExperiance,'joe_endDate'); ?>
 	</div>
 
