@@ -167,10 +167,7 @@ $this->menu=array(
                       'value' => $model->employee->per_entryDate,                    
                 ),
             
-             array(
-                      'name' => 'ach_passingYear',
-                      'value' => $model->employee->ach_passingYear,                    
-                ),
+            
       	),
 )); 
 
