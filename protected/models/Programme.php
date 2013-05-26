@@ -52,7 +52,12 @@ class Programme extends CActiveRecord
 			array('pro_type', 'length', 'max'=>13),
 			array('pro_medium', 'length', 'max'=>7),
 			array('pro_remarks', 'safe'),
-			// The following rule is used by search().
+                    
+                        array('pro_name, programmeCode, pro_type, pro_medium, pro_totalTerms', 'required'),
+                            
+                        array('pro_type', 'in', 'range'=>array('deploma', 'undergraduate', 'postgraduate')),
+                        array('pro_medium', 'in', 'range'=>array('English', 'Bangla', 'Bilingual')),
+                        // The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('programmeCode, pro_name, pro_totalTerms, pro_remarks, pro_type, pro_medium, departmentID', 'safe', 'on'=>'search'),
 		);
@@ -80,12 +85,12 @@ class Programme extends CActiveRecord
 	{
 		return array(
 			'programmeCode' => 'Programme Code',
-			'pro_name' => 'Pro Name',
-			'pro_totalTerms' => 'Pro Total Terms',
-			'pro_remarks' => 'Pro Remarks',
-			'pro_type' => 'Pro Type',
-			'pro_medium' => 'Pro Medium',
-			'departmentID' => 'Department',
+			'pro_name' => 'Name',
+			'pro_totalTerms' => 'Total Terms',
+			'pro_remarks' => 'Remarks',
+			'pro_type' => 'Type',
+			'pro_medium' => 'Medium',
+			'departmentID' => 'DepartmentID',
 		);
 	}
 
