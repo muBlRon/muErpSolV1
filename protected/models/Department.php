@@ -28,6 +28,8 @@ class Department extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Department the static model class
 	 */
+         
+    
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -61,8 +63,8 @@ class Department extends CActiveRecord
                     
                         array('dpt_code, dpt_name', 'required'),
                         array('dpt_code, dpt_name', 'unique'),
-                        array('sch_headStatus', 'in', 'range'=>array('Head', 'Head in Charge')),
-                        array('dpt_name, dpt_email', 'email'),
+                        array('dpt_headStatus', 'in', 'range'=>array('Head', 'Head in Charge')),
+                        array('dpt_email', 'email'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('dpt_code, dpt_name, departmentID, schoolID', 'safe', 'on'=>'search'),
