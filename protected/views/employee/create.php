@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Employee</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons, 'academicHistory'=>$academicHistory,'jobExperiance'=>$jobExperiance,)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

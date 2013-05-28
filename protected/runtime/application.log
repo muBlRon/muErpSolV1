@@ -2893,3 +2893,1188 @@ Stack trace:
 REQUEST_URI=/muErpSolV1/index.php?r=programme/index
 HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=programme/view&id=CIS
 ---
+2013/05/26 05:35:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "person".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person
+---
+2013/05/26 05:35:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "person".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/?r=person
+---
+2013/05/26 05:39:59 [error] [exception.CException] exception 'CException' with message 'PersonController cannot find the requested view "index".' in C:\wamp\www\yii_framework\web\CController.php:879
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(128): CController->render('index', Array)
+#2 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#3 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#10 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('')
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person')
+#13 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person
+---
+2013/05/26 05:40:03 [error] [exception.CException] exception 'CException' with message 'PersonController cannot find the requested view "index".' in C:\wamp\www\yii_framework\web\CController.php:879
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(128): CController->render('index', Array)
+#2 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#3 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#10 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('')
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person')
+#13 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person
+---
+2013/05/26 05:40:04 [error] [exception.CException] exception 'CException' with message 'EmployeeController cannot find the requested view "create".' in C:\wamp\www\yii_framework\web\CController.php:879
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#1 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(99): CController->render('create', Array)
+#2 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionCreate()
+#3 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#10 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#13 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee/index
+---
+2013/05/26 06:03:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=School/index
+---
+2013/05/26 06:03:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "dpartment".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('dpartment')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=dpartment
+---
+2013/05/26 06:03:36 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department
+---
+2013/05/26 06:03:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "programm".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('programm')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=programm
+---
+2013/05/26 06:03:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "program".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('program')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=program
+---
+2013/05/26 06:04:04 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('programme')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=programme
+---
+2013/05/26 06:11:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=School/index
+---
+2013/05/26 06:12:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+---
+2013/05/26 06:16:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "batch/Index".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('batch/Index')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=batch/Index&id=CIS
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=programme/Index&id=1
+---
+2013/05/26 06:17:06 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=school/index
+---
+2013/05/26 06:17:28 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=department/admin&id=1
+---
+2013/05/26 06:17:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('index')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('department/inde...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=department/index
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=School/index
+---
+2013/05/26 06:18:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "AcademicHistory/Index".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('AcademicHistory...')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=AcademicHistory/Index&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=faculty/Index&id=2
+---
+2013/05/26 17:32:59 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php:66)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create&id=1
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (66)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 17:34:29 [error] [exception.CException] exception 'CException' with message 'Property "Employee.personID" is not defined.' in C:\wamp\www\yii_framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\yii_framework\db\ar\CActiveRecord.php(160): CComponent->__set('personID', '1')
+#1 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(66): CActiveRecord->__set('personID', '1')
+#2 [internal function]: EmployeeController->actionCreate('1')
+#3 C:\wamp\www\yii_framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#4 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#15 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 17:45:04 [error] [exception.CException] exception 'CException' with message 'Property "Employee.personID" is not defined.' in C:\wamp\www\yii_framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\yii_framework\db\ar\CActiveRecord.php(160): CComponent->__set('personID', '1')
+#1 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(66): CActiveRecord->__set('personID', '1')
+#2 [internal function]: EmployeeController->actionCreate('1')
+#3 C:\wamp\www\yii_framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#4 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#15 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 17:47:26 [error] [exception.CException] exception 'CException' with message 'Property "Employee.personID" is not defined.' in C:\wamp\www\yii_framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\yii_framework\db\ar\CActiveRecord.php(160): CComponent->__set('personID', '1')
+#1 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(66): CActiveRecord->__set('personID', '1')
+#2 [internal function]: EmployeeController->actionCreate('1')
+#3 C:\wamp\www\yii_framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EmployeeController), Array)
+#4 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(EmployeeController), Object(ReflectionMethod), Array)
+#5 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#12 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#14 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#15 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 17:48:39 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:00:25 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:02:05 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:25:32 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:12)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(128): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (12)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (128)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:26:26 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(128): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (128)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:26:54 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(128): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (128)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:29:10 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('update')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/update')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/update
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:29:14 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('update')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/update')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/update
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:29:42 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('update')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/update')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/update
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:29:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "AddReffe".' in C:\wamp\www\yii_framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(271): CController->missingAction('AddReffe')
+#1 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('AddReffe')
+#2 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/AddReffe')
+#3 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/AddReffe
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:30:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "AddRefree".' in C:\wamp\www\yii_framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(271): CController->missingAction('AddRefree')
+#1 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('AddRefree')
+#2 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/AddRefre...')
+#3 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/AddRefree
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:32:02 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('AddRefree')
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/AddRefre...')
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/AddRefree
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:34:15 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('addrefree')
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/addrefre...')
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/addrefree
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:34:37 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:34:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('addrefree')
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/addrefre...')
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/addrefree
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:35:15 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('update')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/update')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/update
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:36:51 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:12)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (12)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:37:40 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:42:32 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:43:56 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:45:18 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:45:46 [error] [php] Undefined variable: model (C:\wamp\www\muErpSolV1\protected\views\person\index.php:8)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): PersonController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): PersonController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(144): PersonController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): PersonController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): PersonController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): PersonController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): PersonController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): PersonController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=person/index
+in C:\wamp\www\muErpSolV1\protected\views\person\index.php (8)
+in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php (144)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 18:47:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php:171
+Stack trace:
+#0 C:\wamp\www\muErpSolV1\protected\controllers\PersonController.php(89): PersonController->loadModel('')
+#1 [internal function]: PersonController->actionUpdate('')
+#2 C:\wamp\www\yii_framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(PersonController), Array)
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(PersonController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('update')
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/update')
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/update&id=
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:50:32 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('AddRefree')
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('person/AddRefre...')
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=person/AddRefree&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 18:58:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "batch/Index".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('batch/Index')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=batch/Index&id=CIS
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=programme/Index&id=1
+---
+2013/05/26 18:58:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "AcademicHistory/Index".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('AcademicHistory...')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=AcademicHistory/Index&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=faculty/Index&id=1
+---
+2013/05/26 18:59:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "JobExperiance/Index".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('JobExperiance/I...')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=JobExperiance/Index&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=faculty/Index&id=1
+---
+2013/05/26 19:03:04 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 19:05:11 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 19:05:52 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\views\employee\index.php:10)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(870): EmployeeController->renderFile()
+#1 C:\wamp\www\yii_framework\web\CController.php(783): EmployeeController->renderPartial()
+#2 C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php(136): EmployeeController->render()
+#3 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(50): EmployeeController->actionIndex()
+#4 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): EmployeeController->runAction()
+#6 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#8 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): EmployeeController->filterAccessControl()
+#9 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\yii_framework\web\CController.php(266): EmployeeController->runActionWithFilters()
+#12 C:\wamp\www\yii_framework\web\CWebApplication.php(283): EmployeeController->run()
+#13 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#14 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=employee/index
+in C:\wamp\www\muErpSolV1\protected\views\employee\index.php (10)
+in C:\wamp\www\muErpSolV1\protected\controllers\EmployeeController.php (136)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 19:06:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee/index
+---
+2013/05/26 19:13:51 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php:66)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): AcademicHistoryController->runAction()
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): AcademicHistoryController->filterAccessControl()
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): AcademicHistoryController->runActionWithFilters()
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): AcademicHistoryController->run()
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create&id=1
+in C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php (66)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 19:14:05 [error] [php] Undefined variable: id (C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php:66)
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): AcademicHistoryController->runAction()
+#1 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#2 C:\wamp\www\yii_framework\web\CController.php(1146): CAccessControlFilter->filter()
+#3 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): AcademicHistoryController->filterAccessControl()
+#4 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#5 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#6 C:\wamp\www\yii_framework\web\CController.php(266): AcademicHistoryController->runActionWithFilters()
+#7 C:\wamp\www\yii_framework\web\CWebApplication.php(283): AcademicHistoryController->run()
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\wamp\www\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create&id=1
+in C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php (66)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/26 19:18:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "jobexperiance/crate".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('jobexperiance/c...')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=jobexperiance/crate&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 19:19:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "crate".' in C:\wamp\www\yii_framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(271): CController->missingAction('crate')
+#1 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('crate')
+#2 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('jobexperiance/c...')
+#3 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=jobexperiance/crate&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 19:19:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "crate".' in C:\wamp\www\yii_framework\web\CController.php:484
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(271): CController->missingAction('crate')
+#1 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('crate')
+#2 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('jobexperiance/c...')
+#3 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=jobexperiance/crate&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=person/index
+---
+2013/05/26 19:34:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('academicHistory...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=AcademicHistory/Index&id=1
+---
+2013/05/26 19:34:40 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('academicHistory...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=academicHistory/view&id=0
+---
+2013/05/27 01:16:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_academichistory` (`personID`, `academicHistoryID`, `ach_degree`, `ach_group`, `ach_institution`, `ach_board`, `ach_passingYear`, `ach_result`, `ach_remarks`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8).
+in C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php (73)
+in C:\wamp\www\muErpSolV1\index.php (13)
+2013/05/27 01:16:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `tbl_academichistory` (`personID`, `academicHistoryID`, `ach_degree`, `ach_group`, `ach_institution`, `ach_board`, `ach_passingYear`, `ach_result`, `ach_remarks`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8)' in C:\wamp\www\yii_framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\wamp\www\yii_framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 C:\wamp\www\yii_framework\db\ar\CActiveRecord.php(796): CActiveRecord->insert(NULL)
+#2 C:\wamp\www\muErpSolV1\protected\controllers\AcademicHistoryController.php(73): CActiveRecord->save()
+#3 [internal function]: AcademicHistoryController->actionCreate('1')
+#4 C:\wamp\www\yii_framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(AcademicHistoryController), Array)
+#5 C:\wamp\www\yii_framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(AcademicHistoryController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\yii_framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#9 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#15 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('academicHistory...')
+#16 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create&id=1
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=academicHistory/create&id=1
+---
+2013/05/27 01:19:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee/Index&id=1
+---
+2013/05/27 01:22:21 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('academicHistory...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=AcademicHistory/Index&id=1
+---
+2013/05/27 02:02:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('academicHistory...')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=academicHistory/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=AcademicHistory/Index&id=1
+---
+2013/05/27 14:30:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee
+---
+2013/05/27 14:34:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+---
+2013/05/27 14:35:56 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee
+---
+2013/05/27 14:37:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\wamp\www\yii_framework\web\CController.php:337
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 C:\wamp\www\yii_framework\web\filters\CFilter.php(41): CFilterChain->run()
+#3 C:\wamp\www\yii_framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\yii_framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\wamp\www\yii_framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\yii_framework\web\CController.php(292): CFilterChain->run()
+#7 C:\wamp\www\yii_framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii_framework\web\CWebApplication.php(283): CController->run('create')
+#9 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#10 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+HTTP_REFERER=http://localhost/muErpSolV1/index.php?r=employee
+---
+2013/05/27 14:39:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "employee/create".' in C:\wamp\www\yii_framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\yii_framework\web\CWebApplication.php(142): CWebApplication->runController('employee/create')
+#1 C:\wamp\www\yii_framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\muErpSolV1\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=employee/create
+---

@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Faculty', 'url'=>array('create')),
+	array('label'=>'Create Faculty', 'url'=>array('person/create')),
 	array('label'=>'Manage Faculty', 'url'=>array('admin')),
 );
 ?>

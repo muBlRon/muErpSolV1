@@ -63,43 +63,21 @@ class EmployeeController extends Controller
 	public function actionCreate()
 	{
 		$model=new Employee;
-                $persons = new Person;
-                $academicHistory = new Academichistory;
-                $jobExperiance = new Jobexperiance;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		 if(!empty($_POST))
+		if(isset($_POST['Employee']))
 		{
-                     
-                        $persons->attributes = $_POST['Person'];
-                        $model->attributes=$_POST['Employee'];
-                        $academicHistory->attributes=$_POST['Academichistory'];
-                        $jobExperiance->attributes = $_POST['Jobexperiance'];
-                        
-                        if($persons->validate() || $model->validate() || $academicHistory->validate() || $jobExperiance->validate())
-                        {
-                                                 	                        
-                            $persons->save(false);
-                            $model->employeeID = $persons->personID;
-                            $model->save(false);
-                            $academicHistory->personID = $persons->personID;
-                            $academicHistory->save(false);
-                            $jobExperiance->personID = $persons->personID;
-                            $jobExperiance->save(false);
-                            
-                                $this->redirect(array('view','id'=>$model->employeeID));
-                        }
+			$model->attributes=$_POST['Employee'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->employeeID));
 		}
-                $this->render('create',array(
+
+		$this->render('create',array(
 			'model'=>$model,
-                        'persons'=>$persons,                   
-                        'academicHistory'=>$academicHistory,
-                        'jobExperiance'=>$jobExperiance,
 		));
-		
 	}
-        
 
 	/**
 	 * Updates a particular model.
