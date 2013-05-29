@@ -62,21 +62,48 @@ class EmployeeController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Employee;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Employee']))
-		{
-			$model->attributes=$_POST['Employee'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->employeeID));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            
+         	// $this->performAjaxValidation($model);
+                if (isset($_POST['step1']))
+			{
+                    
+			$this->setPageState('step1',$_POST['Person']); // save step1 into form state
+			$persons=new Person('step1');
+			$persons->attributes = $_POST['Person'];
+                        $model = new Employee('finish');
+                        $model->employeeID = $persons->personID;
+			//if($persons->validate())
+                         //   {
+                                $this->render('_form',array('model'=>$model));	
+                           // }
+			///else {
+                       				
+                           //     $this->render('_person',array('persons'=>$persons));
+                            //}
+			} 
+		elseif (isset($_POST['finish'])) 
+			{
+					$persons = new Person('finish');
+					$persons->attributes = $this->getPageState('step1',array()); //get the info from step 1
+					$model->attributes = $_POST['Employee']; // then the info from step2
+                                        $model->employeeID = $persons->personID;    
+                                        echo 'test';
+                                        if ($persons->save())
+                                        {
+                                            
+                                                $model->save();
+						$this->redirect(array('home'));
+                                        }
+			}
+		else
+                    {
+					
+			 // this is the default, first time (step1)
+				$persons=new Person('new');
+				$this->render('_person',array('persons'=>$persons));
+                                                                
+                       }
+		
 	}
 
 	/**
