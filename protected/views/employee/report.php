@@ -1,5 +1,5 @@
-<?php require('fpdf.php');
-
+<?php //require('protected\components\pdf\fpdf.php');
+require($_SERVER['DOCUMENT_ROOT'].'muErpSolV1/protected/components/pdf/fpdf.php');
 class PDF extends FPDF
 {
 // Load data
@@ -93,17 +93,16 @@ function FancyTable($header, $data)
 }
 
 $pdf = new PDF();
-
 // Column headings
 $header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 // Data loading
 //$data = $pdf->LoadData('countries.txt');
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
-//$pdf->BasicTable($header,"HELLO");
+$pdf->BasicTable($header,"HELLO");
 $pdf->AddPage();
-///$pdf->ImprovedTable($header,"World");
-//$pdf->AddPage();
+$pdf->ImprovedTable($header,"World");
+$pdf->AddPage();
 //$pdf->FancyTable($header,"Hi");
 $pdf->Output();
 
@@ -116,4 +115,3 @@ $pdf->Cell(40,10,'University!');
 $pdf->Cell(40,10,'Hello World!');
 */
 ?>
-
