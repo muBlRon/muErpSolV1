@@ -34,7 +34,7 @@ class DepartmentController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','SchDptView'),
+				'actions'=>array('create','update','SchDptView','report'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -70,12 +70,12 @@ class DepartmentController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate()
 	{
             
             
 		$model=new Department;
-                $model->schoolID=$id;
+                $model->schoolID=yii::app()->session['schoolID'];
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -137,8 +137,13 @@ class DepartmentController extends Controller
         
 	public function actionIndex($id)
 	{
-               
-                $schoolName= $this->getSchoolName($id);
+            /*
+             * Diclearing session 'schoolID' and 'schoolName' for future use. 
+             * 
+             */
+                yii::app()->session['schoolID']=$id;
+                yii::app()->session['schoolName']=  DBhelper::getSchoolNameById($id);
+                
                 $condition = "SchoolID={$id}";
                 
 		$dataProvider=new CActiveDataProvider('Department', array(
@@ -148,7 +153,7 @@ class DepartmentController extends Controller
                 
                 
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,'id'=>$id,'SchoolName'=> $schoolName
+			'dataProvider'=>$dataProvider,'id'=>$id,
 		));
 	}
 
@@ -158,14 +163,22 @@ class DepartmentController extends Controller
 	public function actionAdmin()
 	{
 		$model=new Department('search');
+                
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Department']))
+                {
+                    
 			$model->attributes=$_GET['Department'];
+                }
 
+                
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
+        
+
+                
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -192,15 +205,7 @@ class DepartmentController extends Controller
 		return $model;
 	}
 
-        public function getSchoolName($id)
-        {
-            
-                $school = School::model()->findByPk($id)->sch_name;
-                
-                if($school===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $school;
-        }
+        
 
         /**
 	 * Performs the AJAX validation.

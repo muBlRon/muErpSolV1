@@ -1,13 +1,10 @@
 <?php
 
-class SchoolController extends Controller
+class BatchController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
-
+    
+        public $layout='//layouts/column2';
+	
 	/**
 	 * @return array action filters
 	 */
@@ -51,8 +48,6 @@ class SchoolController extends Controller
 	 */
 	public function actionView($id)
 	{
-           
-           
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -62,18 +57,22 @@ class SchoolController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+        
+        
+        public function actionCreate()
 	{
-		$model=new School;
-                
+            
+                echo FormUtil::getBatchNumber(2, 2003, 1, 2005);
+		$model=new Batch;
+                $model->programmeCode = yii::app()->session['programmeCode'];
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
-
-		if(isset($_POST['School']))
+		// $this->performAjaxValidation($model);
+                
+		if(isset($_POST['Batch']))
 		{
-			$model->attributes=$_POST['School'];
+			$model->attributes=$_POST['Batch'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->schoolID));
+				$this->redirect(array('view'));
 		}
 
 		$this->render('create',array(
@@ -89,20 +88,15 @@ class SchoolController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                $departmentID=1;
-               
 
-                $fc = $model->sch_dean;
-                
-               // echo $fc->fac_loginName;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['School']))
+		if(isset($_POST['Batch']))
 		{
-			$model->attributes=$_POST['School'];
+			$model->attributes=$_POST['Batch'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->schoolID));
+				$this->redirect(array('view','id'=>$model->programmeCode));
 		}
 
 		$this->render('update',array(
@@ -127,18 +121,29 @@ class SchoolController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
-	{ 
-               
-                yii::app()->session['a']="Bismillah Hir Rahmanir Rahim";
+	public function actionIndex($id)
+	{
+            
+            /*
+             * Diclearing session 'departmentID' and 'departmentName' for future use. 
+             * 
+             */
+                yii::app()->session['programmeCode']=$id;
+                yii::app()->session['programmeName']= DBhelper::getProgrammeNameById($id);
+                
+		
+                $condition = "programmeCode='{$id}'";
+                
+		$dataProvider=new CActiveDataProvider('Batch', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
                 
                 
                 
                 
-                
-		$dataProvider=new CActiveDataProvider('School');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider,'id'=>$id,
 		));
 	}
 
@@ -147,10 +152,10 @@ class SchoolController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new School('search');
+		$model=new Batch('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['School']))
-			$model->attributes=$_GET['School'];
+		if(isset($_GET['Batch']))
+			$model->attributes=$_GET['Batch'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -161,27 +166,30 @@ class SchoolController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return School the loaded model
+	 * @return Batch the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=School::model()->findByPk($id);
+		$model=Batch::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
 
+
+        
+        
 	/**
 	 * Performs the AJAX validation.
-	 * @param School $model the model to be validated
+	 * @param Batch $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='school-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='programme-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
+        }
 }

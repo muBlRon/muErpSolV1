@@ -1,15 +1,18 @@
 <?php
-/* @var $this DepartmentController */
-/* @var $model Department */
+/* @var $this ModuleController */
+/* @var $model Module */
 
 $this->breadcrumbs=array(
-	'school'=>array('school/index'),
-	'Departments'=>array('index','id'=>  Yii::app()->session['schoolID']),
+	'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
+	'Syllabus'=>array('Syllabus/index','id'=>Yii::app()->session['programmeCode']),
+	'Modules'=>array('index','id'=>Yii::app()->session['syllabusCode']),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Department', 'url'=>array('index','id'=>Yii::app()->session['schoolID'])),
+	array('label'=>'List Module', 'url'=>array('index','id'=>Yii::app()->session['syllabusCode'])),
 	
 );
 
@@ -19,7 +22,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#department-grid').yiiGridView('update', {
+	$('#module-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -27,7 +30,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Departments</h1>
+<h1>Manage Modules</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -42,23 +45,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'department-grid',
-	'dataProvider'=>$model->search(Yii::app()->session['schoolID']),
+	'id'=>'module-grid',
+	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'dpt_code',
-		'dpt_name',
-		'dpt_location',
-		'dpt_contactNo',
-		'dpt_email',
-		
-                
+		'moduleCode',
+		'syllabusCode',
+		'mod_name',
+		'mod_shortName',
+		'mod_creditHour',
+		'mod_type',
 		/*
-		'dpt_head',
-		'dpt_headStatus',
+		'mod_labIncluded',
+		'mod_mejor',
+		'mod_group',
+		'mod_sequence',
 		*/
-		
-		
 		array(
 			'class'=>'CButtonColumn',
 		),

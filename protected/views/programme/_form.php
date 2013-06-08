@@ -27,13 +27,36 @@
 		<?php echo $form->error($model,'pro_name'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->labelEx($model,'pro_shortName'); ?>
+		<?php echo $form->textField($model,'pro_shortName',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'pro_shortName'); ?>
+	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'pro_totalTerms'); ?>
-		<?php echo $form->textField($model,'pro_totalTerms'); ?>
+		<?php echo $form->textField($model,'pro_totalTerms',array('size'=>1,'maxlength'=>1)); ?>
 		<?php echo $form->error($model,'pro_totalTerms'); ?>
 	</div>
 
-	
+		<div class="row">
+		<?php echo $form->labelEx($model,'pro_startTerm'); ?>
+		<?php echo $form->radioButtonList(
+                            $model,
+                            'pro_startTerm',
+                            array('1'=>'Spring','2'=>'Summer','3'=>'Autumn'),
+                            array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',) 
+       
+                        ); ?>
+        </div>
+        <div class="row">
+		<?php echo $form->labelEx($model,'pro_startYear'); ?>
+            
+            
+                  <?php echo $form->dropDownList($model,'pro_startYear', FormUtil::yearForDropDown(), 
+                 array('options' => array(' '=>array('selected'=>true)))); ?>
+                <?php echo $form->error($model,'pro_startYear'); ?>
+	</div>
+
 
 
         <div class="row">

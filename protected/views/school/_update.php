@@ -34,7 +34,10 @@
                             array('Dean'=>'Dean','Dean in Charge'=>'Dean in Charge'),
                             array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',) 
                             ); ?>
-                <?php echo $form->dropDownList($model,'sch_dean',array('Dean in Charge'=>'Dean in Charge','Dean'=>'Dean'), 
+        </div>
+        <div class="row">
+                <?php echo $form->labelEx($model,'sch_dean'); ?>
+                <?php echo $form->dropDownList($model,'sch_dean',array('1'=>'prof 1','2'=>'prof 2'), 
                  array('options' => array($selected=>array('selected'=>true)))); ?>
 		<?php echo $form->error($model,'sch_deanStatus'); ?>
 	</div>

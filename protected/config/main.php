@@ -53,7 +53,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=db_muEnSolV1p9',
+			'connectionString' => 'mysql:host=localhost;dbname=db_muEnSolV2p0',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
@@ -80,7 +80,14 @@ return array(
 				*/
 			),
 		),
-	),
+            
+                'session' => array (
+                    'class' => 'system.web.CDbHttpSession',
+                    'connectionID' => 'db',
+                    'sessionTableName' => 'tbl_YiiMySession',
+                ),
+            
+	),//end of 'component'
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

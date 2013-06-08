@@ -3,13 +3,15 @@
 /* @var $model Programme */
 
 $this->breadcrumbs=array(
-	'Programmes'=>array('index'),
+	'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>$model->departmentID),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Programme', 'url'=>array('index')),
-	array('label'=>'Manage Programme', 'url'=>array('admin')),
+	array('label'=>'List Programme', 'url'=>array('index','id'=>$model->departmentID)),
+	
 );
 ?>
 

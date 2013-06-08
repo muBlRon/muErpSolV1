@@ -3,12 +3,14 @@
 /* @var $model Programme */
 
 $this->breadcrumbs=array(
-	'Programme'=>array('index'),
+'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>$model->departmentID),
 	$model->programmeCode,
 );
 
 $this->menu=array(
-	array('label'=>'List Programme', 'url'=>array('index')),
+	array('label'=>'List Programme', 'url'=>array('index', 'id'=>$model->departmentID)),
 	
 	array('label'=>'Update Programme', 'url'=>array('update', 'id'=>$model->programmeCode)),
 	array('label'=>'Delete Programme', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->programmeCode),'confirm'=>'Are you sure you want to delete this item?')),
@@ -23,10 +25,13 @@ $this->menu=array(
 	'attributes'=>array(
 		'programmeCode',
 		'pro_name',
+                'pro_shortName',
 		'pro_totalTerms',
-		'pro_remarks',
+		'pro_startTerm',
+                'pro_startYear',
 		'pro_type',
 		'pro_medium',
-		'departmentID',
+		
+                'pro_remarks',
 	),
 )); ?>

@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List School', 'url'=>array('index')),
-	array('label'=>'Create School', 'url'=>array('create')),
+	array('label'=>'List School', 'url'=>array('school/index')),
+	
 	array('label'=>'View School', 'url'=>array('view', 'id'=>$model->schoolID)),
-	array('label'=>'Manage School', 'url'=>array('admin')),
+	
 );
 ?>
 

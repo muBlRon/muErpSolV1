@@ -12,8 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'syllabusID'); ?>
-		<?php echo $form->textField($model,'syllabusID'); ?>
+		<?php echo $form->label($model,'syllabusCode'); ?>
+		<?php echo $form->textField($model,'syllabusCode'); ?>
 	</div>
 
 	<div class="row">
@@ -57,13 +57,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'syl_minGPA'); ?>
-		<?php echo $form->textField($model,'syl_minGPA'); ?>
+		<?php echo $form->label($model,'syl_minCGPA'); ?>
+		<?php echo $form->textField($model,'syl_minCGPA'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'syl_maxGPA'); ?>
-		<?php echo $form->textField($model,'syl_maxGPA'); ?>
+		<?php echo $form->label($model,'syl_maxCGPA'); ?>
+		<?php echo $form->textField($model,'syl_maxCGPA'); ?>
 	</div>
 
 	<div class="row">

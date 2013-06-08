@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table '{{module}}':
  * @property string $moduleCode
- * @property integer $syllabusID
+ * @property integer $syllabusCode
  * @property string $mod_name
  * @property string $mod_shortName
  * @property double $mod_creditHour
@@ -47,15 +47,25 @@ class Module extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('syllabusID, mod_sequence', 'numerical', 'integerOnly'=>true),
-			array('mod_creditHour', 'numerical'),
-			array('moduleCode, mod_shortName', 'length', 'max'=>10),
+			array(' mod_sequence', 'numerical', 'integerOnly'=>true),
+			
+                    
+                        array('moduleCode,','unique'),
+                        array('moduleCode, mod_name, mod_shortName, mod_creditHour,  mod_labIncluded, mod_type, mod_mejor','required'),
+			
+                        array('moduleCode, ', 'length', 'max'=>10),
 			array('mod_name', 'length', 'max'=>100),
 			array('mod_type, mod_labIncluded, mod_mejor', 'length', 'max'=>1),
-			array('mod_group', 'length', 'max'=>50),
+			
+                        array('mod_type', 'in', 'range'=>array('0', '1')),
+                        array('mod_creditHour', 'in', 'range'=>array('1', '1.5', '2', '2.5', '3', '3.5', '4')),
+                        array('mod_labIncluded', 'in', 'range'=>array('0', '1')),
+                        array('mod_mejor', 'in', 'range'=>array('0', '1')),
+                    
+                        array('mod_group', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('moduleCode, syllabusID, mod_name, mod_shortName, mod_creditHour, mod_type, mod_labIncluded, mod_mejor, mod_group, mod_sequence', 'safe', 'on'=>'search'),
+			array('moduleCode, syllabusCode, mod_name, mod_shortName, mod_creditHour, mod_type, mod_labIncluded, mod_mejor, mod_group, mod_sequence', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +77,7 @@ class Module extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'syllabus' => array(self::BELONGS_TO, 'Syllabus', 'syllabusID'),
+			'syllabus' => array(self::BELONGS_TO, 'Syllabus', 'syllabusCode'),
 			'offeredmodules' => array(self::HAS_MANY, 'Offeredmodule', 'moduleCode'),
 		);
 	}
@@ -79,15 +89,15 @@ class Module extends CActiveRecord
 	{
 		return array(
 			'moduleCode' => 'Module Code',
-			'syllabusID' => 'Syllabus',
-			'mod_name' => 'Mod Name',
-			'mod_shortName' => 'Mod Short Name',
-			'mod_creditHour' => 'Mod Credit Hour',
-			'mod_type' => 'Mod Type',
-			'mod_labIncluded' => 'Mod Lab Included',
-			'mod_mejor' => 'Mod Mejor',
-			'mod_group' => 'Mod Group',
-			'mod_sequence' => 'Mod Sequence',
+			'syllabusCode' => 'Syllabus Code',
+			'mod_name' => 'Name',
+			'mod_shortName' => 'Short Name',
+			'mod_creditHour' => 'Credit Hour',
+			'mod_type' => 'Type',
+			'mod_labIncluded' => 'Lab Included',
+			'mod_mejor' => 'Mejor',
+			'mod_group' => 'Group',
+			'mod_sequence' => 'Sequence',
 		);
 	}
 
@@ -103,7 +113,7 @@ class Module extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('moduleCode',$this->moduleCode,true);
-		$criteria->compare('syllabusID',$this->syllabusID);
+		$criteria->compare('syllabusCode',$this->syllabusCode);
 		$criteria->compare('mod_name',$this->mod_name,true);
 		$criteria->compare('mod_shortName',$this->mod_shortName,true);
 		$criteria->compare('mod_creditHour',$this->mod_creditHour);

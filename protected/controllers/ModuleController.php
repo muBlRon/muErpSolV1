@@ -1,6 +1,6 @@
 <?php
 
-class SchoolController extends Controller
+class ModuleController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -36,7 +36,7 @@ class SchoolController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','report'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -51,8 +51,6 @@ class SchoolController extends Controller
 	 */
 	public function actionView($id)
 	{
-           
-           
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -64,16 +62,17 @@ class SchoolController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new School;
-                
+            
+		$model=new Module;
+                $model->syllabusCode= yii::app()->session['syllabusCode'];
 		// Uncomment the following line if AJAX validation is needed
-		 $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['School']))
+		if(isset($_POST['Module']))
 		{
-			$model->attributes=$_POST['School'];
+			$model->attributes=$_POST['Module'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->schoolID));
+				$this->redirect(array('view','id'=>$model->moduleCode));
 		}
 
 		$this->render('create',array(
@@ -89,20 +88,15 @@ class SchoolController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-                $departmentID=1;
-               
 
-                $fc = $model->sch_dean;
-                
-               // echo $fc->fac_loginName;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['School']))
+		if(isset($_POST['Module']))
 		{
-			$model->attributes=$_POST['School'];
+			$model->attributes=$_POST['Module'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->schoolID));
+				$this->redirect(array('view','id'=>$model->moduleCode));
 		}
 
 		$this->render('update',array(
@@ -127,18 +121,26 @@ class SchoolController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
-	{ 
-               
-                yii::app()->session['a']="Bismillah Hir Rahmanir Rahim";
+	public function actionIndex($id)
+	{
+            
+            
+		yii::app()->session['syllabusCode']=$id;
+                
+                
+		
+                $condition = "syllabusCode='{$id}'";
+                
+		$dataProvider=new CActiveDataProvider('Module', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
                 
                 
                 
                 
-                
-		$dataProvider=new CActiveDataProvider('School');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider,'id'=>$id,
 		));
 	}
 
@@ -147,26 +149,45 @@ class SchoolController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new School('search');
+		$model=new Module('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['School']))
-			$model->attributes=$_GET['School'];
+		if(isset($_GET['Module']))
+			$model->attributes=$_GET['Module'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
+        public function actionReport($id)
+	{
+		
+                $condition = "syllabusCode='{$id}'";
+                
+		$dataProvider=new CActiveDataProvider('Module', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
+                
+                
+                
+                
+		$this->render('report',array(
+			'dataProvider'=>$dataProvider,'id'=>$id,
+		));
+	}
+        
+        
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return School the loaded model
+	 * @return Module the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=School::model()->findByPk($id);
+		$model=Module::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -174,11 +195,11 @@ class SchoolController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param School $model the model to be validated
+	 * @param Module $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='school-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='module-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -9,12 +9,14 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Department', 'url'=>array('create','id'=>$id)),
-	array('label'=>'Manage Department', 'url'=>array('admin','id'=>$id)),
+	array('label'=>'Create Department', 'url'=>array('create',)),
+        
+	array('label'=>'Manage Department', 'url'=>array('admin',)),
+        array('label'=>'Report', 'url'=>array('report','id'=>yii::app()->session['schoolID'])),
 );
 ?>
 <h1>Departments</h1>
-<h5>[ <?php   echo $SchoolName;?> ]</h5>
+<h5>[ <?php echo  yii::app()->session['schoolName']; ?> ]</h5>
 
 
 <?php $this->widget('zii.widgets.CListView', array(

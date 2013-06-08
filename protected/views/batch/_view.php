@@ -5,8 +5,8 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('syllabusCode')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->syllabusCode), array('view', 'id'=>$data->syllabusCode)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('batchName')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->batchName), array('view', 'id'=>$data->batchName)); ?>
 	<br />
 
 
