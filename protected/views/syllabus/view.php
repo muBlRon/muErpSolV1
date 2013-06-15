@@ -2,7 +2,9 @@
 /* @var $this SyllabusController */
 /* @var $model Syllabus */
 
-$this->breadcrumbs=array('School'=>array('school/index'),
+$this->breadcrumbs=array(
+   'registry'=>array('site/registry'),
+    'School'=>array('school/index'),
         'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
 	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
 	'Syllabus'=>array('index','id'=>Yii::app()->session['programmeCode']),

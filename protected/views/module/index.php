@@ -3,6 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
+   'registry'=>array('site/registry'),
     	    'School'=>array('school/index'),
         'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
 	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
@@ -13,7 +14,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Module', 'url'=>array('create')),
 	array('label'=>'Manage Module', 'url'=>array('admin')),
-        array('label'=>'pdf', 'url'=>array('report','id'=>Yii::app()->session['syllabusCode'])),
+        array('label'=>'pdf', 'url'=>array('report','id'=>Yii::app()->session['syllabusCode'],)),
 );
 ?>
 

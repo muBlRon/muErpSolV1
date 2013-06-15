@@ -25,11 +25,11 @@ class BatchController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','getBatch'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,25 +61,88 @@ class BatchController extends Controller
         
         public function actionCreate()
 	{
-            
-                echo FormUtil::getBatchNumber(2, 2003, 1, 2005);
-		$model=new Batch;
+                $model = new Batch;
                 $model->programmeCode = yii::app()->session['programmeCode'];
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+                //$model->bat_term=$term;
+                //$model->bat_year=  FormUtil::getYear();
+                //echo FormUtil::getCurrentTerm();
+                // Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
                 
-		if(isset($_POST['Batch']))
-		{
+                if (isset($_REQUEST['id']) &&  $_REQUEST['id']==1 )
+                {
+                    $_REQUEST['id']=0;
+                    
+                    $term=$_REQUEST['term'];
+                    $year=$_REQUEST['year'];
+                    
+                    
+                    $model->batchName =  FormUtil::getBatchFromProgrammeCode(yii::app()->session['programmeCode'],$term,$year);
+                    $model->bat_term=$term;
+                    $model->bat_year=$year;
+                    
+                   // echo $_REQUEST['Batch'];
+                    
+                    $this->renderPartial('create',array(
+                            'model'=>$model,'form'=>'_form_2'
+                    ));
+                
+                }
+                elseif (!isset($_REQUEST['id']) || $_REQUEST['id']==0) 
+                {
+                  
+                    if(isset($_POST['Batch']))
+                    {
+                        
 			$model->attributes=$_POST['Batch'];
+                        
+                        if($model->validate())
+                        {   
 			if($model->save())
-				$this->redirect(array('view'));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+				$this->redirect(array('view','id'=>$model->batchName));
+                        }
+                    }
+                  
+                        $this->render('create',array(
+                                'model'=>$model,'form'=>'_form_2'
+                        ));
+                  
+                }
+                 
+                
+                
 	}
 
+        public function actionTest()
+        {
+            
+            
+            $model=new Batch('test');
+            $model->programmeCode = yii::app()->session['programmeCode'];
+            // uncomment the following code to enable ajax-based validation
+            
+            if(isset($_POST['ajax']) && $_POST['ajax']==='batch-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
+            
+
+            if(isset($_POST['Batch']))
+            {
+                $model->attributes=$_POST['Batch'];
+                
+                if($model->validate())
+                {
+                    // form inputs are valid, do something here
+                    return;
+                }
+            }
+            $this->render('create',array('model'=>$model));
+        }
+                
+	
+        
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -171,7 +234,7 @@ class BatchController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Batch::model()->findByPk($id);
+		$model=Batch::model()->findByPk(array('batchName'=>$id,'programmeCode'=>yii::app()->session['programmeCode']));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -186,7 +249,7 @@ class BatchController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='programme-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='batch-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

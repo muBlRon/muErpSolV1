@@ -3,6 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
+    'registry'=>array('site/registry'),
 	'School'=>array('school/index'),
 	'Department',
 	

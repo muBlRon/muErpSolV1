@@ -4,50 +4,42 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div  class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'batch-form',
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'batchName'); ?>
-		<?php echo $form->textField($model,'batchName',array('size'=>4,'maxlength'=>4)); ?>
-		<?php echo $form->error($model,'batchName'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'bat_year'); ?>
-		<?php echo $form->textField($model,'bat_year'); ?>
-		<?php echo $form->error($model,'bat_year'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'bat_advisor'); ?>
-		<?php echo $form->textField($model,'bat_advisor'); ?>
-		<?php echo $form->error($model,'bat_advisor'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'programmeCode'); ?>
-		<?php echo $form->textField($model,'programmeCode'); ?>
-		<?php echo $form->error($model,'programmeCode'); ?>
-	</div>
-
-	<div class="row">
+       <div class="row">
 		<?php echo $form->labelEx($model,'bat_term'); ?>
-		<?php echo $form->textField($model,'bat_term'); ?>
+		<?php echo $form->textField($model,'bat_term',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'bat_term'); ?>
+                
 	</div>
+	
+        <div class="row">
+		<?php echo $form->labelEx($model,'bat_year'); ?>
+		<?php echo $form->textField($model,'bat_year',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'bat_year'); ?>
+                
+	</div>
+
+        <div class="row">
+		<?php echo $form->labelEx($model,'batchName'); ?>
+		<?php echo $form->textField($model,'batchName',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'batchName'); ?>
+                <?php  echo Chtml::hiddenField('id', 0); ?>
+	</div>
+        
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		 <?php echo CHtml::submitButton('submit'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

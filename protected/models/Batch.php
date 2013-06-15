@@ -53,6 +53,17 @@ class Batch extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('batchName, programmeCode, bat_term, bat_year, bat_advisor', 'safe', 'on'=>'search'),
+                        array(' bat_term, bat_year, batchName', 'required', ),
+                    /*
+                        array('batchName', 'unique', 'criteria'=>array(
+                            'condition'=>'`programmeCode`=:programmeCode',
+                            'params'=>array(
+                                ':programmeCode'=>$this->programmeCode
+                                ))),
+                    */
+                    /*
+                    array('batchName+programmeCode', 'application.extensions.uniqueMultiColumnValidator'),
+                    */
 		);
 	}
 

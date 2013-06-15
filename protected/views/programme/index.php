@@ -4,6 +4,7 @@
 
 
 $this->breadcrumbs=array(
+    'registry'=>array('site/registry'),
 	'School'=>array('school/index'),
         'Department'=>array('Department/index', 'id'=>Yii::app()->session['schoolID']),
 	'Programme',

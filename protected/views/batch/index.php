@@ -3,12 +3,17 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
+    'registry'=>array('site/registry'),
+    'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
 	'Batches',
 );
 
 $this->menu=array(
 	array('label'=>'Create Batches', 'url'=>array('create')),
 	array('label'=>'Manage Batches', 'url'=>array('admin')),
+    array('label'=>'test', 'url'=>array('test')),
 );
 ?>
 

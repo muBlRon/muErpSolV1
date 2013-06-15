@@ -10,31 +10,16 @@
 	<br />
 
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('syl_version')); ?>:</b>
-	<?php echo CHtml::encode($data->syl_version); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('bat_term')); ?>:</b>
+	<?php echo CHtml::encode($data->bat_term); ?>
         <br />
 
-        <b><?php echo CHtml::encode($data->getAttributeLabel('syl_approvedDate')); ?>:</b>
-	<?php echo CHtml::encode($data->syl_approvedDate); ?>
+        <b><?php echo CHtml::encode($data->getAttributeLabel('bat_year')); ?>:</b>
+	<?php echo CHtml::encode($data->bat_year); ?>
 	<br />
-        <b><?php echo CHtml::encode($data->getAttributeLabel('syl_startTerm')); ?>:</b>
-	<?php echo CHtml::encode(FormUtil::getTerm($data->syl_startTerm)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('syl_startYear')); ?>:</b>
-	<?php echo CHtml::encode($data->syl_startYear); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('syl_endTerm')); ?>:</b>
-	<?php echo CHtml::encode(FormUtil::getTerm($data->syl_endTerm)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('syl_endYear')); ?>:</b>
-	<?php echo CHtml::encode($data->syl_endYear); ?>
-	<br />
-
+        <br/>
         
-	<?php echo CHtml::link(CHtml::encode("Module"), array('Module/index', 'id'=>$data->syllabusCode)); ?>
+	<?php echo CHtml::link(CHtml::encode("section"), array('section/index', 'id'=>$data->batchName)); ?>
 	<br />
         
 	<?php /*

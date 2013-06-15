@@ -3,7 +3,8 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Schools',
+	'registry'=>array('site/registry'),
+    'school'
 );
 
 $this->menu=array(
