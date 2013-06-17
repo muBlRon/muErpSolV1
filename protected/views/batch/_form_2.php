@@ -15,6 +15,16 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'batchName'); ?>
+		<?php 
+                  
+                echo $form->textField($model,'batchName',array('size'=>3,'maxlength'=>3,)).FormUtil::getBatchNameSufix($model->batchName); ?>
+		<?php echo $form->error($model,'batchName'); ?>
+                <?php  echo Chtml::hiddenField('id', 0); ?>
+	</div>
+        
        <div class="row">
 		<?php echo $form->labelEx($model,'bat_term'); ?>
 		<?php echo $form->textField($model,'bat_term',array('size'=>10,'maxlength'=>10)); ?>
@@ -29,17 +39,11 @@
                 
 	</div>
 
-        <div class="row">
-		<?php echo $form->labelEx($model,'batchName'); ?>
-		<?php echo $form->textField($model,'batchName',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'batchName'); ?>
-                <?php  echo Chtml::hiddenField('id', 0); ?>
-	</div>
         
 
 
 	<div class="row buttons">
-		 <?php echo CHtml::ajaxButton('submit', array('batch/test')); ?>
+		 <?php echo CHtml::submitButton('create'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

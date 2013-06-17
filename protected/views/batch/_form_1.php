@@ -18,9 +18,11 @@
        
 	
         <div class="row">
+            
 		<?php echo $form->labelEx($model,'bat_term'); ?>
 		<?php 
                 $model->bat_term=  FormUtil::getCurrentTerm();
+                
                 echo $form->RadioButtonList(
                             $model,
                             'bat_term',
@@ -31,15 +33,16 @@
 		<?php echo $form->error($model,'bat_term'); ?>
 	</div>
 	<div class="row">
+            
 		<?php echo $form->labelEx($model,'bat_year'); ?>
 		<?php echo $form->dropDownList($model,'bat_year', FormUtil::yearForDropDown(), 
-                 array('options' => array(' '=>array('selected'=>true)))); ?>
+                 array('options' => array(FormUtil::getYear()=>array('selected'=>true)))); ?>
 		<?php echo $form->error($model,'bat_year'); ?>
 	</div>
 
         <div class="row buttons">
 		<?php echo CHtml::ajaxButton('Get Batch Name', 
-                $this->createUrl('batch/test', array("id" => 1)), 
+                $this->createUrl('batch/create', array("id" => 1)), 
                 array(// these are ajax options
                 'data' => array('term'=>'js: $("#Batch_bat_term input[type=\'radio\']:checked").val()',
                     'year'=> 'js: $("#Batch_bat_year option:selected").val()',

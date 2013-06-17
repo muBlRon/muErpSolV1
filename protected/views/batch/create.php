@@ -24,6 +24,6 @@ $this->menu=array(
   
 
   <h1>Create Batches</h1>
-    <?php echo $this->renderPartial('test', array('model'=>$model)); ?>
+    <?php echo $this->renderPartial($form, array('model'=>$model)); ?>
 
 </div>

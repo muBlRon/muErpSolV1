@@ -48,7 +48,7 @@ class Batch extends CActiveRecord
 			array('programmeCode', 'length', 'max'=>10),
 			array('bat_term', 'length', 'max'=>1),
                     
-                    array('batchName', 'length', 'max'=>4),
+                    array('batchName', 'length', 'max'=>3),
                         array('bat_term', 'in', 'range'=>array('1','2','3')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -61,9 +61,9 @@ class Batch extends CActiveRecord
                                 ':programmeCode'=>$this->programmeCode
                                 ))),
                     */
-                    /*
+                    
                     array('batchName+programmeCode', 'application.extensions.uniqueMultiColumnValidator'),
-                    */
+                    
 		);
 	}
 

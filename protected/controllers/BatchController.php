@@ -61,6 +61,7 @@ class BatchController extends Controller
         
         public function actionCreate()
 	{
+            
                 $model = new Batch;
                 $model->programmeCode = yii::app()->session['programmeCode'];
                 //$model->bat_term=$term;
@@ -104,7 +105,7 @@ class BatchController extends Controller
                     }
                   
                         $this->render('create',array(
-                                'model'=>$model,'form'=>'_form_2'
+                                'model'=>$model,'form'=>'_form_1'
                         ));
                   
                 }
@@ -120,9 +121,10 @@ class BatchController extends Controller
             $model=new Batch('test');
             $model->programmeCode = yii::app()->session['programmeCode'];
             // uncomment the following code to enable ajax-based validation
-            
+            $model->batchName=4;
             if(isset($_POST['ajax']) && $_POST['ajax']==='batch-form')
-            {
+            {   
+                
                 echo CActiveForm::validate($model);
                 Yii::app()->end();
             }
@@ -133,7 +135,7 @@ class BatchController extends Controller
                 $model->attributes=$_POST['Batch'];
                 
                 if($model->validate())
-                {
+                { echo "submitted";
                     // form inputs are valid, do something here
                     return;
                 }
@@ -251,6 +253,7 @@ class BatchController extends Controller
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='batch-form')
 		{
+                   
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

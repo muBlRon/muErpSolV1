@@ -9,7 +9,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'batch-form',
 	'enableAjaxValidation'=>false,
-        'enableClientValidation'=>true,
+        'enableClientValidation'=>FALSE,
         'focus'=>array($model,'batchName'),
 )); ?>
 
@@ -30,13 +30,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'bat_term'); ?>
-		<?php echo $form->textField($model,'bat_term'); ?>
-		<?php echo $form->error($model,'bat_term'); ?>
+		<?php //echo $form->labelEx($model,'bat_term'); ?>
+		<?php //echo $form->textField($model,'bat_term'); ?>
+		<?php //echo $form->error($model,'bat_term'); ?>
 	</div>
 <div class="row">
-		<?php //echo $form->labelEx($model,'bat_term'); ?>
-		<?php /*
+		<?php echo $form->labelEx($model,'bat_term'); ?>
+		<?php 
                 $model->bat_term=  FormUtil::getCurrentTerm();
                 echo $form->RadioButtonList(
                             $model,
@@ -44,15 +44,15 @@
                             array('1'=>'Spring','2'=>'Summer','3'=>'Autumn'),
                             array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',) 
        
-                        ); */?>
-		<?php //echo $form->error($model,'bat_term'); ?>
+                        ); ?>
+		<?php echo $form->error($model,'bat_term'); ?>
 	</div>
 
         <div class="row">
-		<?php //echo $form->labelEx($model,'bat_year'); ?>
-		<?php /*echo $form->dropDownList($model,'bat_year', FormUtil::yearForDropDown(), 
+		<?php echo $form->labelEx($model,'bat_year'); ?>
+		<?php echo $form->dropDownList($model,'bat_year', FormUtil::yearForDropDown(), 
                  array('options' => array(FormUtil::getYear()=>array('selected'=>true)))); ?>
-		<?php echo $form->error($model,'bat_year'); */?>
+		<?php echo $form->error($model,'bat_year'); ?>
 	</div>
 
 	<div class="row buttons">
