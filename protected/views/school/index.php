@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+    array('label'=>'Back to  Registry', 'url'=>array('site/registry',)),
 	array('label'=>'Create School', 'url'=>array('create')),
 	array('label'=>'Manage School', 'url'=>array('admin')),
 );

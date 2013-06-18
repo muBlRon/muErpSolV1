@@ -11,6 +11,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+    	array('label'=>'Goto Programme List', 'url'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID'])),
 	array('label'=>'Create Batches', 'url'=>array('create')),
 	array('label'=>'Manage Batches', 'url'=>array('admin')),
     
