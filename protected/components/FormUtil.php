@@ -61,7 +61,7 @@ class FormUtil extends CDateFormatter
     
     public static function getBatchNameSufix($batch)
     {
-        if($batch>19)$number = $batch%10;
+        if($batch<4 || $batch>13)$number = $batch%10;
         
         if($number ==1 )
             return "rst";

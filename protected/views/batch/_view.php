@@ -6,7 +6,7 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('batchName')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->batchName), array('view', 'id'=>$data->batchName)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->batchName.FormUtil::getBatchNameSufix($data->batchName)), array('view', 'id'=>$data->batchName)); ?>
 	<br />
 
 
@@ -19,7 +19,7 @@
 	<br />
         <br/>
         
-	<?php echo CHtml::link(CHtml::encode("section"), array('section/index', 'id'=>$data->batchName)); ?>
+	<?php echo CHtml::link(CHtml::encode("sections"), array('section/index', 'id'=>$data->batchName)); ?>
 	<br />
         
 	<?php /*

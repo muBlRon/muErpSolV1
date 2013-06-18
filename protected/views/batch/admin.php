@@ -4,14 +4,15 @@
 //echo $model->departmentID;
 $this->breadcrumbs=array(
     'registry'=>array('site/registry'),
-	'School'=>array('school/index'),
+    'School'=>array('school/index'),
         'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
-	'Programme'=>array('Programme/index','id'=>Yii::app()->session['departmentID']),
+	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
+	'Batch'=>array('index','id'=>Yii::app()->session['programmeCode']),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Programme', 'url'=>array('index','id'=>Yii::app()->session['departmentID'])),
+	array('label'=>'List Batches', 'url'=>array('index','id'=>Yii::app()->session['programmeCode'])),
 	
 );
 
@@ -21,7 +22,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#programme-grid').yiiGridView('update', {
+	$('#Batch-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -29,7 +30,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Programmes</h1>
+<h1>Manage Batches</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -44,20 +45,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'programme-grid',
-	'dataProvider'=>$model->search(Yii::app()->session['departmentID']),
+	'id'=>'batch-grid',
+	'dataProvider'=>$model->search(Yii::app()->session['programmeCode']),
 	'filter'=>$model,
 	'columns'=>array(
 		'programmeCode',
-                'pro_shortName',
-                'pro_name',
+                'batchName',
+                'bat_term',
                 
 		
-		'pro_startTerm',
-                'pro_startYear',
-		'pro_type',
-                'pro_totalTerms',
-		
+		'bat_year',
+                
 		
 		
 		

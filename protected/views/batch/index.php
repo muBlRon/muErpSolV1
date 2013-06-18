@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Batches', 'url'=>array('create')),
 	array('label'=>'Manage Batches', 'url'=>array('admin')),
-    array('label'=>'test', 'url'=>array('test')),
+    
 );
 ?>
 

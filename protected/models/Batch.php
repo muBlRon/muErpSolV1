@@ -90,8 +90,8 @@ class Batch extends CActiveRecord
 		return array(
 			'batchName' => 'Batch Name',
 			'programmeCode' => 'Programme Code',
-			'bat_term' => 'Term',
-			'bat_year' => 'Year',
+			'bat_term' => 'Academic Term',
+			'bat_year' => 'Academic Year',
 			'bat_advisor' => 'Advisor',
 		);
 	}
