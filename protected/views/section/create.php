@@ -29,7 +29,7 @@ $this->menu=array(
   
   <h5>[Batch:  <?php echo $model->batchName.FormUtil::getBatchNameSufix($model->batchName); ?> ]</h5>
 <h5>[Programme: <?php echo yii::app()->session['programmeName']; ?> ]</h5>
-
+<h5>[Academic Year: <?php echo DBhelper::getAcademicYearByBatch($model->batchName, yii::app()->session['programmeCode']) ?> ]</h5>
   
     <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 

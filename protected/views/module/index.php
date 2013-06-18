@@ -14,7 +14,9 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Module', 'url'=>array('create')),
 	array('label'=>'Manage Module', 'url'=>array('admin')),
-        array('label'=>'pdf', 'url'=>array('report','id'=>Yii::app()->session['syllabusCode'],)),
+    
+        array('label'=>'Generate pdf', 'url'=>array('report','id'=>Yii::app()->session['syllabusCode'],)),
+    array('label'=>'Back to Syllabus', 'url'=>array('Syllabus/index', 'id'=>Yii::app()->session['programmeCode'])),
 );
 ?>
 

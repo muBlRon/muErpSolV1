@@ -120,7 +120,7 @@ class Section extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('sectionName',$this->sectionName,true);
-		$criteria->compare('batchName',$this->batchName);
+		$criteria->compare('batchName',$this->batchName,true);
 		$criteria->compare('programmeCode',$this->programmeCode,true);
 		$criteria->compare('sec_startDate',$this->sec_startDate,true);
 		$criteria->compare('sec_startId',$this->sec_startId,true);

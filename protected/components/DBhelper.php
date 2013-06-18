@@ -58,6 +58,19 @@ class DBhelper {
         
         
     }
+    
+    public static function getAcademicYearByBatch($batch,$programme)
+    {
+        
+        $model=Batch::model()->findByPk(array('batchName'=>$batch,'programmeCode'=>$programme));
+        
+        $data =FormUtil::getTerm($model->bat_term)." ".$model->bat_year;
+                if($data===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $data;
+        
+        
+    }
         
         
         

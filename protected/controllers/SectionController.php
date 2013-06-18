@@ -79,8 +79,8 @@ class SectionController extends Controller
                 $model->attributes=$_POST['Section'];
                 if($model->validate())
                 {
-                    // form inputs are valid, do something here
-                    return;
+                    if($model->save())
+				$this->redirect(array('view','id'=>$model->sectionName));
                 }
             }
             $this->render('Create',array('model'=>$model));
@@ -103,8 +103,8 @@ class SectionController extends Controller
 		if(isset($_POST['Section']))
 		{
 			$model->attributes=$_POST['Section'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->batchName));
+			if($model->update())
+				$this->redirect(array('view','id'=>$model->sectionName));
 		}
 
 		$this->render('update',array(
@@ -160,10 +160,10 @@ class SectionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Batch('search');
+		$model=new Section('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Batch']))
-			$model->attributes=$_GET['Batch'];
+		if(isset($_GET['Section']))
+			$model->attributes=$_GET['Section'];
 
 		$this->render('admin',array(
 			'model'=>$model,
