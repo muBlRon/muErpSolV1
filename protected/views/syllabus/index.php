@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Syllabus', 'url'=>array('create')),
 	array('label'=>'Manage Syllabus', 'url'=>array('admin')),
+      array('label'=>'Back to Programme', 'url'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID'])),
 );
 ?>
 
