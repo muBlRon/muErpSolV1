@@ -3,11 +3,13 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
+        'Administration'=>array('administration/index'),
+        'Human Resource'=>array('person/index'),
 	'Employees',
 );
 
 $this->menu=array(
-	array('label'=>'Create Employee', 'url'=>array('person/create')),
+	array('label'=>'Create Employee', 'url'=>array('create')),
 	array('label'=>'Manage Employee', 'url'=>array('admin')),
 );
 ?>

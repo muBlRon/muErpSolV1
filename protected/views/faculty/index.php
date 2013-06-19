@@ -3,11 +3,13 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
+	 'Administration'=>array('administration/index'),
+        'Human Resource'=>array('person/index'),
 	'Faculties',
 );
 
 $this->menu=array(
-	array('label'=>'Create Faculty', 'url'=>array('person/create')),
+	array('label'=>'Create Faculty', 'url'=>array('create')),
 	array('label'=>'Manage Faculty', 'url'=>array('admin')),
 );
 ?>

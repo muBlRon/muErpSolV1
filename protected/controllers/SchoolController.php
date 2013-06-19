@@ -66,7 +66,7 @@ class SchoolController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
-
+               
 		if(isset($_POST['School']))
 		{
 			$model->attributes=$_POST['School'];

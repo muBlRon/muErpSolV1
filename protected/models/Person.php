@@ -80,7 +80,7 @@ class Person extends CActiveRecord
                         array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile, per_entryDate', 'required'),
 			array(' per_telephone, per_mobile, per_refereeOneMobile, per_refereeTwoMobile ', 'numerical', 'integerOnly'=>true),
 			array('per_email, per_refereeOneEmail, per_refereeTwoEmail', 'email'),
-                        array('per_dateofBirth', 'date'),
+         //               array('per_dateofBirth', 'date'),
                         array('per_criminalConviction', 'boolean'),
                     
                         array('per_title', 'in', 'range'=>array('Mr.','Ms.','Mrs.','Dr.','Prof.','Engr.','Adv.')),
@@ -174,7 +174,27 @@ class Person extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+
+        function getInsertId(mysqli &$instance, $enforceQuery = false)
+        {
+            if(!$enforceQuery)return $instance->insert_id;
+
+            $result = $instance->query('SELECT LAST_INSERT_ID();');
+
+            if($instance->errno)return false;
+
+            list($buffer) = $result->fetch_row();
+
+            $result->free();
+
+            unset($result);
+
+            return $buffer;
+        }
+       
+        
+        
+        public function search()
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.

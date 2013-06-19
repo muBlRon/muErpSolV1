@@ -14,13 +14,7 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'academicHistoryID'); ?>
-		<?php echo $form->textField($model,'academicHistoryID'); ?>
-		<?php echo $form->error($model,'academicHistoryID'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ach_degree'); ?>
 		<?php echo $form->textField($model,'ach_degree',array('size'=>50,'maxlength'=>50)); ?>
@@ -63,14 +57,9 @@
 		<?php echo $form->error($model,'ach_remarks'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'personID'); ?>
-		<?php echo $form->textField($model,'personID'); ?>
-		<?php echo $form->error($model,'personID'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <div class="row buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Continue' : 'Save'); ?>
+                <?php echo CHtml::submitButton($model->isNewRecord ? 'Add More' : 'create'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -15,7 +15,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Registry</h1>
+<h1>Administration</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

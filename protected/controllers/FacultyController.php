@@ -62,42 +62,37 @@ class FacultyController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Faculty;
-                $persons = new Person;
-                $academicHistory = new Academichistory;
-                $jobExperiance = new Jobexperiance;
+            $model=new Faculty;
+            $persons = new Person;
+            $acHistory = new AcademicHistory;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		             
-                  if(!empty($_POST))
+                
+                if(isset($_POST['Faculty'],$_POST['Person'],$_POST['AcademicHistory']))
 		{
-                     
-                        $persons->attributes = $_POST['Person'];
+                    
+                    	$persons->attributes=$_POST['Person'];
                         $model->attributes=$_POST['Faculty'];
-                        $academicHistory->attributes=$_POST['Academichistory'];
-                        $jobExperiance->attributes = $_POST['Jobexperiance'];
-                        
-                        if($persons->validate() || $model->validate() || $academicHistory->validate() || $jobExperiance->validate())
-                        {
-                                                 	                        
-                            $persons->save(false);
-                            $model->facultyID = $persons->personID;
-                            $model->save(false);
-                            $academicHistory->personID = $persons->personID;
-                            $academicHistory->save(false);
-                            $jobExperiance->personID = $persons->personID;
-                            $jobExperiance->save(false);
-                            
-                                $this->redirect(array('view','id'=>$model->facultyID));
-                        }
+                        $acHistory->attributes = $_POST['AcademicHistory'];                        
+                    
+                        $persons->per_entryDate = '2013-4-5';
+                         
+                        $maxID = Yii::app()->db->createCommand()
+                                            ->select('max(personID) as max')
+                                            ->from('tbl_person')
+                                            ->queryScalar();
+                       $model->facultyID = $maxID + 1;
+                       $acHistory->personID = $model->facultyID;
+                                             
+                        if($persons->save() && $model->save() && $acHistory->save())
+                                      $this->redirect(array('view','id'=>$model->facultyID));
+                    
 		}
-                $this->render('create',array(
-			'model'=>$model,
-                        'persons'=>$persons,                   
-                        'academicHistory'=>$academicHistory,
-                        'jobExperiance'=>$jobExperiance,
+
+		$this->render('create',array(
+			'model'=>$model,'persons'=>$persons,'acHistory'=>$acHistory,
 		));
+                
 	}
 
 	/**
@@ -107,20 +102,27 @@ class FacultyController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+	$model=$this->loadModel($id);
+                
+                //$persons = new Person;
+        $persons = $this->loadPersonModel($id);
+               
+         //       $persons = $this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Faculty']))
+		if(isset($_POST['Faculty'],$_POST['Person'],$_POST['AcademicHistory']))
 		{
 			$model->attributes=$_POST['Faculty'];
-			if($model->save())
+                        $persons->attributes=$_POST['Person'];
+                        $acHistory->attributes = $_POST['AcademicHistory'];
+			if($model->save() && $persons->save() && $acHistory->save())
 				$this->redirect(array('view','id'=>$model->facultyID));
 		}
 
+		
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'persons'=>$persons,'acHistory'=>$acHistory,
 		));
 	}
 
@@ -177,6 +179,13 @@ class FacultyController extends Controller
 		return $model;
 	}
 
+         public function loadPersonModel($id)
+        {
+                $modelPerson=  Person::model()->findByPk((int)$id);             
+                if($modelPerson===null)   
+                        throw new CHttpException(404,'The requested page does not exist.');
+                return $modelPerson;
+        }
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated

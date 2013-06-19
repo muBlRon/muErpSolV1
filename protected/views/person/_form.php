@@ -59,7 +59,7 @@
                                         'model'=>$model,
                                         'options' => array(
                                         'mode'=>'focus',
-                                        'dateFormat'=>'d MM, yy',
+                                        'dateFormat'=>'yy-mm-dd',
                                         'showAnim' => 'slideDown',
                                         ),
                                         'htmlOptions'=>array('size'=>30,'class'=>'date'),

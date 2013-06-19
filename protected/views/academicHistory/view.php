@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View AcademicHistory #<?php echo $model->academicHistoryID; ?></h1>
+<h1>View Academic History #<?php echo $model->academicHistoryID; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

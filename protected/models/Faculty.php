@@ -59,7 +59,7 @@ class Faculty extends CActiveRecord
 			array('fac_password', 'length', 'max'=>255),
 			array('fac_accessLevel', 'length', 'max'=>1),
 			
-                        array('fac_joining, fac_leave', 'date'),
+                      //  array('fac_joining, fac_leave', 'date'),
                         array('fac_loginName, departmentID, fac_joining', 'required'),
                         array('fac_accessLevel', 'in', 'range'=>array('0','1','2','3')),
                         array('fac_designation', 'in', 'range'=>array('Teachers Assistant','Lecturer','Senior Lecturer','Assistant Professor','Associate Professor','Professor')),
