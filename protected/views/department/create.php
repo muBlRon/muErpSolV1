@@ -3,13 +3,15 @@
 /* @var $model Department */
 
 $this->breadcrumbs=array(
-	'Departments'=>array('index'),
+    'registry'=>array('site/registry'),
+        'school'=>array('school/index'),
+	'Departments'=>array('index','id'=>$model->schoolID),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Department', 'url'=>array('index')),
-	array('label'=>'Manage Department', 'url'=>array('admin')),
+	array('label'=>'List Department', 'url'=>array('index','id'=>$model->schoolID)),
+	
 );
 ?>
 

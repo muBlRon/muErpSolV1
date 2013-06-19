@@ -3,13 +3,15 @@
 /* @var $model Department */
 
 $this->breadcrumbs=array(
-	'Departments'=>array('index'),
+    'registry'=>array('site/registry'),
+	'school'=>array('school/index'),
+	'Departments'=>array('index','id'=>  Yii::app()->session['schoolID']),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Department', 'url'=>array('index')),
-	array('label'=>'Create Department', 'url'=>array('create')),
+	array('label'=>'List Department', 'url'=>array('index','id'=>Yii::app()->session['schoolID'])),
+	
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -42,7 +44,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'department-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search(Yii::app()->session['schoolID']),
 	'filter'=>$model,
 	'columns'=>array(
 		'dpt_code',
@@ -50,13 +52,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'dpt_location',
 		'dpt_contactNo',
 		'dpt_email',
-		'dpt_remarks',
+		
+                
 		/*
 		'dpt_head',
 		'dpt_headStatus',
-		'departmentID',
-		'schoolID',
 		*/
+		
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -53,9 +53,21 @@ class Section extends CActiveRecord
 			array('batchName', 'numerical', 'integerOnly'=>true),
 			array('sectionName', 'length', 'max'=>1),
 			array('programmeCode', 'length', 'max'=>10),
-			array('sec_startId, sec_endId', 'length', 'max'=>15),
+			array('sec_startId, sec_endId', 'length', 'max'=>11),
 			array('sec_startDate, sec_remarks', 'safe'),
-			// The following rule is used by search().
+			
+
+                        array('sectionName, sec_startDate,sec_endId, sec_startId', 'required', ),
+                    
+                     array('sec_startId, sec_endId', 'match', 'pattern'=>'/^([0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9])$/',
+                        'message'=>'ID has specific format like [111-115-001] .'),
+                    
+                     array('sectionName', 'match', 'pattern'=>'/^([A-Z])$/',
+                        'message'=>'Section name have to be [A-Z] .'),
+                    
+                    array('sectionName+batchName+programmeCode', 'application.extensions.uniqueMultiColumnValidator'),
+                    
+// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('sectionName, batchName, programmeCode, sec_startDate, sec_startId, sec_endId, sec_remarks', 'safe', 'on'=>'search'),
 		);
@@ -89,10 +101,10 @@ class Section extends CActiveRecord
 			'sectionName' => 'Section Name',
 			'batchName' => 'Batch Name',
 			'programmeCode' => 'Programme Code',
-			'sec_startDate' => 'Sec Start Date',
-			'sec_startId' => 'Sec Start',
-			'sec_endId' => 'Sec End',
-			'sec_remarks' => 'Sec Remarks',
+			'sec_startDate' => 'Start Date',
+			'sec_startId' => 'Start ID',
+			'sec_endId' => 'End ID',
+			'sec_remarks' => 'Remarks',
 		);
 	}
 

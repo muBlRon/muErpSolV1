@@ -51,6 +51,8 @@ class SchoolController extends Controller
 	 */
 	public function actionView($id)
 	{
+           
+           
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -63,7 +65,7 @@ class SchoolController extends Controller
 	public function actionCreate()
 	{
 		$model=new School;
-
+                
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 
@@ -126,7 +128,14 @@ class SchoolController extends Controller
 	 * Lists all models.
 	 */
 	public function actionIndex()
-	{
+	{ 
+               
+                yii::app()->session['a']="Bismillah Hir Rahmanir Rahim";
+                
+                
+                
+                
+                
 		$dataProvider=new CActiveDataProvider('School');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

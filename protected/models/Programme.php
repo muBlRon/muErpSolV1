@@ -46,14 +46,16 @@ class Programme extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('pro_totalTerms, departmentID', 'numerical', 'integerOnly'=>true),
+			array('pro_totalTerms, pro_startTerm, pro_startYear, departmentID', 'numerical', 'integerOnly'=>true),
 			array('programmeCode', 'length', 'max'=>10),
 			array('pro_name', 'length', 'max'=>100),
+                        array('pro_shortName', 'length', 'max'=>20),
 			array('pro_type', 'length', 'max'=>13),
 			array('pro_medium', 'length', 'max'=>7),
 			array('pro_remarks', 'safe'),
+                        array('programmeCode, pro_name,pro_shortName', 'unique'),
                     
-                        array('pro_name, programmeCode, pro_type, pro_medium, pro_totalTerms', 'required'),
+                        array('pro_name, programmeCode,pro_shortName, pro_type, pro_medium, pro_totalTerms, pro_startTerm, pro_startYear,', 'required'),
                             
                         array('pro_type', 'in', 'range'=>array('deploma', 'undergraduate', 'postgraduate')),
                         array('pro_medium', 'in', 'range'=>array('English', 'Bangla', 'Bilingual')),
@@ -87,6 +89,8 @@ class Programme extends CActiveRecord
 			'programmeCode' => 'Programme Code',
 			'pro_name' => 'Name',
 			'pro_totalTerms' => 'Total Terms',
+                        'pro_startTerm' => 'Start Term',
+                        'pro_startYear' => 'Start Year',
 			'pro_remarks' => 'Remarks',
 			'pro_type' => 'Type',
 			'pro_medium' => 'Medium',
@@ -98,20 +102,20 @@ class Programme extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($id)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
+                $criteria->condition="departmentID={$id}";
 		$criteria->compare('programmeCode',$this->programmeCode,true);
 		$criteria->compare('pro_name',$this->pro_name,true);
 		$criteria->compare('pro_totalTerms',$this->pro_totalTerms);
 		$criteria->compare('pro_remarks',$this->pro_remarks,true);
 		$criteria->compare('pro_type',$this->pro_type,true);
 		$criteria->compare('pro_medium',$this->pro_medium,true);
-		$criteria->compare('departmentID',$this->departmentID);
+		$criteria->compare('departmentID',$this->departmentID,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

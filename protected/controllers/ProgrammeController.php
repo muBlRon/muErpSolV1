@@ -60,10 +60,10 @@ class ProgrammeController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate()
 	{
 		$model=new Programme;
-                $model->departmentID=$id;
+                $model->departmentID=yii::app()->session['departmentID'];
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
                 
@@ -122,7 +122,15 @@ class ProgrammeController extends Controller
 	 */
 	public function actionIndex($id)
 	{
-		$dptName= DBhelper::getDepartmentNameById($id);
+            
+            /*
+             * Diclearing session 'departmentID' and 'departmentName' for future use. 
+             * 
+             */
+                yii::app()->session['departmentID']=$id;
+                yii::app()->session['departmentName']= DBhelper::getDepartmentNameById($id);
+                
+		
                 $condition = "departmentID={$id}";
                 
 		$dataProvider=new CActiveDataProvider('Programme', array(
@@ -134,7 +142,7 @@ class ProgrammeController extends Controller
                 
                 
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,'id'=>$id,'dptName'=>$dptName,
+			'dataProvider'=>$dataProvider,'id'=>$id,
 		));
 	}
 
@@ -144,7 +152,9 @@ class ProgrammeController extends Controller
 	public function actionAdmin()
 	{
 		$model=new Programme('search');
-		$model->unsetAttributes();  // clear any default values
+		
+                $model->unsetAttributes();  // clear any default values
+                
 		if(isset($_GET['Programme']))
 			$model->attributes=$_GET['Programme'];
 

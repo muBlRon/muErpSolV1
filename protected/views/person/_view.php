@@ -5,7 +5,7 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('personID')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Person ID')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->personID), array('view', 'id'=>$data->personID)); ?>
 	<br />
 
@@ -147,5 +147,13 @@
 	<br />
 
 	*/ ?>
-
+        <br />
+	<?php echo CHtml::link(CHtml::encode("Academic History"), array('AcademicHistory/Index', 'id'=>$data->personID)); ?>
+        <br />
+        
+	<?php echo CHtml::link(CHtml::encode("Job Experiance"), array('JobExperiance/Index', 'id'=>$data->personID)); ?>
+        <br />
+         <?php echo CHtml::link(CHtml::encode("Add Refrees"), array('person/AddReferee', 'id'=>$data->personID)); ?>
+        <br/>
+       
 </div>
