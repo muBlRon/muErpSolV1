@@ -3,13 +3,17 @@
 /* @var $model Syllabus */
 
 $this->breadcrumbs=array(
-	'Syllabuses'=>array('index'),
+    'registry'=>array('site/registry'),
+	    'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
+	'Syllabus'=>array('index','id'=>Yii::app()->session['programmeCode']),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Syllabus', 'url'=>array('index')),
-	array('label'=>'Create Syllabus', 'url'=>array('create')),
+	array('label'=>'List Syllabus', 'url'=>array('index','id'=>Yii::app()->session['programmeCode'])),
+	
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -45,7 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'syllabusID',
+		'syllabusCode',
 		'programmeCode',
 		'syl_version',
 		'syl_startTerm',

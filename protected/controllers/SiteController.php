@@ -32,6 +32,11 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+        public function actionRegistry()
+	{
+		$this->render('registry');
+	}
+        
 	/**
 	 * This is the action to handle external exceptions.
 	 */

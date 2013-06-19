@@ -3,16 +3,17 @@
 /* @var $model School */
 
 $this->breadcrumbs=array(
+    'registry'=>array('site/registry'),
 	'Schools'=>array('index'),
 	$model->sch_code=>array('view','id'=>$model->schoolID),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List School', 'url'=>array('index')),
-	array('label'=>'Create School', 'url'=>array('create')),
+	array('label'=>'List School', 'url'=>array('school/index')),
+	
 	array('label'=>'View School', 'url'=>array('view', 'id'=>$model->schoolID)),
-	array('label'=>'Manage School', 'url'=>array('admin')),
+	
 );
 ?>
 

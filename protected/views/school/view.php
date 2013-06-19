@@ -3,6 +3,7 @@
 /* @var $model School */
 
 $this->breadcrumbs=array(
+    'registry'=>array('site/registry'),
 	'School'=>array('index'),
 	$model->sch_code,
 );

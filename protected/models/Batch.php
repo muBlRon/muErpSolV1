@@ -44,12 +44,26 @@ class Batch extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('batchName, bat_year, bat_advisor', 'numerical', 'integerOnly'=>true),
+			array('batchName, bat_year, bat_term, bat_advisor', 'numerical', 'integerOnly'=>true),
 			array('programmeCode', 'length', 'max'=>10),
 			array('bat_term', 'length', 'max'=>1),
+                    
+                    array('batchName', 'length', 'max'=>3),
+                        array('bat_term', 'in', 'range'=>array('1','2','3')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('batchName, programmeCode, bat_term, bat_year, bat_advisor', 'safe', 'on'=>'search'),
+                        array(' bat_term, bat_year, batchName', 'required', ),
+                    /*
+                        array('batchName', 'unique', 'criteria'=>array(
+                            'condition'=>'`programmeCode`=:programmeCode',
+                            'params'=>array(
+                                ':programmeCode'=>$this->programmeCode
+                                ))),
+                    */
+                    
+                    array('batchName+programmeCode', 'application.extensions.uniqueMultiColumnValidator'),
+                    
 		);
 	}
 
@@ -76,9 +90,9 @@ class Batch extends CActiveRecord
 		return array(
 			'batchName' => 'Batch Name',
 			'programmeCode' => 'Programme Code',
-			'bat_term' => 'Bat Term',
-			'bat_year' => 'Bat Year',
-			'bat_advisor' => 'Bat Advisor',
+			'bat_term' => 'Academic Term',
+			'bat_year' => 'Academic Year',
+			'bat_advisor' => 'Advisor',
 		);
 	}
 

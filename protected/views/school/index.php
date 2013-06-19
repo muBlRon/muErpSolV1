@@ -3,10 +3,12 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Schools',
+	'registry'=>array('site/registry'),
+    'school'
 );
 
 $this->menu=array(
+    array('label'=>'Back to  Registry', 'url'=>array('site/registry',)),
 	array('label'=>'Create School', 'url'=>array('create')),
 	array('label'=>'Manage School', 'url'=>array('admin')),
 );

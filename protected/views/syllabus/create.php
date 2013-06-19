@@ -3,13 +3,17 @@
 /* @var $model Syllabus */
 
 $this->breadcrumbs=array(
-	'Syllabuses'=>array('index'),
+   'registry'=>array('site/registry'),
+    'School'=>array('school/index'),
+        'Department'=>array('Department/index', 'id'=> Yii::app()->session['schoolID']),
+	'Programme'=>array('Programme/index', 'id'=>Yii::app()->session['departmentID']),
+	'Syllabus'=>array('index','id'=>Yii::app()->session['programmeCode']),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Syllabus', 'url'=>array('index')),
-	array('label'=>'Manage Syllabus', 'url'=>array('admin')),
+	array('label'=>'List Syllabus', 'url'=>array('index','id'=>Yii::app()->session['programmeCode'])),
+	
 );
 ?>
 

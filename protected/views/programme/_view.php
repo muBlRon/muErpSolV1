@@ -22,8 +22,12 @@
 	<?php echo CHtml::encode($data->pro_type); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('pro_medium')); ?>:</b>
-	<?php echo CHtml::encode($data->pro_medium); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('pro_startTerm')); ?>:</b>
+	<?php echo CHtml::encode(FormUtil::getTerm($data->pro_startTerm)); ?>
+	<br />
+        
+	<b><?php echo CHtml::encode($data->getAttributeLabel('pro_startYear')); ?>:</b>
+	<?php echo CHtml::encode($data->pro_startYear); ?>
 	<br />
         <br />
 	<?php echo CHtml::link(CHtml::encode("Syllabus"), array('syllabus/Index', 'id'=>$data->programmeCode)); ?>

@@ -55,6 +55,7 @@ class Department extends CActiveRecord
                         array('dpt_head, schoolID, dpt_contactNo', 'numerical', 'integerOnly'=>true),
                     
 			array('dpt_code', 'length', 'max'=>10),
+                        array('dpt_code, dpt_name', 'unique', ),
 			array('dpt_name, dpt_email', 'length', 'max'=>100),
 			array('dpt_location', 'length', 'max'=>350),
 			array('dpt_contactNo', 'length', 'max'=>15),
@@ -109,13 +110,14 @@ class Department extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($id)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
 
+                $criteria->condition="schoolID={$id}";
 		$criteria->compare('dpt_code',$this->dpt_code,true);
 		$criteria->compare('dpt_name',$this->dpt_name,true);
 		

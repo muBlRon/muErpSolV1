@@ -62,8 +62,10 @@ class SyllabusController extends Controller
 	 */
 	public function actionCreate()
 	{
+           
 		$model=new Syllabus;
 
+                $model->programmeCode = yii::app()->session['programmeCode'];
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -71,7 +73,7 @@ class SyllabusController extends Controller
 		{
 			$model->attributes=$_POST['Syllabus'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->syllabusID));
+				$this->redirect(array('view','id'=>$model->syllabusCode));
 		}
 
 		$this->render('create',array(
@@ -95,7 +97,7 @@ class SyllabusController extends Controller
 		{
 			$model->attributes=$_POST['Syllabus'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->syllabusID));
+				$this->redirect(array('view','id'=>$model->syllabusCode));
 		}
 
 		$this->render('update',array(
@@ -120,11 +122,24 @@ class SyllabusController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-		$dataProvider=new CActiveDataProvider('Syllabus');
+		yii::app()->session['programmeCode']=$id;
+                yii::app()->session['programmeName']= DBhelper::getProgrammeNameById($id);
+                
+		
+                $condition = "programmeCode='{$id}'";
+                
+		$dataProvider=new CActiveDataProvider('Syllabus', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
+                
+                
+                
+                
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider,'id'=>$id,
 		));
 	}
 
