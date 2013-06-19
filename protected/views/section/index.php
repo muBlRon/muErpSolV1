@@ -13,9 +13,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-        array('label'=>'goto Batch List', 'url'=>array('Batch/index', 'id'=>Yii::app()->session['programmeCode']),),
+        
 	array('label'=>'Create Section', 'url'=>array('create')),
 	array('label'=>'Manage Section', 'url'=>array('admin')),
+    array('label'=>'Back to Batch List', 'url'=>array('Batch/index', 'id'=>Yii::app()->session['programmeCode']),),
     
 );
 ?>
@@ -23,8 +24,9 @@ $this->menu=array(
 <h1>Sections</h1>
 <h5>[Batch:  <?php echo yii::app()->session['batchName'].FormUtil::getBatchNameSufix(yii::app()->session['batchName']); ?> ]</h5>
 <h5>[Programme: <?php echo yii::app()->session['programmeName']; ?> ]</h5>
+<h5>[Academic Year: <?php echo DBhelper::getAcademicYearByBatch(yii::app()->session['batchName'], yii::app()->session['programmeCode']) ?> ]</h5>
 
-<?php $this->widget('zii.widgets.CListView', array(
+    <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>

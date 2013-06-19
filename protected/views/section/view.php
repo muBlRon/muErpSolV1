@@ -22,7 +22,7 @@ $this->menu=array(
 ?>
 
 <h1>View Section: <?php echo $model->sectionName."  # ".$model->batchName.FormUtil::getBatchNameSufix($model->batchName)."  # ".$model->programmeCode; ?></h1>
-
+<h5>[Academic Year: <?php echo DBhelper::getAcademicYearByBatch($model->batchName, yii::app()->session['programmeCode']); ?> ]</h5>
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(

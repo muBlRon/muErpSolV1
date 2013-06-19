@@ -11,9 +11,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-        array('label'=>'Goto Department List', 'url'=>array('Department/index', 'id'=>Yii::app()->session['schoolID'])),
+       
 	array('label'=>'Create Programme', 'url'=>array('create')),
 	array('label'=>'Manage Programme', 'url'=>array('admin')),
+     array('label'=>'Back to Department', 'url'=>array('Department/index', 'id'=>Yii::app()->session['schoolID'])),
 );
 ?>
 

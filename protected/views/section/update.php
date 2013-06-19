@@ -22,5 +22,5 @@ $this->menu=array(
 ?>
 
 <h1>Update Section <?php echo $model->sectionName."  # ".$model->batchName.FormUtil::getBatchNameSufix($model->batchName)."  # ".$model->programmeCode; ?></h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<h5>[Academic Year: <?php echo DBhelper::getAcademicYearByBatch($model->batchName, yii::app()->session['programmeCode']); ?> ]</h5>
+<?php echo $this->renderPartial('_update', array('model'=>$model)); ?>
