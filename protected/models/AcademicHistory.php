@@ -46,7 +46,7 @@ class AcademicHistory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('academicHistoryID, ach_passingYear, personID', 'numerical', 'integerOnly'=>true),
+			array('ach_passingYear, personID', 'numerical', 'integerOnly'=>true),
 			array('ach_result', 'numerical'),
 			array('ach_degree, ach_institution', 'length', 'max'=>50),
 			array('ach_group, ach_board', 'length', 'max'=>15),

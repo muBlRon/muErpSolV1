@@ -15,9 +15,10 @@
 
 	<?php echo $form->errorSummary($persons); ?>
 	<?php echo $form->errorSummary($model); ?>
-        <?php echo $form->errorSummary($academicHistory); ?>
+	<?php echo $form->errorSummary($acHistory); ?>        
          <!-- Persons Details --!>
         
+       <h2>Personal Details</h2> 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_title'); ?>
                 <?php echo CHtml::activeDropDownList( $persons,'per_title',ZHtml::enumItem($persons, 'per_title') ); ?>
@@ -38,7 +39,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_gender'); ?>
-                <?php echo CHtml::activeDropDownList( $persons,'per_gender',ZHtml::enumItem($persons, 'per_gender') ); ?>
+                <?php echo ZHtml::enumRadioButtonList($persons,'per_gender',array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',)); ?>     
                 <?php echo $form->error($persons,'per_gender'); ?>
 	</div>
 
@@ -50,24 +51,26 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_maritulStatus'); ?>
-                <?php echo CHtml::activeDropDownList( $persons,'per_maritulStatus',ZHtml::enumItem($persons, 'per_maritulStatus') ); ?>
+                <?php echo ZHtml::enumRadioButtonList( $persons,'per_maritulStatus',array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',)); ?>
 		<?php echo $form->error($persons,'per_maritulStatus'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_dateofBirth'); ?>
-                <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
+               
+            <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
                 		array(
                                         'attribute'=>'per_dateofBirth',
                                         'model'=>$persons,
                                         'options' => array(
                                         'mode'=>'focus',
-                                        'dateFormat'=>'d MM, yy',
+                                        'dateFormat'=>'yy-mm-dd',
                                         'showAnim' => 'slideDown',
                                         ),
                                         'htmlOptions'=>array('size'=>30,'class'=>'date'),
 		)
 		);?>
+		
 		<?php //echo $form->textField($persons,'per_dateofBirth'); ?>
 		<?php echo $form->error($persons,'per_dateofBirth'); ?>
 	</div>
@@ -89,7 +92,19 @@
 		<?php echo $form->textField($persons,'per_mothersName'); ?>
 		<?php echo $form->error($persons,'per_mothersName'); ?>
 	</div>
-
+        
+        <div class="row">
+		<?php echo $form->labelEx($persons,'per_presentAddress'); ?>
+		<?php echo $form->textField($persons,'per_presentAddress'); ?>
+		<?php echo $form->error($persons,'per_presentAddress'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($persons,'per_postCode'); ?>
+		<?php echo $form->textField($persons,'per_postCode'); ?>
+		<?php echo $form->error($persons,'per_postCode'); ?>
+	</div>
+       
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_mobile'); ?>
 		<?php echo $form->textField($persons,'per_mobile'); ?>
@@ -109,154 +124,10 @@
 	</div>
          
 	<div class="row">
-		<?php echo $form->labelEx($persons,'per_entryDate'); ?>
-                <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
-                		array(
-                                        'attribute'=>'per_entryDate',
-                                        'model'=>$persons,
-                                        'options' => array(
-                                        'mode'=>'focus',
-                                        'dateFormat'=>'d MM, yy',
-                                        'showAnim' => 'slideDown',
-                                        ),
-                                        'htmlOptions'=>array('size'=>30,'class'=>'date'),
-		)
-		);?>
-		<?php //echo $form->textField($persons,'per_entryDate'); ?>
-		<?php echo $form->error($persons,'per_entryDate'); ?>
-	</div>
-
-	
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_criminalConviction'); ?>
-		<?php echo $form->textField($persons,'per_criminalConviction'); ?>
-		<?php echo $form->error($persons,'per_criminalConviction'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($persons,'per_bloodGroup'); ?>
-                <?php echo CHtml::activeDropDownList( $persons,'per_bloodGroup',ZHtml::enumItem($persons, 'per_bloodGroup') ); ?>        
+                <?php echo ZHtml::enumRadioButtonList($persons, 'per_bloodGroup',array('labelOptions'=>array('style'=>'display:inline; padding-right:10px'), 'separator'=>'  ',)); ?>        
 		<?php echo $form->error($persons,'per_bloodGroup'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_englishLanguageProficiency'); ?>
-		<?php echo $form->textField($persons,'per_englishLanguageProficiency'); ?>
-		<?php echo $form->error($persons,'per_englishLanguageProficiency'); ?>
-	</div>
-
-         	<div class="row">
-		<?php echo $form->labelEx($persons,'per_parmanentAddress'); ?>
-		<?php echo $form->textField($persons,'per_parmanentAddress'); ?>
-		<?php echo $form->error($persons,'per_parmanentAddress'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_presentAddress'); ?>
-		<?php echo $form->textField($persons,'per_presentAddress'); ?>
-		<?php echo $form->error($persons,'per_presentAddress'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_computerLiteracy'); ?>
-		<?php echo $form->textField($persons,'per_computerLiteracy'); ?>
-		<?php echo $form->error($persons,'per_computerLiteracy'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_otherActivities'); ?>
-		<?php echo $form->textField($persons,'per_otherActivities'); ?>
-		<?php echo $form->error($persons,'per_otherActivities'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_postCode'); ?>
-		<?php echo $form->textField($persons,'per_postCode'); ?>
-		<?php echo $form->error($persons,'per_postCode'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_personalStatment'); ?>
-		<?php echo $form->textField($persons,'per_personalStatment'); ?>
-		<?php echo $form->error($persons,'per_personalStatment'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_convictionDetails'); ?>
-		<?php echo $form->textField($persons,'per_convictionDetails'); ?>
-		<?php echo $form->error($persons,'per_convictionDetails'); ?>
-	</div>
-
-         <!--Referees Details --!>
-                  
-        <div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeOneName'); ?>
-		<?php echo $form->textField($persons,'per_refereeOneName'); ?>
-		<?php echo $form->error($persons,'per_refereeOneName'); ?>
-	</div>
-
-         
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeOneOccupation'); ?>
-		<?php echo $form->textField($persons,'per_refereeOneOccupation'); ?>
-		<?php echo $form->error($persons,'per_refereeOneOccupation'); ?>
-	</div>
-
-         <div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeOneMobile'); ?>
-		<?php echo $form->textField($persons,'per_refereeOneMobile'); ?>
-		<?php echo $form->error($persons,'per_refereeOneMobile'); ?>
-	</div>
-
-	
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeOneEmail'); ?>
-		<?php echo $form->textField($persons,'per_refereeOneEmail'); ?>
-		<?php echo $form->error($persons,'per_refereeOneEmail'); ?>
-	</div>
-
-                
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeTwoName'); ?>
-		<?php echo $form->textField($persons,'per_refereeTwoName'); ?>
-		<?php echo $form->error($persons,'per_refereeTwoName'); ?>
-	</div>
-        
-          
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeTwoOccupation'); ?>
-		<?php echo $form->textField($persons,'per_refereeTwoOccupation'); ?>
-		<?php echo $form->error($persons,'per_refereeTwoOccupation'); ?>
-	</div>
-
-         
-         <div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeTwoMobile'); ?>
-		<?php echo $form->textField($persons,'per_refereeTwoMobile'); ?>
-		<?php echo $form->error($persons,'per_refereeTwoMobile'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeTwoEmail'); ?>
-		<?php echo $form->textField($persons,'per_refereeTwoEmail'); ?>
-		<?php echo $form->error($persons,'per_refereeTwoEmail'); ?>
-	</div>
-
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeOneAddress'); ?>
-		<?php echo $form->textField($persons,'per_refereeOneAddress'); ?>
-		<?php echo $form->error($persons,'per_refereeOneAddress'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($persons,'per_refereeTwoAddress'); ?>
-		<?php echo $form->textField($persons,'per_refereeTwoAddress'); ?>
-		<?php echo $form->error($persons,'per_refereeTwoAddress'); ?>
-	</div>
-
 
          <!-- Faculty Details --!>
          
@@ -265,6 +136,8 @@
 		<?php //echo $form->textField($model,'facultyID'); ?>
 		<?php //echo $form->error($model,'facultyID'); ?>
 	</div>
+
+<h2>Faculty Details</h2>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fac_designation'); ?>
@@ -338,136 +211,32 @@
 		<?php echo $form->error($model,'departmentID'); ?>
 	</div>
 
+         <!--Academic History-->
          
-
-        <div class="row">
-		<?php //echo $form->labelEx($model,'academicHistoryID'); ?>
-		<?php //echo $form->textField($model,'academicHistoryID'); ?>
-		<?php //echo $form->error($model,'academicHistoryID'); ?>
+    <h2>Academic History Details</h2>
+    
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_degree'); ?>
+		<?php echo $form->textField($acHistory,'ach_degree',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_degree'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_passingYear'); ?>
-		<?php echo $form->textField($academicHistory,'ach_passingYear'); ?>
-		<?php echo $form->error($academicHistory,'ach_passingYear'); ?>
+		<?php echo $form->labelEx($acHistory,'ach_institution'); ?>
+		<?php echo $form->textField($acHistory,'ach_institution',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_institution'); ?>
 	</div>
 
 	<div class="row">
-		<?php //echo $form->labelEx($academicHistory,'personID'); ?>
-		<?php //echo $form->textField($academicHistory,'personID'); ?>
-		<?php //echo $form->error($academicHistory,'personID'); ?>
+		<?php echo $form->labelEx($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->textField($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->error($acHistory,'ach_passingYear'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_result'); ?>
-		<?php echo $form->textField($academicHistory,'ach_result'); ?>
-		<?php echo $form->error($academicHistory,'ach_result'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_degree'); ?>
-		<?php echo $form->textField($academicHistory,'ach_degree'); ?>
-		<?php echo $form->error($academicHistory,'ach_degree'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_institution'); ?>
-		<?php echo $form->textField($academicHistory,'ach_institution'); ?>
-		<?php echo $form->error($academicHistory,'ach_institution'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_group'); ?>
-		<?php echo $form->textField($academicHistory,'ach_group'); ?>
-		<?php echo $form->error($academicHistory,'ach_group'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_board'); ?>
-		<?php echo $form->textField($academicHistory,'ach_board'); ?>
-		<?php echo $form->error($academicHistory,'ach_board'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($academicHistory,'ach_remarks'); ?>
-		<?php echo $form->textField($academicHistory,'ach_remarks'); ?>
-		<?php echo $form->error($academicHistory,'ach_remarks'); ?>
-	</div>
-
-
-
-
-
-        <div class="row">
-		<?php //echo $form->labelEx($jobExperiance,'jobExperianceID'); ?>
-		<?php //echo $form->textField($jobExperiance,'jobExperianceID'); ?>
-		<?php // echo $form->error($jobExperiance,'jobExperianceID'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($jobExperiance,'personID'); ?>
-		<?php //echo $form->textField($jobExperiance,'personID'); ?>
-		<?php //echo $form->error($jobExperiance,'personID'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_employer'); ?>
-		<?php echo $form->textField($jobExperiance,'joe_employer'); ?>
-		<?php echo $form->error($jobExperiance,'joe_employer'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_address'); ?>
-		<?php echo $form->textField($jobExperiance,'joe_address'); ?>
-		<?php echo $form->error($jobExperiance,'joe_address'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_position'); ?>
-		<?php echo $form->textField($jobExperiance,'joe_position'); ?>
-		<?php echo $form->error($jobExperiance,'joe_position'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_contact'); ?>
-		<?php echo $form->textField($jobExperiance,'joe_contact'); ?>
-		<?php echo $form->error($jobExperiance,'joe_contact'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_startDate'); ?>
-                <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
-                		array(
-                                        'attribute'=>'joe_startDate',
-                                        'model'=>$jobExperiance,
-                                        'options' => array(
-                                        'mode'=>'focus',
-                                        'dateFormat'=>'d MM, yy',
-                                        'showAnim' => 'slideDown',
-                                        ),
-                                        'htmlOptions'=>array('size'=>30,'class'=>'date'),
-		)
-		);?>
-		<?php //echo $form->textField($jobExperiance,'joe_startDate'); ?>
-		<?php echo $form->error($jobExperiance,'joe_startDate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($jobExperiance,'joe_endDate'); ?>
-                <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
-                		array(
-                                        'attribute'=>'joe_endDate',
-                                        'model'=>$jobExperiance,
-                                        'options' => array(
-                                        'mode'=>'focus',
-                                        'dateFormat'=>'d MM, yy',
-                                        'showAnim' => 'slideDown',
-                                        ),
-                                        'htmlOptions'=>array('size'=>30,'class'=>'date'),
-		)
-		);?>
-		<?php //echo $form->textField($jobExperiance,'joe_endDate'); ?>
-		<?php echo $form->error($jobExperiance,'joe_endDate'); ?>
+         <div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_remarks'); ?>
+		<?php echo $form->textArea($acHistory,'ach_remarks',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_remarks'); ?>
 	</div>
 
 	<div class="row buttons">

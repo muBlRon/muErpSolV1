@@ -9,13 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Employee', 'url'=>array('index')),
-	array('label'=>'Create Employee', 'url'=>array('create')),
-	array('label'=>'View Employee', 'url'=>array('view', 'id'=>$model->employeeID)),
+	array('label'=>'Update Employee Record', 'url'=>array('person/update', 'id'=>$model->employeeID)),
+	array('label'=>'Update Academic Record', 'url'=>array('academicHistory/update', 'id'=>$model->employeeID)),
+	array('label'=>'Update Job Experiance', 'url'=>array('jobExperiance/update', 'id'=>$model->employeeID)),
 	array('label'=>'Manage Employee', 'url'=>array('admin')),
 );
 ?>
 
 <h1>Update Employee <?php echo $model->employeeID; ?></h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_update', array('model'=>$model,'persons'=>$persons)); ?>

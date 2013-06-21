@@ -30,10 +30,12 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-                                array('label'=>'School', 'url'=>array('/School/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                                array('label'=>'Registry', 'url'=>array('/administration/index')),
+                                array('label'=>'Student Administration', 'url'=>array('/admission/index')),
+                                array('label'=>'Examination', 'url'=>array('/employee/index')),
+                                array('label'=>'User Management', 'url'=>array('/employee/index')),
+                                array('label'=>'Settings', 'url'=>array('/site/index')),
+                            	array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>

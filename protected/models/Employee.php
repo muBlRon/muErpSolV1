@@ -56,7 +56,7 @@ class Employee extends CActiveRecord
 			array('emp_accessLevel', 'length', 'max'=>1),
 			array('administrationCode', 'length', 'max'=>10),
 			
-                        array('emp_joining, emp_leave', 'date'),
+                   //     array('emp_joining, emp_leave', 'date'),
                     
                         array('emp_joining, emp_designations, administrationCode, emp_accessLevel', 'required'),
                         array('emp_accessLevel', 'in', 'range'=>array('0','1','2','3')),
@@ -125,4 +125,7 @@ class Employee extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        
+        
 }
