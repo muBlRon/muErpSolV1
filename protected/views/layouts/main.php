@@ -31,7 +31,7 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
                                 array('label'=>'Registry', 'url'=>array('site/registry')),
-                                array('label'=>'Student Administration', 'url'=>array('/employee/index')),
+                                array('label'=>'Student Administration', 'url'=>array('site/studentAdministration')),
                                 array('label'=>'Examination', 'url'=>array('/employee/index')),
                                 array('label'=>'User Management', 'url'=>array('/employee/index')),
                                 array('label'=>'Settings', 'url'=>array('/site/index')),

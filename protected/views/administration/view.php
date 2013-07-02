@@ -3,16 +3,18 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
+	'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+	'Administrative Departments'=>array('index'),
 	$model->administrationCode,
 );
 
 $this->menu=array(
-	array('label'=>'List Administration', 'url'=>array('index')),
-	array('label'=>'Create Administration', 'url'=>array('create')),
-	array('label'=>'Update Administration', 'url'=>array('update', 'id'=>$model->administrationCode)),
-	array('label'=>'Delete Administration', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->administrationCode),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Administration', 'url'=>array('admin')),
+	array('label'=>'List Department', 'url'=>array('index')),
+	
+	array('label'=>'Update Department', 'url'=>array('update', 'id'=>$model->administrationCode)),
+	array('label'=>'Delete Department', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->administrationCode),'confirm'=>'Are you sure you want to delete this item?')),
+	
 );
 ?>
 

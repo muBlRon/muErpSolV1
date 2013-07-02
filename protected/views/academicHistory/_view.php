@@ -33,18 +33,9 @@
 	<?php echo CHtml::encode($data->ach_result); ?>
 	<br />
 
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ach_remarks')); ?>:</b>
-	<?php echo CHtml::encode($data->ach_remarks); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('personID')); ?>:</b>
-	<?php echo CHtml::encode($data->personID); ?>
-	<br />
-
-	*/ ?>
+	
         
-        <?php echo CHtml::link(CHtml::encode("Add Academic History"), array('academicHistory/create', 'id'=>$data->personID)); ?>
+        
         <br />
 
 </div>

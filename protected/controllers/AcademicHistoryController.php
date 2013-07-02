@@ -32,7 +32,7 @@ class AcademicHistoryController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','excel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,6 +51,7 @@ class AcademicHistoryController extends Controller
 	 */
 	public function actionView($id)
 	{
+            
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -60,10 +61,10 @@ class AcademicHistoryController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate()
 	{
 		$model=new AcademicHistory;
-                $model->personID=$id;
+                $model->personID=yii::app()->session['personId'];
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -120,9 +121,21 @@ class AcademicHistoryController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-		$dataProvider=new CActiveDataProvider('AcademicHistory');
+            
+                yii::app()->session['personId']=$id;
+                
+                
+		
+                $condition = "personId={$id}";
+                
+		$dataProvider=new CActiveDataProvider('AcademicHistory', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
+                
+                
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -143,11 +156,28 @@ class AcademicHistoryController extends Controller
 		));
 	}
 
-	/**
+	
+         public function actionExcel() {
+            $model = new AcademicHistory('search');
+            $model->unsetAttributes();
+            if (isset($_GET['Model'])) {
+                $model->attributes = $_GET['Model'];
+            }
+            if (isset($_GET['export'])) {
+                $production = 'export';
+            } else {
+                $production = 'grid';
+            }
+            $this->render('create2', array('model' => $model, 'production' => $production));
+        } 
+        
+        /**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
+        
+        
 	public function loadModel($id)
 	{
 		$model=AcademicHistory::model()->findByPk($id);

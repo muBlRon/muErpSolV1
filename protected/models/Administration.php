@@ -49,6 +49,8 @@ class Administration extends CActiveRecord
 			array('adm_remarks', 'safe'),
                     
                         array('adm_email', 'email'),
+                    
+                    array('administrationCode, adm_name, adm_email', 'required'),
                         array('administrationCode, adm_name', 'unique'),
                         
                         array('adm_contactNo', 'numerical', 'integerOnly'=>true),
@@ -76,7 +78,7 @@ class Administration extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'administrationCode' => 'AdministrationCode',
+			'administrationCode' => 'Department Code',
 			'adm_name' => 'Name',
 			'adm_location' => 'Location',
 			'adm_remarks' => 'Remarks',

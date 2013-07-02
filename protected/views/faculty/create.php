@@ -3,16 +3,20 @@
 /* @var $model Faculty */
 
 $this->breadcrumbs=array(
-	'Faculties'=>array('index'),
+	'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+    'HRM'=>array('site/HRM'),
+    'Academic Departments'=>array('department/list'),
+    'Faculty'=>array('index','id'=>yii::app()->session['departmentId']),
 	'Create',
 );
 
 $this->menu=array(
 	array('label'=>'List Faculty', 'url'=>array('index')),
-	array('label'=>'Manage Faculty', 'url'=>array('admin')),
+	
 );
 ?>
 
 <h1>Create Faculty</h1>
 
-    <?php echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons,)); ?>
+    <?php echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons,'acHistory'=>$acHistory,)); ?>

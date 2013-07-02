@@ -23,6 +23,12 @@ class ZHtml extends CHtml
        
        }
 
+       
+        public static function enumRadioButtonList($model, $attribute, $htmlOptions=array())
+        {
+            return CHtml::activeRadioButtonList( $model, $attribute, self::enumItem($model,  $attribute), $htmlOptions);
+        }
+       
 }
 
 ?>

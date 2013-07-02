@@ -11,8 +11,8 @@ $this->menu=array(
 	array('label'=>'List Faculty', 'url'=>array('index')),
 	
 	array('label'=>'Update Faculty', 'url'=>array('update', 'id'=>$model->facultyID)),
+	array('label'=>'View Academic Record', 'url'=>'#', 'linkOptions'=>array('submit'=>array('academicHistory/view','id'=>$model->facultyID),)),
 	array('label'=>'Delete Faculty', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->facultyID),'confirm'=>'Are you sure you want to delete this item?')),
-	
 );
 ?>
 
@@ -82,6 +82,11 @@ $this->menu=array(
             'label'=>'Post Code',
             'type'=>'raw',
             'value'=>Person::model()->findByPk($model->facultyID)->per_postCode,),
-	
+            
 	),
-)); ?>
+)); 
+
+
+
+?>
+

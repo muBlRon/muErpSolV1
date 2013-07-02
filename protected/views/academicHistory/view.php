@@ -3,20 +3,25 @@
 /* @var $model AcademicHistory */
 
 $this->breadcrumbs=array(
-	'Academic Histories'=>array('index'),
+	'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+    'HRM'=>array('site/HRM'),
+    'Academic Departments'=>array('department/list'),
+    'Faculty'=>array('faculty/index','id'=>yii::app()->session['departmentId']),
+	'Academic Histories'=>array('index','id'=>yii::app()->session['personId']),
 	$model->academicHistoryID,
 );
 
 $this->menu=array(
 	array('label'=>'List AcademicHistory', 'url'=>array('index')),
-	array('label'=>'Create AcademicHistory', 'url'=>array('create')),
+	
 	array('label'=>'Update AcademicHistory', 'url'=>array('update', 'id'=>$model->academicHistoryID)),
 	array('label'=>'Delete AcademicHistory', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->academicHistoryID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage AcademicHistory', 'url'=>array('admin')),
+	
 );
 ?>
 
-<h1>View AcademicHistory #<?php echo $model->academicHistoryID; ?></h1>
+<h1>View Academic History #<?php echo $model->academicHistoryID; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

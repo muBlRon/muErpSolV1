@@ -71,41 +71,38 @@ class EmployeeController extends Controller
 	public function actionCreate()
 	{
             	$model=new Employee;
+                $model->administrationCode = yii::app()->session['administrationCode'];
                 $persons = new Person;
-
+                              
+                $acHistory = new AcademicHistory;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
                 
-                
-		if(isset($_POST['Person']))
+                if(isset($_POST['Employee'],$_POST['Person'],$_POST['AcademicHistory']))
 		{
-                    if(isset($_POST['Employee']))
-                    {
-                
+                    
                     	$persons->attributes=$_POST['Person'];
                         $model->attributes=$_POST['Employee'];
-                        
+                        $acHistory->attributes = $_POST['AcademicHistory'];                        
                     
                         $persons->per_entryDate = '2013-4-5';
-                         //= $persons->getInsertId('tbl_persons');
+                         
                         $maxID = Yii::app()->db->createCommand()
                                             ->select('max(personID) as max')
                                             ->from('tbl_person')
                                             ->queryScalar();
                        $model->employeeID = $maxID + 1;
-                        //echo $model->employeeID;
-                        if($persons->save())
-                        {
-                            
-                            $model->save();
-                            $this->redirect(array('view','id'=>$model->employeeID));
-                        }
-                    }
+                       $acHistory->personID = $model->employeeID;
+                                             
+                        if($persons->save() && $model->save() && $acHistory->save())
+                                      $this->redirect(array('view','id'=>$model->employeeID));
+                    
 		}
 
 		$this->render('create',array(
-			'model'=>$model,'persons'=>$persons
+			'model'=>$model,'persons'=>$persons,'acHistory'=>$acHistory,
 		));
+                
             //$persons = new Person();
             /*if (isset($_POST['cancel'])) {
                   $this->redirect(array('index'));
@@ -163,19 +160,25 @@ class EmployeeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+                
+                //$persons = new Person;
+                $persons = $this->loadPersonModel($id);
+               
+         //       $persons = $this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Employee']))
+		if(isset($_POST['Employee'],$_POST['Person']))
 		{
 			$model->attributes=$_POST['Employee'];
-			if($model->save())
+                        $persons->attributes=$_POST['Person'];
+			if($model->save() && $persons->save())
 				$this->redirect(array('view','id'=>$model->employeeID));
 		}
 
+		
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'persons'=>$persons
 		));
 	}
 
@@ -196,10 +199,21 @@ class EmployeeController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-		$dataProvider=new CActiveDataProvider('Employee');
-		$this->render('index',array(
+                yii::app()->session['administrationCode']=$id;
+                
+                $condition = "administrationCode='{$id}'";
+                
+		
+		$dataProvider=new CActiveDataProvider('Employee', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
+		
+                
+                
+                $this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
@@ -236,6 +250,13 @@ class EmployeeController extends Controller
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */
+         public function loadPersonModel($id)
+        {
+                $modelPerson=  Person::model()->findByPk((int)$id);             
+                if($modelPerson===null)   
+                        throw new CHttpException(404,'The requested page does not exist.');
+                return $modelPerson;
+        }
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='employee-form')

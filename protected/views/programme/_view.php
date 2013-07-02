@@ -30,10 +30,12 @@
 	<?php echo CHtml::encode($data->pro_startYear); ?>
 	<br />
         <br />
-	<?php echo CHtml::link(CHtml::encode("Syllabus"), array('syllabus/Index', 'id'=>$data->programmeCode)); ?>
-        <br />
         <?php echo CHtml::link(CHtml::encode("Batchs"), array('batch/Index', 'id'=>$data->programmeCode)); ?>
         <br />
+        <br />
+	<?php echo CHtml::link(CHtml::encode("Syllabus"), array('syllabus/Index', 'id'=>$data->programmeCode)); ?>
+        <br />
+        
 
 
 </div>

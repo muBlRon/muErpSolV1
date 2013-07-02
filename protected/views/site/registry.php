@@ -14,14 +14,12 @@ $this->breadcrumbs=array(
 </h1>
 <ol class="list-view">
     <li>
-        For accessing the <strong>School</strong> information please <?php echo CHtml::link('Click Here', array('School/index')); ?>.
+        For accessing the <strong>Academic</strong> information please <?php echo CHtml::link('Click Here', array('School/index')); ?>.
     </li>
     <li>
-        For getting the <strong>Administrative Department</strong> information please <?php echo CHtml::link('Click Here', array('Administration/index')); ?>.
+        For getting the <strong>Administrative</strong> information please <?php echo CHtml::link('Click Here', array('site/Administration')); ?>.
     </li>
-    <li>
-        For accessing the <strong>Faculty</strong> information please <?php echo CHtml::link('Click Here', array('Faculty/departmentView')); ?>.
-    </li>
+    
 </ol>
 <p>
 	

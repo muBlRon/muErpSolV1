@@ -3,8 +3,10 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-        'Administration'=>array('administration/index'),
-        'Human Resource'=>array('person/index'),
+    'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+    'HRM'=>array('site/HRM'),
+    'Administrative Departments'=>array('administration/list'),
 	'Employees',
 );
 

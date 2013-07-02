@@ -74,7 +74,12 @@ class DBhelper {
         
         
         
+    public static function getFullNameByPersonID($id)
+    {
+        $model = Person::model()->findByPk($id);
         
+        return  $model->per_title." ".$model->per_firstName." ".$model->per_lastName;
+    }
         
         
         
