@@ -60,19 +60,19 @@ class Student extends CActiveRecord
 		// will receive user inputs.
 		return array(
                     
-			array('personID, stu_academicYear, employeeID, stu_guardiansTelephone, stu_guardiansMobile', 'numerical', 'integerOnly'=>true),
+			array('personID, stu_academicYear, employeeID,  stu_guardiansMobile', 'numerical', 'integerOnly'=>true),
 			array('stu_totalScore, stu_optainedScore', 'numerical'),
-			array('studentID, stu_previousID, stu_guardiansTelephone, stu_guardiansMobile', 'length', 'max'=>15),
+			array('studentID, stu_previousID,  stu_guardiansMobile', 'length', 'max'=>12),
 			array('stu_academicTerm', 'length', 'max'=>1),
                         
-			array('stu_previousDegree', 'length', 'max'=>50),
-			array('stu_guardiansName, stu_guardiansEmail', 'length', 'max'=>100),
-			array('stu_guardiansPostcode, stu_financialSource, programmeCode', 'length', 'max'=>10),
+			array('stu_previousDegree', 'length', 'max'=>100),
+			array('stu_guardiansName ', 'length', 'max'=>100),
+			array(' stu_financialSource, programmeCode', 'length', 'max'=>10),
 			array('stu_financialSourceDescription', 'length', 'max'=>300),
 			array('studentID, stu_previousID', 'length', 'max'=>11),
                         array('stu_conditions, stu_financialSourceDescription', 'safe'),
                     
-                        array('stu_guardiansEmail', 'email'),
+                        
                         
                         array('stu_testDate', 'date'),
                         array('stu_academicTerm', 'in', 'range'=>array('1','2','3')),
@@ -117,13 +117,13 @@ class Student extends CActiveRecord
 			'stu_totalScore' => 'Total Score',
 			'stu_optainedScore' => 'Optained Score',
 			'stu_conditions' => 'Conditions',
-			'stu_previousID' => 'Previous',
+			'stu_previousID' => 'Previous ID',
 			'stu_previousDegree' => 'Previous Degree',
 			'stu_guardiansName' => 'Guardians Name',
-			'stu_guardiansPostcode' => 'Guardians Postcode',
-			'stu_guardiansTelephone' => 'Guardians Telephone',
+			'stu_guardiansAddress' => 'Guardians Address',
+			
 			'stu_guardiansMobile' => 'Guardians Mobile',
-			'stu_guardiansEmail' => 'Guardians Email',
+			
 			'stu_financialSource' => 'Financial Source',
 			'stu_financialSourceDescription' => 'Financial Source Description',
 			'employeeID' => 'EmployeeID',

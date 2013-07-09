@@ -34,7 +34,7 @@
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'pro_totalTerms'); ?>
-		<?php echo $form->textField($model,'pro_totalTerms',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'pro_totalTerms',array('size'=>2,'maxlength'=>12)); ?>
 		<?php echo $form->error($model,'pro_totalTerms'); ?>
 	</div>
 

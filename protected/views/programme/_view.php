@@ -6,9 +6,9 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('programmeCode')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->programmeCode), array('view', 'id'=>$data->programmeCode)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->programmeCode.":-  ".$data->pro_shortName), array('view', 'id'=>$data->programmeCode)); ?>
 	<br />
-
+        
 	<b><?php echo CHtml::encode($data->getAttributeLabel('pro_name')); ?>:</b>
 	<?php echo CHtml::encode($data->pro_name); ?>
 	<br />

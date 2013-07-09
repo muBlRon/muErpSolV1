@@ -15,6 +15,6 @@ $this->menu=array(
 
 
 <div id="form">
-    <h1>Take Admission</h1>
-<?php echo $this->renderPartial($form, array('model'=>$model)); ?>
+    <h1>Student Admission</h1>
+<?php echo $this->renderPartial($form, array('admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp),false,true); ?>
 </div>

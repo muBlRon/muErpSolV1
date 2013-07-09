@@ -94,7 +94,7 @@ class Admission extends CActiveRecord
 			'sectionName' => 'Section Name',
 			'batchName' => 'Batch Name',
 			'programmeCode' => 'Programme Code',
-			'adm_date' => 'Adm Date',
+			'adm_date' => 'Admission Date',
 			'adm_status' => 'Adm Status',
 			'adm_creditTransfered' => 'Adm Credit Transfered',
 			'adm_remarks' => 'Adm Remarks',

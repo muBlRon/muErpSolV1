@@ -83,9 +83,15 @@ class DBhelper {
         
     public static function getStudentId($sectionName,$batchName,$programmeCode)
     {
-       $sql = "SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER)) AS num ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, a.sectionName, a.programmeCode , s.sec_startId ,s.sec_endId,b.bat_term FROM `tbl_admission` as a, `tbl_section` as s, `tbl_batch` as b WHERE a.sectionName=s.sectionName and a.batchName=s.batchName and a.programmeCode=s.programmeCode and"
-        . " s.batchName=b.batchName and s.programmeCode=b.programmeCode and a.sectionName='{$sectionName}' and a.batchName={$batchName} and a.programmeCode='{$programmeCode}' GROUP BY a.programmeCode limit 1;";    
-    
+      
+        
+        $sql = " SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year "
+        . " FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode) "
+        . " RIGHT OUTER JOIN `tbl_batch` as b "
+        . " ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode) "
+        . " WHERE s.sectionName='{$sectionName}' and b.batchName={$batchName} and b.programmeCode='{$programmeCode}' GROUP BY b.programmeCode;"; 
+        
+        
        $list= Yii::app()->db->createCommand($sql)->query();
  
        $rs= array();
@@ -96,7 +102,8 @@ class DBhelper {
 
         }
         
-        $id=$rs['num']+1;
+        
+        ((!$rs['studentID'])?$id=1:$id=$rs['studentID']);
         
         if($id>=$rs['sec_startId'] && $id <=$rs['sec_endId'])
         {
@@ -104,7 +111,9 @@ class DBhelper {
             if($id<10)$id="00".$id;
             elseif($id<100)$id="0".$id;
             
-            return $id=$rs['acYear'].$rs['bat_term']."-".$rs['programmeCode']."-".$id;
+             $id=$rs['acYear'].$rs['bat_term']."-".$rs['programmeCode']."-".$id;
+             $rs['studentID']=$id;
+             return $rs;
         }
         else 
         {
@@ -112,7 +121,12 @@ class DBhelper {
         }
     }
         
+    public static function getProgrammeByCode($id)
+    {
+        $model=  Programme::model()->findByPk($id);
         
+        return $model->programmeCode.": ".$model->pro_name." [".$model->pro_shortName."]";
+    }
         
         
         

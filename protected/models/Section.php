@@ -50,18 +50,18 @@ class Section extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('batchName', 'numerical', 'integerOnly'=>true),
+			array('batchName, sec_startId, sec_endId', 'numerical', 'integerOnly'=>true),
 			array('sectionName', 'length', 'max'=>1),
 			array('programmeCode', 'length', 'max'=>10),
-			array('sec_startId, sec_endId', 'length', 'max'=>11),
+			array('sec_startId, sec_endId', 'length', 'max'=>3),
 			array('sec_startDate, sec_remarks', 'safe'),
 			
 
                         array('sectionName, sec_startDate,sec_endId, sec_startId', 'required', ),
-                    
+                    /*
                      array('sec_startId, sec_endId', 'match', 'pattern'=>'/^([0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9])$/',
                         'message'=>'ID has specific format like [111-115-001] .'),
-                    
+                    */
                      array('sectionName', 'match', 'pattern'=>'/^([A-Z])$/',
                         'message'=>'Section name have to be [A-Z] .'),
                     

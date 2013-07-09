@@ -29,6 +29,12 @@ class ZHtml extends CHtml
             return CHtml::activeRadioButtonList( $model, $attribute, self::enumItem($model,  $attribute), $htmlOptions);
         }
        
+         public static function enumCheckBox($model,$attribute, $htmlOptions=array())
+        {
+            
+            return CHtml::checkBoxList( $attribute, self::enumItem($model,  $attribute), $htmlOptions);
+        }
+       
 }
 
 ?>

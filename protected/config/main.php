@@ -53,13 +53,18 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=db_muEnSolV2p0',
+			'connectionString' => 'mysql:host=localhost;dbname=db_muEnSolV2p1',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
                         'tablePrefix' =>'tbl_',
-		),
+                ),
+                 
+                 
+                    
+            
+		
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

@@ -62,7 +62,20 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Admission;
+                
+                    $data = array();
+                    
+                    
+                    $person = new Person();
+                    $student=new Student();
+                    $admission = new Admission();
+                    $acHistory = new AcademicHistory();
+                    $jobExp= new JobExperiance();
+                    
+                    
+              //  echo $data['studentID']." ".$data['bat_term']." ".$data['bat_year'];
+                
+                
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -77,16 +90,40 @@ class AdmissionController extends Controller
                 if(isset($_POST['sectionName']))
                 {
                     
-                    $this->renderPartial('create',array(
-			'model'=>$model,'form'=>'_form_2'
-                    ));
-                    
+                    if($data = DBhelper::getStudentId($_POST['sectionName'], yii::app()->session['batName'],yii::app()->session['proCode']))
+                    {
+                        
+                        $student->studentID = $data['studentID'];
+                        $student->stu_academicTerm = $data['bat_term'];
+                        $student->stu_academicYear = $data['bat_year'];
+                        $student->programmeCode= $data['programmeCode'];
+                        $admission->studentID = $data['studentID'];
+                        $admission->sectionName = $data['sectionName'];
+                        $admission->batchName = $data['batchName'];
+                        $admission->programmeCode = $data['programmeCode'];
+                        echo $student->studentID;
+                        
+                       
+                        
+                        $this->renderPartial('create',array(
+                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp,'form'=>'_form_2'
+                        ),FALSE,TRUE);
+                    }
+                    else {
+ //                       echo "not";
+                        
+                        $admission->addErrors("No ID is Genereated For this Section!! please change the section.");
+                        echo CActiveForm::validate($admission);
+                        $this->renderPartial('create',array(
+			'admission'=>$admission,'form'=>'_form_1'
+                        ),false,true);    
+                    }
                 }
                 else {
                     
                     
                     $this->render('create',array(
-			'model'=>$model,'form'=>'_form_1'
+			'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_1'
                     ));
                     
                 }
@@ -134,7 +171,7 @@ class AdmissionController extends Controller
         public function actionGetSection()
         {
             
-                yii::app()->session['batchName']=$_POST['batchName'];
+                yii::app()->session['batName']=$_POST['batchName'];
 		if(isset($_POST['batchName']))
 		{
 			
