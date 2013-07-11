@@ -32,11 +32,11 @@ class AdmissionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','getAdmission'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete',),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -56,6 +56,20 @@ class AdmissionController extends Controller
 		));
 	}
 
+        
+        
+        public function actionGetAdmission()
+        {
+            
+            
+            $admission = new Admission();
+            $form = "_form_1";
+            $this->render('create',array(
+			'admission'=>$admission, 'form'=>$form
+                    ));
+            
+        }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -63,34 +77,23 @@ class AdmissionController extends Controller
 	public function actionCreate()
 	{
                 
+                    if(isset($_POST['sectionName']))
+                    {
+                        
+                        yii::app()->session['secName']=$_POST['sectionName'];
+                    }
+            
+                    
                     $data = array();
-                    
-                    
+                    $achGrid = array();
                     $person = new Person();
                     $student=new Student();
                     $admission = new Admission();
                     $acHistory = new AcademicHistory();
                     $jobExp= new JobExperiance();
                     
-                    
-              //  echo $data['studentID']." ".$data['bat_term']." ".$data['bat_year'];
-                
-                
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Admission']))
-		{
-			$model->attributes=$_POST['Admission'];
-			//if($model->save())
-				$this->redirect(array('student/create','id'=>$model->studentID));
-		}
-                
-                if(isset($_POST['sectionName']))
-                {
-                    
-                    if($data = DBhelper::getStudentId($_POST['sectionName'], yii::app()->session['batName'],yii::app()->session['proCode']))
+      
+                    if($data = DBhelper::getStudentId(yii::app()->session['secName'], yii::app()->session['batName'],yii::app()->session['proCode']))
                     {
                         
                         $student->studentID = $data['studentID'];
@@ -101,32 +104,68 @@ class AdmissionController extends Controller
                         $admission->sectionName = $data['sectionName'];
                         $admission->batchName = $data['batchName'];
                         $admission->programmeCode = $data['programmeCode'];
-                        echo $student->studentID;
+                        //echo $student->studentID;
                         
-                       
+                     
+                    }
+                    
+		 //Uncomment the following line if AJAX validation is needed
+
+
+		if(isset($_POST['Person'],$_POST['Student'],$_POST['Admission']))
+		{
+                    CActiveForm::validate($person);
+                    CActiveForm::validate($admission);
+                    CActiveForm::validate($student);
+                    
+                    
+                    $person->attributes = $_POST['Person'];       
+                    $admission->attributes = $_POST['Admission'];
+                    $student->attributes = $_POST['Student'];
+                    
+                    
+                    $acHistory->ach_degree= $_POST['ach_degree'];
+                    $acHistory->ach_group= $_POST['ach_group'];
+                    $acHistory->ach_board= $_POST['ach_board'];
+                    $acHistory->ach_institution= $_POST['ach_institution'];
+                    $acHistory->ach_passingYear= $_POST['ach_passingYear'];
+                    $acHistory->ach_result= $_POST['ach_result'];
+                    
+                    $jobExp->joe_employer= $_POST['joe_employer'];
+                    $jobExp->joe_address= $_POST['joe_address'];
+                    $jobExp->joe_contact= $_POST['joe_contact'];
+                    $jobExp->joe_position= $_POST['joe_position'];
+                    $jobExp->joe_startDate= $_POST['joe_startDate'];
+                    $jobExp->joe_endDate= $_POST['joe_endDate'];
+                    
+                    /*  
+                    $sortOrderAll = $_POST[''];
+                    if(count($sortOrderAll)>0)
+                    {
+                        foreach($sortOrderAll as $menuId=>$sortOrder)
+                        {
+                            $model=$this->loadModel($menuId);
+                            $model->sortOrder = $sortOrder;
+                            $model->save();
+                        }
+                    }
+                    */
+                    if($person->validate() && $student->validate() && $admission->validate()  )
+                        {   
+			if($person->save())
+			{	
+                           
+                            //$this->redirect(array('view','id'=>$model->batchName));
+                        }
+         
+		}
+                
                         
                         $this->renderPartial('create',array(
-                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp,'form'=>'_form_2'
-                        ),FALSE,TRUE);
-                    }
-                    else {
- //                       echo "not";
-                        
-                        $admission->addErrors("No ID is Genereated For this Section!! please change the section.");
-                        echo CActiveForm::validate($admission);
-                        $this->renderPartial('create',array(
-			'admission'=>$admission,'form'=>'_form_1'
-                        ),false,true);    
-                    }
-                }
-                else {
+                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
+                        ),false,false);
                     
                     
-                    $this->render('create',array(
-			'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_1'
-                    ));
-                    
-                }
                 
 		
 	}
@@ -293,10 +332,12 @@ class AdmissionController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='admission-form')
-		{
+            
+	//	if(isset($_POST['ajax']) && $_POST['ajax']==='admission-form')
+	//	{
+                   // echo "Bismillah Hir Rahmanur Rahim";
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
-		}
+	//	}
 	}
 }

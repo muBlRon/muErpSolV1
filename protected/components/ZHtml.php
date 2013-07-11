@@ -2,7 +2,7 @@
 
 class ZHtml extends CHtml
 {
-        public static function enumItem($model,$attribute)
+        private function enumItem($model,$attribute)
         {
                 $attr=$attribute;
                 self::resolveName($model,$attr);
@@ -16,15 +16,29 @@ class ZHtml extends CHtml
                 return $values;
         }  
 
-       public static function enumDropDownList($model, $attribute, $htmlOptions)
+       public static function enumActiveDropDownList($model, $attribute, $htmlOptions)
        {
           return CHtml::activeDropDownList( $model, $attribute,ZHtml::enumItem($model,  $attribute), $htmlOptions);
        
        
        }
 
+       public static function enumDropDownList($name, $select,$model, $htmlOptions)
+       {
+           if(strpbrk($name, '[]'))
+           {
+               $attribute = str_replace(substr($name, -3), '', $name);
+           }
+           
+           //echo $name;
+           
+
+           return CHtml::dropDownList( $name, $select,ZHtml::enumItem($model,  $attribute), $htmlOptions);
        
-        public static function enumRadioButtonList($model, $attribute, $htmlOptions=array())
+       
+       }
+       
+        public static function enumActiveRadioButtonList($model, $attribute, $htmlOptions=array())
         {
             return CHtml::activeRadioButtonList( $model, $attribute, self::enumItem($model,  $attribute), $htmlOptions);
         }

@@ -67,6 +67,9 @@ class Student extends CActiveRecord
                         
 			array('stu_previousDegree', 'length', 'max'=>100),
 			array('stu_guardiansName ', 'length', 'max'=>100),
+                    
+                    array('stu_guardiansName,stu_guardiansAddress, stu_guardiansMobile ', 'required'),
+                    
 			array(' stu_financialSource, programmeCode', 'length', 'max'=>10),
 			array('stu_financialSourceDescription', 'length', 'max'=>300),
 			array('studentID, stu_previousID', 'length', 'max'=>11),

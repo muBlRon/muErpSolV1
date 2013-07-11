@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
 </h1>
 <ol class="list-view">
     <li>
-        For  <strong>new student admission </strong> please <?php echo CHtml::link('Click Here', array('Admission/create')); ?>.
+        For  <strong>new student admission </strong> please <?php echo CHtml::link('Click Here', array('Admission/getAdmission')); ?>.
     </li>
     <li>
         For Old Student Admission for any new <strong> programme </strong> please <?php echo CHtml::link('Click Here', array('Admission/create')); ?>.

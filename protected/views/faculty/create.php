@@ -19,4 +19,9 @@ $this->menu=array(
 
 <h1>Create Faculty</h1>
 
-    <?php echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons,'acHistory'=>$acHistory,)); ?>
+    <?php 
+    
+        
+            echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons,'acHistory'=>$acHistory,)); 
+        
+        ?>
