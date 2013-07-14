@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admission-form',
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
         'enableClientValidation'=>false,
 )); ?>
 
@@ -35,7 +35,7 @@
                   
             </div>
             <div class="row">
-                    <?php echo $form->labelEx($person,'per_title'); ?>
+                    <?php  echo $form->labelEx($person,'per_title'); ?>
                     <?php echo ZHtml::enumActiveDropDownList( $person,'per_title',''); ?>
                     <?php echo $form->error($person,'per_title'); ?>
             </div>
@@ -160,7 +160,7 @@
             <div class="row">
                     <?php echo $form->labelEx($person,'per_convictionDetails'); ?>
                     <?php echo $form->textArea($person,'per_convictionDetails'); ?>
-                    <?php echo $form->error($person,'per_convictionDetails'); ?>
+                    <?php echo $form->error($person,'per_convictionDetails');  ?>
             </div>
         
         </div>
@@ -171,7 +171,7 @@
                 
             </div>
             <div class="row">
-                <?php echo $form->errorSummary($admission); ?>
+                <?php  echo $form->errorSummary($admission); ?>
                     <?php echo $form->errorSummary($student); ?>
             </div>
             <div class="row">
@@ -310,7 +310,7 @@
                             <td><?php echo CHtml::textField('joe_employer[0]',$jobExp->joe_employer[0],array("style"=>"width:150px;")); ?></td>
                             <td><?php echo CHtml::textArea('joe_address[0]',$jobExp->joe_address[0],array('style'=>'width:150px;')); ?></td>
                             <td><?php echo CHtml::textField('joe_contact[0]',$jobExp->joe_contact[0],array("style"=>"width:80px;")); ?></td>
-                            <td><?php echo CHtml::textField('joe_postion[0]',$jobExp->joe_position[0],array("style"=>"width:100px;")); ?></td>
+                            <td><?php echo CHtml::textField('joe_position[0]',$jobExp->joe_position[0],array("style"=>"width:100px;")); ?></td>
                             
                              <td>
                                 <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
@@ -348,7 +348,7 @@
                             <td><?php echo CHtml::textField('joe_employer[1]',$jobExp->joe_employer[1],array("style"=>"width:150px;")); ?></td>
                             <td><?php echo CHtml::textArea('joe_address[1]',$jobExp->joe_address[1],array('style'=>'width:150px;')); ?></td>
                             <td><?php echo CHtml::textField('joe_contact[1]',$jobExp->joe_contact[1],array("style"=>"width:80px;")); ?></td>
-                            <td><?php echo CHtml::textField('joe_postion[1]',$jobExp->joe_position[1],array("style"=>"width:100px;")); ?></td>
+                            <td><?php echo CHtml::textField('joe_position[1]',$jobExp->joe_position[1],array("style"=>"width:100px;")); ?></td>
                             
                              <td>
                                 <?php $this->widget('zii.widgets.jui.CJuiDatePicker',
@@ -391,7 +391,9 @@
         </div>
 	<div class="row buttons">
 		
-            <?php echo CHtml::ajaxSubmitButton('submit', $this->createUrl('create'), array('update'=>'#form'));?>
+            <?php //echo CHtml::ajaxSubmitButton('submit', $this->createUrl('create'), array('update'=>'#form'));
+            echo CHtml::SubmitButton('submit');
+            ?>
 	</div>
 
 <?php $this->endWidget(); ?>

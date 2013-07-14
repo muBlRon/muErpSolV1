@@ -76,7 +76,7 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-                
+                $flag=false;
                     if(isset($_POST['sectionName']))
                     {
                         
@@ -85,7 +85,7 @@ class AdmissionController extends Controller
             
                     
                     $data = array();
-                    $achGrid = array();
+                    
                     $person = new Person();
                     $student=new Student();
                     $admission = new Admission();
@@ -110,10 +110,12 @@ class AdmissionController extends Controller
                     }
                     
 		 //Uncomment the following line if AJAX validation is needed
+                    
 
 
-		if(isset($_POST['Person'],$_POST['Student'],$_POST['Admission']))
+		if(isset($_POST['Person']) && isset($_POST['Admission']) && isset($_POST['Student']))
 		{
+                    $flag = TRUE;
                     CActiveForm::validate($person);
                     CActiveForm::validate($admission);
                     CActiveForm::validate($student);
@@ -138,33 +140,90 @@ class AdmissionController extends Controller
                     $jobExp->joe_startDate= $_POST['joe_startDate'];
                     $jobExp->joe_endDate= $_POST['joe_endDate'];
                     
-                    /*  
-                    $sortOrderAll = $_POST[''];
-                    if(count($sortOrderAll)>0)
-                    {
-                        foreach($sortOrderAll as $menuId=>$sortOrder)
-                        {
-                            $model=$this->loadModel($menuId);
-                            $model->sortOrder = $sortOrder;
-                            $model->save();
-                        }
-                    }
-                    */
-                    if($person->validate() && $student->validate() && $admission->validate()  )
+                    
+                    
+                        if($person->validate() && $student->validate() && $admission->validate()  )
                         {   
-			if($person->save())
-			{	
-                           
-                            //$this->redirect(array('view','id'=>$model->batchName));
+                            
+                           // echo "Bismillah Hir Rah Manir Rahim";
+                    
+                                
+
+                            
+                                if($person->save())
+                                {	
+                                    
+                                $student->personID= $person->personID;
+                                        
+                                    $i=0; $achFlag=false;
+                                    foreach($acHistory->ach_degree as $item)
+                                    {
+                                        
+                                            if ($item) 
+                                            {   $achFlag= true;
+                                                if($i==0){
+                                                    $sql = "INSERT INTO tbl_academichistory (`ach_degree`, `ach_group`, `ach_institution`, `ach_board`, `ach_passingYear`, `ach_result`, `personID`) VALUES"; 
+                                                }
+                                                else $coma=",";
+
+
+                                                $sql .=$coma."  ( '{$item}', '{$acHistory->ach_group[$i]}', '{$acHistory->ach_institution[$i]}', '{$acHistory->ach_board[$i]}', '{$acHistory->ach_passingYear[$i]}', '{$acHistory->ach_result[$i]}', '{$person->personID}')"; 
+                                            }
+                                        
+                                        
+                               
+                                        $i++;
+                                    }
+                                    
+                                     $i=0; $joeFlag=false;
+                                    foreach($jobExp->joe_employer as $item)
+                                    {
+                                        
+                                            if ($item) 
+                                            {   $joeFlag= true;
+                                                if($i==0){
+                                                    $sql2 = "INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES"; 
+                                                }
+                                                else $coma=",";
+
+
+                                                $sql2 .=$coma."  ( '{$item}', '{$jobExp->joe_employer[$i]}', '{$jobExp->joe_address[$i]}', '{$jobExp->joe_contact[$i]}', '{$jobExp->joe_position[$i]}', '{$jobExp->joe_startDate[$i]}', '{$jobExp->joe_endDate[$i]}', '{$person->personID}')"; 
+                                            }
+                                        
+                                        
+                               
+                                        $i++;
+                                    }
+                               
+
+                                   
+                                    if($student->save() && $admission->save())
+                                    {
+                                        if($achFlag)Yii::app()->db->createCommand($sql)->execute();
+                                        if($joeFlag)Yii::app()->db->createCommand($sql2)->execute();
+                                        $this->redirect(array('getAdmission'));
+                                    }
+
+                                }
+                            
+                            
+                            
                         }
-         
 		}
                 
-                        
+                        if(!$flag)
+                        {
                         $this->renderPartial('create',array(
                             'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
                         ),false,false);
-                    
+                        }
+                        else {
+                  
+                                  $this->render('create',array(
+                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
+                        ),false,false);
+                            
+                        }
                     
                 
 		

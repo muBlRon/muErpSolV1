@@ -68,14 +68,14 @@ class Person extends CActiveRecord
 		// will receive user inputs.
 		return array(
                     
-                        array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile, per_entryDate,per_bloodGroup,per_presentAddress,per_parmanentAddress,per_postCode', 'required'),
+                        array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile,per_bloodGroup,per_presentAddress,per_parmanentAddress,per_postCode', 'required'),
 			array(' per_telephone, per_mobile, ', 'numerical', 'integerOnly'=>true),
 			array('per_email, ', 'email'),
-                        array('per_dateofBirth', 'date'),
+                        
                         array('per_criminalConviction', 'boolean'),
                     
                         array('per_title', 'in', 'range'=>array('Mr.','Ms.','Mrs.','Dr.','Prof.','Engr.','Adv.')),
-                        array('per_bloodGroup', 'in', 'range'=>array('O','A+','B+','AB+','O-','A-','B-','AB-')),
+                        array('per_bloodGroup', 'in', 'range'=>array('O+','A+','B+','AB+','O-','A-','B-','AB-')),
                         array('per_maritulStatus', 'in', 'range'=>array('single','married')),
                         
                     
