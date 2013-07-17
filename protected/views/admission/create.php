@@ -6,16 +6,16 @@ $this->breadcrumbs=array(
 	'Admission'=>array('index'),
 	'Create',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'List Admission', 'url'=>array('index')),
 	array('label'=>'Manage Admission', 'url'=>array('admin')),
-);
+);*/
 ?>
 
 
 <div id="form">
-    <h1>Student Admission</h1>
+    <h3>Student Admission</h3>
 <?php 
 
         if ($form=="_form_1")

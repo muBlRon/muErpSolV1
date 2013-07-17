@@ -9,30 +9,31 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admission-form',
 	'enableAjaxValidation'=>false,
-        'enableClientValidation'=>false,
+        'enableClientValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
 	
 
         <div class="title">
-            <h3><strong>Programme:</strong> <?php  echo DBhelper::getProgrammeByCode($admission->programmeCode); ?></h3>
-            <h3><strong>Batch:</strong> <?php echo $admission->batchName.FormUtil::getBatchNameSufix($admission->batchName); ?>  <strong>Section:</strong> <?php echo $admission->sectionName; ?></h3>
-            <h3><strong>Academic Year:</strong> <?php  echo FormUtil::getTerm($student->stu_academicTerm)." ".$student->stu_academicYear;  ?></h3>
-            <h2><strong>Student ID:</strong> <?php echo $student->studentID;  ?></h2>
+            <h4><strong>Programme:</strong> <?php  echo DBhelper::getProgrammeByCode($admission->programmeCode); ?></h4>
+            <h4><strong>Batch:</strong> <?php echo $admission->batchName.FormUtil::getBatchNameSufix($admission->batchName); ?>  <strong>Section:</strong> <?php echo $admission->sectionName; ?></h4>
+            <h4><strong>Academic Year:</strong> <?php  echo FormUtil::getTerm($student->stu_academicTerm)." ".$student->stu_academicYear;  ?></h4>
+            <h3><strong>Student ID:</strong> <?php echo $student->studentID;  ?></h3>
         
         </div>
         <hr/>
         <div id="step1">
-
+            
             <div class="title">
                 <h4>Personal Details</h4>
                 
             </div>
+            <p class="note">Fields with <span class="required">*</span> are required.</p>
             <div class="row">
-                <?php echo $form->errorSummary($person); ?>
-                  
+                <?php //echo $form->errorSummary($person);?>
+                
             </div>
             <div class="row">
                     <?php  echo $form->labelEx($person,'per_title'); ?>
@@ -153,11 +154,22 @@
             </div> 
             <div class="row">
                     <?php echo $form->labelEx($person,'per_criminalConviction'); ?>
-                    <?php echo CHtml::checkBox('per_criminalConviction',false); ?>
+                    <?php echo CHtml::checkBox('per_criminalConviction',$person->per_criminalConviction,
+                            array('onclick'=>'javascript:function hideTextArea(this){
+e=document.getElementById("crimiCon");
+
+if (this.checked==true){
+e.style.visibility=visible;
+}else{
+e.style.visibility=hidden;
+}
+
+}
+                            ')); ?>
                     <?php echo $form->error($person,'per_criminalConviction'); ?>
             </div>
             
-            <div class="row">
+            <div id="crimiCon" class="row" >
                     <?php echo $form->labelEx($person,'per_convictionDetails'); ?>
                     <?php echo $form->textArea($person,'per_convictionDetails'); ?>
                     <?php echo $form->error($person,'per_convictionDetails');  ?>
@@ -171,8 +183,8 @@
                 
             </div>
             <div class="row">
-                <?php  echo $form->errorSummary($admission); ?>
-                    <?php echo $form->errorSummary($student); ?>
+                <?php  //echo $form->errorSummary($admission); ?>
+                    <?php //echo $form->errorSummary($student); ?>
             </div>
             <div class="row">
                     <?php echo $form->labelEx($admission,'adm_date'); ?>
@@ -222,8 +234,9 @@
                     <?php echo $form->error($student,'stu_previousDegree'); ?>
             </div>
         </div>
+        <hr/>
         <div id="step3">
-            <hr/>
+            
             <div class="title">
                 <h4>Academic Details</h4>
                 
@@ -391,9 +404,12 @@
         </div>
 	<div class="row buttons">
 		
-            <?php //echo CHtml::ajaxSubmitButton('submit', $this->createUrl('create'), array('update'=>'#form'));
-            echo CHtml::SubmitButton('submit');
+            <?php 
+           echo CHtml::hiddenField('preview', 1);
+            echo TbHtml::submitButton('Submit', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'size' => TbHtml::BUTTON_SIZE_LARGE));
+            
             ?>
+            
 	</div>
 
 <?php $this->endWidget(); ?>

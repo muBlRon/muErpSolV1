@@ -1,5 +1,5 @@
 <?php /* @var $this Controller */ ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,7 +14,8 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/stepByStepForm.css" />
+        <?php Yii::app()->bootstrap->register(); ?>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -26,10 +27,14 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
+        <div class="navbar">
+                    <div class="navbar-inner">
+        
+	
+		<?php  $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'Home', 'url'=>array('/site/index'), 'itemOptions'=>array('class'=>'about')),
+
                                 array('label'=>'Registry', 'url'=>array('site/registry')),
                                 array('label'=>'Student Administration', 'url'=>array('site/studentAdministration')),
                                 array('label'=>'Examination', 'url'=>array('/employee/index')),
@@ -38,12 +43,20 @@
                             	array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
-		)); ?>
-	</div><!-- mainmenu -->
+                    'htmlOptions'=>array('class'=>'nav')
+		));  ?>
+                        <a class="brand" href="#"><?php
+                      
+                        echo str_replace(array(Yii::app()->name.' -','Site'),' ',$this->pageTitle) ; ?></a>
+                    </div>
+        </div>
+                
 	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
+		<!-- breadcrumbs -->
+                
+                    <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                    'links' => $this->breadcrumbs,
+                    )); ?>
 	<?php endif?>
 
 	<?php echo $content; ?>
@@ -56,7 +69,7 @@
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
-</div><!-- page -->
+</div><!-- page --> 
 
 </body>
 </html>

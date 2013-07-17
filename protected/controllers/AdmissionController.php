@@ -145,68 +145,77 @@ class AdmissionController extends Controller
                         if($person->validate() && $student->validate() && $admission->validate()  )
                         {   
                             
-                           // echo "Bismillah Hir Rah Manir Rahim";
-                    
-                                
-
+                            //echo "Bismillah Hir Rah Manir Rahim";
+                            //echo "pre:".$_REQUEST['preview'];
+                            //echo "isset".isset($_REQUEST['preview']);
+                               if(isset($_REQUEST['preview']) && $_REQUEST['preview']==1)
+                               {
+                                    $this->render('preview',array(
+                                    'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
+                                    ),false,false);
+                               }
+                               elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==0)
+                               { //echo "saved:".$_REQUEST['preview'];
                             
-                                if($person->save())
-                                {	
-                                    
-                                $student->personID= $person->personID;
-                                        
-                                    $i=0; $achFlag=false;
-                                    foreach($acHistory->ach_degree as $item)
-                                    {
-                                        
-                                            if ($item) 
-                                            {   $achFlag= true;
-                                                if($i==0){
-                                                    $sql = "INSERT INTO tbl_academichistory (`ach_degree`, `ach_group`, `ach_institution`, `ach_board`, `ach_passingYear`, `ach_result`, `personID`) VALUES"; 
+                                    if($person->save())
+                                    {	
+
+                                    $student->personID= $person->personID;
+
+                                        $i=0; $achFlag=false;
+                                        foreach($acHistory->ach_degree as $item)
+                                        {
+
+                                                if ($item) 
+                                                {   $achFlag= true;
+                                                    if($i==0){
+                                                        $sql = "INSERT INTO tbl_academichistory (`ach_degree`, `ach_group`, `ach_institution`, `ach_board`, `ach_passingYear`, `ach_result`, `personID`) VALUES"; 
+                                                    }
+                                                    else $coma=",";
+
+
+                                                    $sql .=$coma."  ( '{$item}', '{$acHistory->ach_group[$i]}', '{$acHistory->ach_institution[$i]}', '{$acHistory->ach_board[$i]}', '{$acHistory->ach_passingYear[$i]}', '{$acHistory->ach_result[$i]}', '{$person->personID}')"; 
                                                 }
-                                                else $coma=",";
 
 
-                                                $sql .=$coma."  ( '{$item}', '{$acHistory->ach_group[$i]}', '{$acHistory->ach_institution[$i]}', '{$acHistory->ach_board[$i]}', '{$acHistory->ach_passingYear[$i]}', '{$acHistory->ach_result[$i]}', '{$person->personID}')"; 
-                                            }
-                                        
-                                        
-                               
-                                        $i++;
-                                    }
-                                    
-                                     $i=0; $joeFlag=false;
-                                    foreach($jobExp->joe_employer as $item)
-                                    {
-                                        
-                                            if ($item) 
-                                            {   $joeFlag= true;
-                                                if($i==0){
-                                                    $sql2 = "INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES"; 
+
+                                            $i++;
+                                        }
+
+                                         $i=0; $joeFlag=false;
+                                        foreach($jobExp->joe_employer as $item)
+                                        {
+
+                                                if ($item) 
+                                                {   $joeFlag= true;
+                                                    if($i==0){
+                                                        $sql2 = "INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES"; 
+                                                    }
+                                                    else $coma=",";
+
+
+                                                    $sql2 .=$coma."  ( '{$item}', '{$jobExp->joe_employer[$i]}', '{$jobExp->joe_address[$i]}', '{$jobExp->joe_contact[$i]}', '{$jobExp->joe_position[$i]}', '{$jobExp->joe_startDate[$i]}', '{$jobExp->joe_endDate[$i]}', '{$person->personID}')"; 
                                                 }
-                                                else $coma=",";
 
 
-                                                $sql2 .=$coma."  ( '{$item}', '{$jobExp->joe_employer[$i]}', '{$jobExp->joe_address[$i]}', '{$jobExp->joe_contact[$i]}', '{$jobExp->joe_position[$i]}', '{$jobExp->joe_startDate[$i]}', '{$jobExp->joe_endDate[$i]}', '{$person->personID}')"; 
-                                            }
-                                        
-                                        
-                               
-                                        $i++;
+
+                                            $i++;
+                                        }
+
+
+
+                                        if($student->save() && $admission->save())
+                                        {
+                                            if($achFlag)Yii::app()->db->createCommand($sql)->execute();
+                                            if($joeFlag)Yii::app()->db->createCommand($sql2)->execute();
+                                            $this->redirect(array('getAdmission'));
+                                        }
+
                                     }
+                              }
+                            
+                                     //     $this->redirect(array('getAdmission'));
                                
-
-                                   
-                                    if($student->save() && $admission->save())
-                                    {
-                                        if($achFlag)Yii::app()->db->createCommand($sql)->execute();
-                                        if($joeFlag)Yii::app()->db->createCommand($sql2)->execute();
-                                        $this->redirect(array('getAdmission'));
-                                    }
-
-                                }
-                            
-                            
                             
                         }
 		}

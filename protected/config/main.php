@@ -1,5 +1,5 @@
 <?php
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -8,7 +8,9 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
-
+      /* 'aliases' => array(
+                'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
+            ),*/
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -16,6 +18,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+                'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
@@ -26,6 +29,7 @@ return array(
 			'password'=>'success91',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+                        'generatorPaths' => array('bootstrap.gii'),
 		),
 		
 	),
@@ -91,7 +95,9 @@ return array(
                     'connectionID' => 'db',
                     'sessionTableName' => 'tbl_YiiMySession',
                 ),
-            
+                'bootstrap' => array(
+                'class' => 'bootstrap.components.TbApi',   
+                  ),
 	),//end of 'component'
 
 	// application-level parameters that can be accessed
