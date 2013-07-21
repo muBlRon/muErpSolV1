@@ -26,5 +26,9 @@ $this->menu=array(
         {
             echo $this->renderPartial($form, array('admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp),false,true); 
         }
+        elseif ($form=="_form_3")
+        {
+            echo $this->renderPartial($form, array('admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp),false,true); 
+        }
 ?>
 </div>

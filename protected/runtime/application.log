@@ -4193,3 +4193,263 @@ Stack trace:
 REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
 in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (166)
 in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 08:27:26 [error] [php] YiiBase::include(TBHtml.php) [<a href='function.YiiBase-include'>function.YiiBase-include</a>]: failed to open stream: No such file or directory (C:\wamp\Dropbox\yii_framework\YiiBase.php:421)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\views\admission\preview.php(170): spl_autoload_call()
+#1 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(126): require()
+#2 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(95): AdmissionController->renderInternal()
+#3 C:\wamp\Dropbox\yii_framework\web\CController.php(869): AdmissionController->renderFile()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(782): AdmissionController->renderPartial()
+#5 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(155): AdmissionController->render()
+#6 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): AdmissionController->runAction()
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CAccessControlFilter->filter()
+#11 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): AdmissionController->filterAccessControl()
+#12 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#13 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp\Dropbox\yii_framework\web\CController.php(265): AdmissionController->runActionWithFilters()
+#15 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): AdmissionController->run()
+#16 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#17 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#18 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+in C:\wamp\Dropbox\muErpSolV1\protected\views\admission\preview.php (170)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (155)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 09:01:23 [error] [exception.CException] exception 'CException' with message 'Property "CJuiDatePicker.default" is not defined.' in C:\wamp\Dropbox\yii_framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\web\CWidgetFactory.php(161): CComponent->__set('default', '2013-07-17')
+#1 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(AdmissionController), 'zii.widgets.jui...', Array)
+#2 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.jui...', Array)
+#3 C:\wamp\Dropbox\muErpSolV1\protected\views\admission\_form_2.php(341): CBaseController->widget('zii.widgets.jui...', Array)
+#4 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(126): require('C:\wamp\Dropbox...')
+#5 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\Dropbox...', Array, true)
+#6 C:\wamp\Dropbox\yii_framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\Dropbox...', Array, true)
+#7 C:\wamp\Dropbox\muErpSolV1\protected\views\admission\create.php(27): CController->renderPartial('_form_2', Array, false, true)
+#8 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(126): require('C:\wamp\Dropbox...')
+#9 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\Dropbox...', Array, true)
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\Dropbox...', Array, true)
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#12 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(232): CController->render('create', Array, false, false)
+#13 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#14 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#21 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#23 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#24 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#25 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=admission/create
+---
+2013/07/17 09:04:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '  ( 'ss', 'ss', 'sss', 'ss', 'ss', '2013-07-17', '2013-07-10', '163'),  ( 'ee', ' at line 1. The SQL statement executed was: INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES,  ( 'ss', 'ss', 'sss', 'ss', 'ss', '2013-07-17', '2013-07-10', '163'),  ( 'ee', 'ee', 'eee', 'ee', 'ee', '', '', '163').
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (209)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 09:04:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '  ( 'ss', 'ss', 'sss', 'ss', 'ss', '2013-07-17', '2013-07-10', '163'),  ( 'ee', ' at line 1. The SQL statement executed was: INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES,  ( 'ss', 'ss', 'sss', 'ss', 'ss', '2013-07-17', '2013-07-10', '163'),  ( 'ee', 'ee', 'eee', 'ee', 'ee', '', '', '163')' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(209): CDbCommand->execute()
+#1 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#2 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#12 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=admission/create
+---
+2013/07/17 09:15:47 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php:205) (C:\wamp\Dropbox\yii_framework\web\CHttpRequest.php:789)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(210): AdmissionController->redirect()
+#1 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#2 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): AdmissionController->runAction()
+#4 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): AdmissionController->filterAccessControl()
+#7 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(265): AdmissionController->runActionWithFilters()
+#10 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): AdmissionController->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (210)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 09:16:23 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php:184) (C:\wamp\Dropbox\yii_framework\web\CHttpRequest.php:789)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(212): AdmissionController->redirect()
+#1 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#2 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): AdmissionController->runAction()
+#4 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): AdmissionController->filterAccessControl()
+#7 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(265): AdmissionController->runActionWithFilters()
+#10 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): AdmissionController->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (212)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 09:21:46 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php:184) (C:\wamp\Dropbox\yii_framework\web\CHttpRequest.php:789)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(212): AdmissionController->redirect()
+#1 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#2 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): AdmissionController->runAction()
+#4 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): AdmissionController->filterAccessControl()
+#7 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(265): AdmissionController->runActionWithFilters()
+#10 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): AdmissionController->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (212)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/17 09:26:49 [error] [php] Cannot modify header information - headers already sent by (output started at C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php:184) (C:\wamp\Dropbox\yii_framework\web\CHttpRequest.php:789)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(212): AdmissionController->redirect()
+#1 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#2 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): AdmissionController->runAction()
+#4 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): AdmissionController->filterAccessControl()
+#7 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(265): AdmissionController->runActionWithFilters()
+#10 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): AdmissionController->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#13 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create&preview=0
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (212)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/18 05:01:59 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;.
+in C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php (95)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (96)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/18 05:01:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\db\CDbCommand.php(376): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php(95): CDbCommand->query()
+#2 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(96): DBhelper::getStudentId(NULL, NULL, NULL)
+#3 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#14 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
+---
+2013/07/18 06:17:46 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;.
+in C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php (95)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (96)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/18 06:17:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\db\CDbCommand.php(376): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php(95): CDbCommand->query()
+#2 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(96): DBhelper::getStudentId(NULL, NULL, NULL)
+#3 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#14 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
+---
+2013/07/18 07:47:40 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;.
+in C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php (95)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (96)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/18 07:47:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\db\CDbCommand.php(376): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php(95): CDbCommand->query()
+#2 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(96): DBhelper::getStudentId(NULL, NULL, NULL)
+#3 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#14 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
+---
+2013/07/18 07:47:44 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;.
+in C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php (95)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (96)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/18 07:47:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\db\CDbCommand.php(376): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php(95): CDbCommand->query()
+#2 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(96): DBhelper::getStudentId(NULL, NULL, NULL)
+#3 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#14 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
+---

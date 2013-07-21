@@ -154,18 +154,7 @@
             </div> 
             <div class="row">
                     <?php echo $form->labelEx($person,'per_criminalConviction'); ?>
-                    <?php echo CHtml::checkBox('per_criminalConviction',$person->per_criminalConviction,
-                            array('onclick'=>'javascript:function hideTextArea(this){
-e=document.getElementById("crimiCon");
-
-if (this.checked==true){
-e.style.visibility=visible;
-}else{
-e.style.visibility=hidden;
-}
-
-}
-                            ')); ?>
+                    <?php echo $form->checkBox($person,'per_criminalConviction', array('value'=>1, 'uncheckValue'=>0)); ?>
                     <?php echo $form->error($person,'per_criminalConviction'); ?>
             </div>
             
@@ -255,40 +244,40 @@ e.style.visibility=hidden;
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo ZHtml::enumDropDownList('ach_degree[0]',$acHistory->ach_degree[0],$acHistory,array('prompt' => '--Select Degree--','value' => '0',)); ?></td>
+                            <td><?php echo CHtml::dropDownList('ach_degree[0]',$acHistory->ach_degree[0],array('S.S.C.'=>'S.S.C.','DAKHIL'=>'DAKHIL','GCE O-Level'=>'GCE O-Level'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
                         
-                            <td><?php echo ZHtml::enumDropDownList('ach_group[0]',$acHistory->ach_group[0],$acHistory,array('prompt' => '--Select Group--','value' => '0',)); ?></td>
-                            <td><?php echo ZHtml::enumDropDownList('ach_board[0]',$acHistory->ach_board[0],$acHistory,array('prompt' => '--Select Board--','value' => '0',)); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_group[0]',$acHistory->ach_group[0],$acHistory,array('prompt' => '--Select Group--','value' => '0','style'=>'width:145px;')); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_board[0]',$acHistory->ach_board[0],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[0]',$acHistory->ach_institution[0],array("style"=>"width:100px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_passingYear[0]',$acHistory->ach_passingYear[0],array("style"=>"width:50px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[0]',$acHistory->ach_result[0],array("style"=>"width:50px;")); ?></td>
+                            <td><?php echo CHtml::textField('ach_passingYear[0]',$acHistory->ach_passingYear[0],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[0]',$acHistory->ach_result[0],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo ZHtml::enumDropDownList('ach_degree[1]',$acHistory->ach_degree[1],$acHistory,array('prompt' => '--Select Degree--','value' => '0',)); ?></td>
+                            <td><?php echo CHtml::dropDownList('ach_degree[1]',$acHistory->ach_degree[1],array('H.S.C.'=>'H.S.C.','ALIM'=>'ALIM','GCE A-Level'=>'GCE A-Level'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
                         
-                            <td><?php echo ZHtml::enumDropDownList('ach_group[1]',$acHistory->ach_group[1],$acHistory,array('prompt' => '--Select Group--','value' => '0',)); ?></td>
-                            <td><?php echo ZHtml::enumDropDownList('ach_board[1]',$acHistory->ach_board[1],$acHistory,array('prompt' => '--Select Board--','value' => '0',)); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_group[1]',$acHistory->ach_group[1],$acHistory,array('prompt' => '--Select Group--','value' => '0','style'=>'width:145px;')); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_board[1]',$acHistory->ach_board[1],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[1]',$acHistory->ach_institution[1],array("style"=>"width:100px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_passingYear[1]',$acHistory->ach_passingYear[1],array("style"=>"width:50px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[1]',$acHistory->ach_result[1],array("style"=>"width:50px;")); ?></td>
+                            <td><?php echo CHtml::textField('ach_passingYear[1]',$acHistory->ach_passingYear[1],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[1]',$acHistory->ach_result[1],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo ZHtml::enumDropDownList('ach_degree[2]',$acHistory->ach_degree[2],$acHistory,array('prompt' => '--Select Degree--','value' => '0',)); ?></td>
+                            <td><?php echo CHtml::dropDownList('ach_degree[2]',$acHistory->ach_degree[2],array('Graduation'=>'Graduation','Deploma'=>'Deploma'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
                         
-                            <td><?php echo ZHtml::enumDropDownList('ach_group[2]',$acHistory->ach_group[2],$acHistory,array('prompt' => '--Select Group--','value' => '0',)); ?></td>
-                            <td><?php echo ZHtml::enumDropDownList('ach_board[2]',$acHistory->ach_board[2],$acHistory,array('prompt' => '--Select Board--','value' => '0',)); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_group[2]',$acHistory->ach_group[2],$acHistory,array('prompt' => '--Select Group--','value' => '0','style'=>'width:145px;')); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_board[2]',$acHistory->ach_board[2],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[2]',$acHistory->ach_institution[2],array("style"=>"width:100px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_passingYear[2]',$acHistory->ach_passingYear[2],array("style"=>"width:50px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[2]',$acHistory->ach_result[2],array("style"=>"width:50px;")); ?></td>
+                            <td><?php echo CHtml::textField('ach_passingYear[2]',$acHistory->ach_passingYear[2],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[2]',$acHistory->ach_result[2],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo ZHtml::enumDropDownList('ach_degree[3]',$acHistory->ach_degree[3],$acHistory,array('prompt' => '--Select Degree--','value' => '0',)); ?></td>
+                            <td><?php echo CHtml::dropDownList('ach_degree[3]',$acHistory->ach_degree[3],array('Post Graduation'=>'Post Graduation','Post Graduation Deploma'=>'Post Graduation Deploma'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
                         
-                            <td><?php echo ZHtml::enumDropDownList('ach_group[3]',$acHistory->ach_group[3],$acHistory,array('prompt' => '--Select Group--','value' => '0',)); ?></td>
-                            <td><?php echo ZHtml::enumDropDownList('ach_board[3]',$acHistory->ach_board[3],$acHistory,array('prompt' => '--Select Board--','value' => '0',)); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_group[3]',$acHistory->ach_group[3],$acHistory,array('prompt' => '--Select Group--','value' => '0','style'=>'width:145px;')); ?></td>
+                            <td><?php echo ZHtml::enumDropDownList('ach_board[3]',$acHistory->ach_board[3],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[3]',$acHistory->ach_institution[3],array("style"=>"width:100px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_passingYear[3]',$acHistory->ach_passingYear[3],array("style"=>"width:50px;")); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[3]',$acHistory->ach_result[3],array("style"=>"width:50px;")); ?></td>
+                            <td><?php echo CHtml::textField('ach_passingYear[3]',$acHistory->ach_passingYear[3],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[3]',$acHistory->ach_result[3],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         
                     </tbody>
@@ -322,7 +311,7 @@ e.style.visibility=hidden;
                             
                             <td><?php echo CHtml::textField('joe_employer[0]',$jobExp->joe_employer[0],array("style"=>"width:150px;")); ?></td>
                             <td><?php echo CHtml::textArea('joe_address[0]',$jobExp->joe_address[0],array('style'=>'width:150px;')); ?></td>
-                            <td><?php echo CHtml::textField('joe_contact[0]',$jobExp->joe_contact[0],array("style"=>"width:80px;")); ?></td>
+                            <td><?php echo CHtml::textField('joe_contact[0]',$jobExp->joe_contact[0],array("style"=>"width:80px;",'pattern'=>'\d{1,14}','title'=>'It Should be Numeric')); ?></td>
                             <td><?php echo CHtml::textField('joe_position[0]',$jobExp->joe_position[0],array("style"=>"width:100px;")); ?></td>
                             
                              <td>
@@ -330,6 +319,7 @@ e.style.visibility=hidden;
                                     array(
                                           
                                             'name'=>'joe_startDate[0]',
+                                            'value'=>$jobExp->joe_startDate[0],
                                             'options' => array(
                                             'mode'=>'focus',
                                             'dateFormat'=>'yy-mm-dd',
@@ -344,7 +334,7 @@ e.style.visibility=hidden;
                                     array(
                                         
                                             'name'=>'joe_endDate[0]',
-                                        
+                                            'value'=>$jobExp->joe_endDate[0],
                                             'options' => array(
                                             'mode'=>'focus',
                                             'dateFormat'=>'yy-mm-dd',
@@ -368,7 +358,7 @@ e.style.visibility=hidden;
                                     array(
                                           
                                             'name'=>'joe_startDate[1]',
-                                            
+                                            'value'=>$jobExp->joe_startDate[1],
                                             'options' => array(
                                             'mode'=>'focus',
                                             'dateFormat'=>'yy-mm-dd',
@@ -383,7 +373,7 @@ e.style.visibility=hidden;
                                     array(
                                         
                                             'name'=>'joe_endDate[1]',
-                                        
+                                        'value'=>$jobExp->joe_endDate[1],
                                             'options' => array(
                                             'mode'=>'focus',
                                             'dateFormat'=>'yy-mm-dd',

@@ -76,11 +76,11 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-                $flag=false;
-                    if(isset($_POST['sectionName']))
+                $flag=false;$form ="_form_2";
+                    if(isset($_REQUEST['sectionName']))
                     {
                         
-                        yii::app()->session['secName']=$_POST['sectionName'];
+                        yii::app()->session['secName']=$_REQUEST['sectionName'];
                     }
             
                     
@@ -113,32 +113,33 @@ class AdmissionController extends Controller
                     
 
 
-		if(isset($_POST['Person']) && isset($_POST['Admission']) && isset($_POST['Student']))
+		if(isset($_REQUEST['Person']) && isset($_REQUEST['Admission']) && isset($_REQUEST['Student']))
 		{
                     $flag = TRUE;
                     CActiveForm::validate($person);
                     CActiveForm::validate($admission);
                     CActiveForm::validate($student);
+                    CActiveForm::validate($acHistory);
                     
                     
-                    $person->attributes = $_POST['Person'];       
-                    $admission->attributes = $_POST['Admission'];
-                    $student->attributes = $_POST['Student'];
+                    $person->attributes = $_REQUEST['Person'];       
+                    $admission->attributes = $_REQUEST['Admission'];
+                    $student->attributes = $_REQUEST['Student'];
                     
                     
-                    $acHistory->ach_degree= $_POST['ach_degree'];
-                    $acHistory->ach_group= $_POST['ach_group'];
-                    $acHistory->ach_board= $_POST['ach_board'];
-                    $acHistory->ach_institution= $_POST['ach_institution'];
-                    $acHistory->ach_passingYear= $_POST['ach_passingYear'];
-                    $acHistory->ach_result= $_POST['ach_result'];
+                    $acHistory->ach_degree= $_REQUEST['ach_degree'];
+                    $acHistory->ach_group= $_REQUEST['ach_group'];
+                    $acHistory->ach_board= $_REQUEST['ach_board'];
+                    $acHistory->ach_institution= $_REQUEST['ach_institution'];
+                    $acHistory->ach_passingYear= $_REQUEST['ach_passingYear'];
+                    $acHistory->ach_result= $_REQUEST['ach_result'];
                     
-                    $jobExp->joe_employer= $_POST['joe_employer'];
-                    $jobExp->joe_address= $_POST['joe_address'];
-                    $jobExp->joe_contact= $_POST['joe_contact'];
-                    $jobExp->joe_position= $_POST['joe_position'];
-                    $jobExp->joe_startDate= $_POST['joe_startDate'];
-                    $jobExp->joe_endDate= $_POST['joe_endDate'];
+                    $jobExp->joe_employer= $_REQUEST['joe_employer'];
+                    $jobExp->joe_address= $_REQUEST['joe_address'];
+                    $jobExp->joe_contact= $_REQUEST['joe_contact'];
+                    $jobExp->joe_position= $_REQUEST['joe_position'];
+                    $jobExp->joe_startDate= $_REQUEST['joe_startDate'];
+                    $jobExp->joe_endDate= $_REQUEST['joe_endDate'];
                     
                     
                     
@@ -150,9 +151,8 @@ class AdmissionController extends Controller
                             //echo "isset".isset($_REQUEST['preview']);
                                if(isset($_REQUEST['preview']) && $_REQUEST['preview']==1)
                                {
-                                    $this->render('preview',array(
-                                    'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
-                                    ),false,false);
+                                   $form="_form_3";
+                                           
                                }
                                elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==0)
                                { //echo "saved:".$_REQUEST['preview'];
@@ -162,7 +162,7 @@ class AdmissionController extends Controller
 
                                     $student->personID= $person->personID;
 
-                                        $i=0; $achFlag=false;
+                                        $i=0; $achFlag=false;$coma='';
                                         foreach($acHistory->ach_degree as $item)
                                         {
 
@@ -182,28 +182,30 @@ class AdmissionController extends Controller
                                             $i++;
                                         }
 
-                                         $i=0; $joeFlag=false;
+                                        //echo $sql;
+                                         $j=0; $joeFlag=false;$coma='';
                                         foreach($jobExp->joe_employer as $item)
                                         {
 
                                                 if ($item) 
                                                 {   $joeFlag= true;
-                                                    if($i==0){
+                                                    if($j==0){
                                                         $sql2 = "INSERT INTO `tbl_jobexperiance` (`jobExperianceID`, `joe_employer`, `joe_address`, `joe_position`, `joe_startDate`, `joe_endDate`, `joe_contact`, `personID`) VALUES"; 
                                                     }
                                                     else $coma=",";
 
 
-                                                    $sql2 .=$coma."  ( '{$item}', '{$jobExp->joe_employer[$i]}', '{$jobExp->joe_address[$i]}', '{$jobExp->joe_contact[$i]}', '{$jobExp->joe_position[$i]}', '{$jobExp->joe_startDate[$i]}', '{$jobExp->joe_endDate[$i]}', '{$person->personID}')"; 
+                                                    $sql2 .=$coma."  ( '{$item}', '{$jobExp->joe_employer[$j]}', '{$jobExp->joe_address[$j]}', '{$jobExp->joe_contact[$j]}', '{$jobExp->joe_position[$j]}', '{$jobExp->joe_startDate[$j]}', '{$jobExp->joe_endDate[$j]}', '{$person->personID}')"; 
                                                 }
 
 
 
-                                            $i++;
+                                            $j++;
                                         }
 
+                                        
 
-
+                                        //echo $sql2;
                                         if($student->save() && $admission->save())
                                         {
                                             if($achFlag)Yii::app()->db->createCommand($sql)->execute();
@@ -214,7 +216,7 @@ class AdmissionController extends Controller
                                     }
                               }
                             
-                                     //     $this->redirect(array('getAdmission'));
+         
                                
                             
                         }
@@ -223,13 +225,13 @@ class AdmissionController extends Controller
                         if(!$flag)
                         {
                         $this->renderPartial('create',array(
-                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
+                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
                         ),false,false);
                         }
                         else {
                   
                                   $this->render('create',array(
-                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>'_form_2'
+                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
                         ),false,false);
                             
                         }
@@ -242,13 +244,13 @@ class AdmissionController extends Controller
         {
             
             
-		if(isset($_POST['programmeCode']))
+		if(isset($_REQUEST['programmeCode']))
 		{
 			
                         
 			//echo "programme code:".$_REQUEST['programmeCode'];
 		
-                    yii::app()->session['proCode']=$_POST['programmeCode'];
+                    yii::app()->session['proCode']=$_REQUEST['programmeCode'];
 
                     $model =  Batch::model()->findAllByAttributes(array('programmeCode'=>$_REQUEST['programmeCode']));
                     
@@ -278,8 +280,8 @@ class AdmissionController extends Controller
         public function actionGetSection()
         {
             
-                yii::app()->session['batName']=$_POST['batchName'];
-		if(isset($_POST['batchName']))
+                yii::app()->session['batName']=$_REQUEST['batchName'];
+		if(isset($_REQUEST['batchName']))
 		{
 			
                         
@@ -329,9 +331,9 @@ class AdmissionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Admission']))
+		if(isset($_REQUEST['Admission']))
 		{
-			$model->attributes=$_POST['Admission'];
+			$model->attributes=$_REQUEST['Admission'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->studentID));
 		}
@@ -352,7 +354,7 @@ class AdmissionController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_REQUEST['returnUrl']) ? $_REQUEST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -401,7 +403,7 @@ class AdmissionController extends Controller
 	protected function performAjaxValidation($model)
 	{
             
-	//	if(isset($_POST['ajax']) && $_POST['ajax']==='admission-form')
+	//	if(isset($_REQUEST['ajax']) && $_REQUEST['ajax']==='admission-form')
 	//	{
                    // echo "Bismillah Hir Rahmanur Rahim";
 			echo CActiveForm::validate($model);
