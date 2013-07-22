@@ -3,8 +3,10 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
-	$model->administrationCode=>array('view','id'=>$model->administrationCode),
+'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+	'Administrative Departments'=>array('index'),
+    $model->administrationCode=>array('view','id'=>$model->administrationCode),
 	'Update',
 );
 

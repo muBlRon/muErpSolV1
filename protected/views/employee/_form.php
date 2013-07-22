@@ -15,6 +15,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
         <?php echo $form->errorSummary($persons); ?>
+        <?php echo $form->errorSummary($acHistory); ?>        
         
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_title'); ?>
@@ -24,13 +25,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_firstName'); ?>
-		<?php echo $form->textField($persons,'per_firstName'); ?>
+		<?php echo $form->textField($persons,'per_firstName',array('size'=>40)); ?>
 		<?php echo $form->error($persons,'per_firstName'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_lastName'); ?>
-		<?php echo $form->textField($persons,'per_lastName'); ?>
+		<?php echo $form->textField($persons,'per_lastName',array('size'=>40)); ?>
 		<?php echo $form->error($persons,'per_lastName'); ?>
 	</div>
 
@@ -74,25 +75,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_fathersName'); ?>
-		<?php echo $form->textField($persons,'per_fathersName'); ?>
+		<?php echo $form->textField($persons,'per_fathersName',array('size'=>50)); ?>
 		<?php echo $form->error($persons,'per_fathersName'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_husbandsName'); ?>
-		<?php echo $form->textField($persons,'per_husbandsName'); ?>
+		<?php echo $form->textField($persons,'per_husbandsName',array('size'=>50)); ?>
 		<?php echo $form->error($persons,'per_husbandsName'); ?>
 	</div>
 
          <div class="row">
 		<?php echo $form->labelEx($persons,'per_mothersName'); ?>
-		<?php echo $form->textField($persons,'per_mothersName'); ?>
+		<?php echo $form->textField($persons,'per_mothersName',array('size'=>50)); ?>
 		<?php echo $form->error($persons,'per_mothersName'); ?>
 	</div>
         
         <div class="row">
 		<?php echo $form->labelEx($persons,'per_presentAddress'); ?>
-		<?php echo $form->textField($persons,'per_presentAddress'); ?>
+		<?php echo $form->textField($persons,'per_presentAddress',array('size'=>50)); ?>
 		<?php echo $form->error($persons,'per_presentAddress'); ?>
 	</div>
         
@@ -190,6 +191,35 @@
 		<?php echo $form->labelEx($model,'administrationCode'); ?>
 		<?php echo $form->textField($model,'administrationCode',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'administrationCode'); ?>
+	</div>
+
+
+         <!--Academic History-->
+         
+    <h2>Academic History Details</h2>
+    
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_degree'); ?>
+		<?php echo $form->textField($acHistory,'ach_degree',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_degree'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_institution'); ?>
+		<?php echo $form->textField($acHistory,'ach_institution',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_institution'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->textField($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->error($acHistory,'ach_passingYear'); ?>
+	</div>
+
+         <div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_remarks'); ?>
+		<?php echo $form->textArea($acHistory,'ach_remarks',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_remarks'); ?>
 	</div>
 
 	<div class="row buttons">

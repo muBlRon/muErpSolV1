@@ -3,7 +3,11 @@
 /* @var $model Employee */
 
 $this->breadcrumbs=array(
-	'Person'=>array('index'),
+    'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+    'HRM'=>array('site/HRM'),
+    'Administrative Departments'=>array('administration/list'),
+	'Employee'=>array('index'),
 	'Create',
 );
 
@@ -15,4 +19,4 @@ $this->menu=array(
 
 <h1>Create Employee</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model,'persons'=>$persons)); ?>
+    <?php echo $this->renderPartial('_form', array('model'=>$model, 'persons'=>$persons,'acHistory'=>$acHistory,)); ?>

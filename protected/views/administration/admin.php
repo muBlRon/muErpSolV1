@@ -3,13 +3,15 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
+	'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+	'Administrative Departments'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
 	array('label'=>'List Administration', 'url'=>array('index')),
-	array('label'=>'Create Administration', 'url'=>array('create')),
+	
 );
 
 Yii::app()->clientScript->registerScript('search', "

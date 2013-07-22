@@ -37,6 +37,26 @@ class SiteController extends Controller
 		$this->render('registry');
 	}
         
+        public function actionHRM()
+	{
+		$this->render('HRM');
+	}
+        
+        public function actionAdministration()
+	{
+		$this->render('Administration');
+	}
+        
+        public function actionStudentAdministration()
+	{
+		$this->render('StudentAdministration');
+	}
+        
+        public function actionJavaScriptTest()
+	{
+		$this->render('JavaScriptTest');
+	}
+        
 	/**
 	 * This is the action to handle external exceptions.
 	 */

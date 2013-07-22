@@ -3,14 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Administrations',
+    'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+	'Administrative Departments',
 );
 
 $this->menu=array(
-	array('label'=>'Create Administration', 'url'=>array('create')),
-	array('label'=>'Manage Administration', 'url'=>array('admin')),
-        array('label'=>'Human Resource Dpartment', 'url'=>array('person/index')),
-        array('label'=>'School', 'url'=>array('school/index')),
+    
+	array('label'=>'Create New Department', 'url'=>array('create')),
+	array('label'=>'Manage Departments', 'url'=>array('admin')),
+    array('label'=>'Back To Administration', 'url'=>array('site/administration')),    
         
 );
 ?>

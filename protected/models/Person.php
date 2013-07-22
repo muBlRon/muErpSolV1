@@ -14,7 +14,7 @@
  * @property string $per_nationality
  * @property string $per_fathersName
  * @property string $per_mothersName
- * @property string $per_husbandsName
+ * @property string $per_spouseName
  * @property string $per_parmanentAddress
  * @property string $per_postCode
  * @property string $per_telephone
@@ -22,22 +22,13 @@
  * @property string $per_email
  * @property string $per_presentAddress
  * @property string $per_maritulStatus
- * @property string $per_englishLanguageProficiency
- * @property string $per_computerLiteracy
- * @property string $per_otherActivities
+ 
+ 
+ 
  * @property string $per_personalStatment
  * @property integer $per_criminalConviction
  * @property string $per_convictionDetails
- * @property string $per_refereeOneName
- * @property string $per_refereeOneOccupation
- * @property string $per_refereeOneAddress
- * @property string $per_refereeOneEmail
- * @property string $per_refereeOneMobile
- * @property string $per_refereeTwoName
- * @property string $per_refereeTwoOccupation
- * @property string $per_refereeTwoAddress
- * @property string $per_refereeTwoEmail
- * @property string $per_refereeTwoMobile
+ 
  * @property string $per_entryDate
  *
  * The followings are the available model relations:
@@ -77,30 +68,30 @@ class Person extends CActiveRecord
 		// will receive user inputs.
 		return array(
                     
-                        array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile, per_entryDate', 'required'),
-			array(' per_telephone, per_mobile, per_refereeOneMobile, per_refereeTwoMobile ', 'numerical', 'integerOnly'=>true),
-			array('per_email, per_refereeOneEmail, per_refereeTwoEmail', 'email'),
-                        array('per_dateofBirth', 'date'),
+                        array('per_title, per_firstName, per_lastName, per_gender, per_nationality, per_maritulStatus, per_dateofBirth, per_fathersName, per_mothersName, per_mobile,per_bloodGroup,per_presentAddress,per_parmanentAddress,per_postCode', 'required'),
+			array(' per_telephone, per_mobile, ', 'numerical', 'integerOnly'=>true),
+			array('per_email, ', 'email'),
+                        
                         array('per_criminalConviction', 'boolean'),
                     
                         array('per_title', 'in', 'range'=>array('Mr.','Ms.','Mrs.','Dr.','Prof.','Engr.','Adv.')),
-                        array('per_bloodGroup', 'in', 'range'=>array('O','A+','B+','AB+','O-','A-','B-','AB-')),
+                        array('per_bloodGroup', 'in', 'range'=>array('O+','A+','B+','AB+','O-','A-','B-','AB-')),
                         array('per_maritulStatus', 'in', 'range'=>array('single','married')),
-                        array('per_englishLanguageProficiency', 'in', 'range'=>array('poor','medium','good','excelent')),
+                        
                     
                         
                     
                         array('per_title', 'length', 'max'=>5),
-			array('per_firstName, per_lastName, per_refereeOneOccupation, per_refereeTwoOccupation', 'length', 'max'=>50),
+			array('per_firstName, per_lastName', 'length', 'max'=>50),
 			array('per_gender', 'length', 'max'=>6),
 			array('per_bloodGroup', 'length', 'max'=>3),
 			array('per_nationality', 'length', 'max'=>20),
-			array('per_fathersName, per_mothersName, per_husbandsName, per_email, per_refereeOneName, per_refereeOneEmail, per_refereeTwoName, per_refereeTwoEmail', 'length', 'max'=>100),
-			array('per_parmanentAddress, per_presentAddress, per_computerLiteracy, per_otherActivities, per_refereeOneAddress, per_refereeTwoAddress', 'length', 'max'=>300),
+			array('per_fathersName, per_mothersName, per_spouseName, per_email ,', 'length', 'max'=>100),
+			array('per_parmanentAddress, per_presentAddress, ', 'length', 'max'=>300),
 			array('per_postCode', 'length', 'max'=>10),
-			array('per_telephone, per_mobile, per_refereeOneMobile, per_refereeTwoMobile', 'length', 'max'=>15),
+			array('per_telephone, per_mobile,  ', 'length', 'max'=>15),
 			array('per_maritulStatus', 'length', 'max'=>7),
-			array('per_englishLanguageProficiency', 'length', 'max'=>8),
+			
 			array('per_personalStatment, per_convictionDetails', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -142,7 +133,7 @@ class Person extends CActiveRecord
 			'per_nationality' => 'Nationality',
 			'per_fathersName' => 'Fathers Name',
 			'per_mothersName' => 'Mothers Name',
-			'per_husbandsName' => 'Husbands Name',
+			'per_spouseName' => 'Spouse Name',
 			'per_parmanentAddress' => 'Parmanent Address',
 			'per_postCode' => 'Post Code',
 			'per_telephone' => 'Telephone',
@@ -150,22 +141,13 @@ class Person extends CActiveRecord
 			'per_email' => 'Email',
 			'per_presentAddress' => 'Present Address',
 			'per_maritulStatus' => 'Maritul Status',
-			'per_englishLanguageProficiency' => 'English Language Proficiency',
-			'per_computerLiteracy' => 'Computer Literacy',
-			'per_otherActivities' => 'Other Activities',
+			
+			
+			
 			'per_personalStatment' => 'Personal Statment',
 			'per_criminalConviction' => 'Criminal Conviction',
 			'per_convictionDetails' => 'Conviction Details',
-			'per_refereeOneName' => 'Referee One Name',
-			'per_refereeOneOccupation' => 'Referee One Occupation',
-			'per_refereeOneAddress' => 'Referee One Address',
-			'per_refereeOneEmail' => 'Referee One Email',
-			'per_refereeOneMobile' => 'Referee One Mobile',
-			'per_refereeTwoName' => 'Referee Two Name',
-			'per_refereeTwoOccupation' => 'Referee Two Occupation',
-			'per_refereeTwoAddress' => 'Referee Two Address',
-			'per_refereeTwoEmail' => 'Referee Two Email',
-			'per_refereeTwoMobile' => 'Referee Two Mobile',
+			
 			'per_entryDate' => 'Entry Date',
 		);
 	}

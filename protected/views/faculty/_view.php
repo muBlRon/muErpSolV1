@@ -6,7 +6,7 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode("Name:"); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode(Person::model()->findByPk($data->facultyID)->per_firstName), array('view', 'id'=>$data->facultyID)); ?>
+	<?php echo CHtml::link(CHtml::encode(DBhelper::getFullNameByPersonID($data->facultyID)), array('view', 'id'=>$data->facultyID)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('fac_designation')); ?>:</b>
