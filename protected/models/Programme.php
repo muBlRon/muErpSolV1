@@ -46,14 +46,16 @@ class Programme extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('pro_totalTerms, pro_startTerm, pro_startYear, departmentID', 'numerical', 'integerOnly'=>true),
-			array('programmeCode', 'length', 'max'=>10),
+			array('pro_totalTerms, pro_startTerm, pro_startYear, departmentID, programmeCode', 'numerical', 'integerOnly'=>true),
+			array('programmeCode', 'length', 'max'=>3),
 			array('pro_name', 'length', 'max'=>100),
                         array('pro_shortName', 'length', 'max'=>20),
 			array('pro_type', 'length', 'max'=>13),
-			array('pro_medium', 'length', 'max'=>7),
+			
 			array('pro_remarks', 'safe'),
                         array('programmeCode, pro_name,pro_shortName', 'unique'),
+                        array('programmeCode', 'match', 'pattern'=>'/^([0-9][0-9][0-9])$/',
+                        'message'=>'p has specific format like [111-115-001] .'),
                     
                         array('pro_name, programmeCode,pro_shortName, pro_type, pro_medium, pro_totalTerms, pro_startTerm, pro_startYear,', 'required'),
                             

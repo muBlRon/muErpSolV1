@@ -3,13 +3,15 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
+    'Registry'=>array('site/registry'),
+	'Administration'=>array('site/administration'),
+	'Administrative Departments'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Administration', 'url'=>array('index')),
-	array('label'=>'Manage Administration', 'url'=>array('admin')),
+	array('label'=>'List Departments', 'url'=>array('index')),
+	
 );
 ?>
 

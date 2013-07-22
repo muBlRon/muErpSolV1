@@ -25,7 +25,5 @@
 	<?php echo CHtml::link(CHtml::encode("Programmes"), array('programme/Index', 'id'=>$data->departmentID)); ?>
         <br />
         
-	<?php echo CHtml::link(CHtml::encode("Faculty"), array('faculty/Index', 'id'=>$data->departmentID)); ?>
-        <br />
 	
 </div>

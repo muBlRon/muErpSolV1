@@ -15,10 +15,10 @@
 
 	<?php echo $form->errorSummary($persons); ?>
 	<?php echo $form->errorSummary($model); ?>
-        
+	<?php echo $form->errorSummary($acHistory); ?>        
          <!-- Persons Details --!>
-        <?php echo $form->errorSummary($persons); ?>
         
+       <h2>Personal Details</h2> 
 	<div class="row">
 		<?php echo $form->labelEx($persons,'per_title'); ?>
                 <?php echo CHtml::activeDropDownList( $persons,'per_title',ZHtml::enumItem($persons, 'per_title') ); ?>
@@ -137,6 +137,8 @@
 		<?php //echo $form->error($model,'facultyID'); ?>
 	</div>
 
+<h2>Faculty Details</h2>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'fac_designation'); ?>
 		<?php echo $form->textField($model,'fac_designation',array('size'=>19,'maxlength'=>19)); ?>
@@ -209,8 +211,33 @@
 		<?php echo $form->error($model,'departmentID'); ?>
 	</div>
 
+         <!--Academic History-->
          
+    <h2>Academic History Details</h2>
+    
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_degree'); ?>
+		<?php echo $form->textField($acHistory,'ach_degree',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_degree'); ?>
+	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_institution'); ?>
+		<?php echo $form->textField($acHistory,'ach_institution',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_institution'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->textField($acHistory,'ach_passingYear'); ?>
+		<?php echo $form->error($acHistory,'ach_passingYear'); ?>
+	</div>
+
+         <div class="row">
+		<?php echo $form->labelEx($acHistory,'ach_remarks'); ?>
+		<?php echo $form->textArea($acHistory,'ach_remarks',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($acHistory,'ach_remarks'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

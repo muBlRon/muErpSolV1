@@ -7,16 +7,18 @@
 </div>
 <div class="span-5 last">
 	<div id="sidebar">
+            <div class="well" style="min-width:280px; max-width: 320px; padding: 8px 0;">
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'Operations',
 		));
 		$this->widget('zii.widgets.CMenu', array(
 			'items'=>$this->menu,
-			'htmlOptions'=>array('class'=>'operations'),
+			'htmlOptions'=>array('class'=>'nav nav-list'),
 		));
 		$this->endWidget();
 	?>
+            </div>
 	</div><!-- sidebar -->
 </div>
 <?php $this->endContent(); ?>

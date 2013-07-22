@@ -63,20 +63,19 @@ class FacultyController extends Controller
 	public function actionCreate()
 	{
             $model=new Faculty;
+            $model->departmentID = yii::app()->session['departmentId'];
+            
             $persons = new Person;
-
+            $acHistory = new AcademicHistory;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
                 
-                
-		if(isset($_POST['Person']))
+                if(isset($_POST['Faculty'],$_POST['Person'],$_POST['AcademicHistory']))
 		{
-                    if(isset($_POST['Faculty']))
-                    {
-                
+                    
                     	$persons->attributes=$_POST['Person'];
                         $model->attributes=$_POST['Faculty'];
-                        
+                        $acHistory->attributes = $_POST['AcademicHistory'];                        
                     
                         $persons->per_entryDate = '2013-4-5';
                          
@@ -85,19 +84,15 @@ class FacultyController extends Controller
                                             ->from('tbl_person')
                                             ->queryScalar();
                        $model->facultyID = $maxID + 1;
-                        //echo $model->employeeID;
-                        if($persons->save())
-                        {
-                            
-                            $model->save();
-                            echo $model->facultyID;
-                            //$this->redirect(array('view','id'=>$model->facultyID));
-                        }
-                    }
+                       $acHistory->personID = $model->facultyID;
+                                             
+                        if($persons->save() && $model->save() && $acHistory->save())
+                                      $this->redirect(array('view','id'=>$model->facultyID));
+                    
 		}
 
 		$this->render('create',array(
-			'model'=>$model,'persons'=>$persons
+			'model'=>$model,'persons'=>$persons,'acHistory'=>$acHistory,
 		));
                 
 	}
@@ -109,20 +104,27 @@ class FacultyController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+	$model=$this->loadModel($id);
+                
+                //$persons = new Person;
+        $persons = $this->loadPersonModel($id);
+               
+         //       $persons = $this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Faculty']))
+		if(isset($_POST['Faculty'],$_POST['Person'],$_POST['AcademicHistory']))
 		{
 			$model->attributes=$_POST['Faculty'];
-			if($model->save())
+                        $persons->attributes=$_POST['Person'];
+                        $acHistory->attributes = $_POST['AcademicHistory'];
+			if($model->save() && $persons->save() && $acHistory->save())
 				$this->redirect(array('view','id'=>$model->facultyID));
 		}
 
+		
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'persons'=>$persons,'acHistory'=>$acHistory,
 		));
 	}
 
@@ -143,10 +145,21 @@ class FacultyController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-		$dataProvider=new CActiveDataProvider('Faculty');
-		$this->render('index',array(
+		yii::app()->session['departmentId']=$id;
+                
+                $condition = "departmentID='{$id}'";
+                
+		
+		$dataProvider=new CActiveDataProvider('Faculty', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>20,)
+                 ));
+		
+                
+                
+                $this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
@@ -179,6 +192,13 @@ class FacultyController extends Controller
 		return $model;
 	}
 
+         public function loadPersonModel($id)
+        {
+                $modelPerson=  Person::model()->findByPk((int)$id);             
+                if($modelPerson===null)   
+                        throw new CHttpException(404,'The requested page does not exist.');
+                return $modelPerson;
+        }
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated

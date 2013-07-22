@@ -57,7 +57,7 @@ class Admission extends CActiveRecord
 			array('studentID', 'length', 'max'=>15),
 			array('sectionName, adm_status', 'length', 'max'=>1),
 			array('programmeCode', 'length', 'max'=>10),
-			array('adm_date, adm_remarks', 'safe'),
+			array('adm_date,', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('studentID, sectionName, batchName, programmeCode, adm_date, adm_status, adm_creditTransfered, adm_remarks, employeeID', 'safe', 'on'=>'search'),
@@ -94,7 +94,7 @@ class Admission extends CActiveRecord
 			'sectionName' => 'Section Name',
 			'batchName' => 'Batch Name',
 			'programmeCode' => 'Programme Code',
-			'adm_date' => 'Adm Date',
+			'adm_date' => 'Admission Date',
 			'adm_status' => 'Adm Status',
 			'adm_creditTransfered' => 'Adm Credit Transfered',
 			'adm_remarks' => 'Adm Remarks',

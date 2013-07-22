@@ -1,0 +1,31 @@
+<?php
+/* @var $this AdministrationController */
+/* @var $model Administration */
+
+$this->breadcrumbs=array(
+	'Administrations'=>array('index'),
+	$model->studentID,
+);
+
+$this->menu=array(
+	array('label'=>'List Administration', 'url'=>array('index')),
+	/*array('label'=>'Create Administration', 'url'=>array('create')),
+	array('label'=>'Update Administration', 'url'=>array('update', 'id'=>$model->administrationCode)),
+	array('label'=>'Delete Administration', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->administrationCode),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Administration', 'url'=>array('admin')),*/
+);
+?>
+
+<h1><?php echo $model->studentID; ?></h1>
+
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'studentID',
+		'programmeCode',
+		'batchName',
+		'sectionName',
+		'adm_date',
+		
+	),
+)); ?>
