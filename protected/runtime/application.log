@@ -4453,3 +4453,50 @@ Stack trace:
 REQUEST_URI=/muErpSolV1/index.php?r=admission/create
 HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
 ---
+2013/07/21 07:22:16 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;.
+in C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php (95)
+in C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php (96)
+in C:\wamp\Dropbox\muErpSolV1\index.php (13)
+2013/07/21 07:22:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and b.programmeCode='' GROUP BY b.programmeCode' at line 1. The SQL statement executed was:  SELECT MAX(CONVERT(SUBSTRING_INDEX(a.studentID,'-',-1),UNSIGNED INTEGER))+1 AS studentID ,SUBSTRING(CONVERT(b.bat_year, char),-2) as acYear, s.sectionName, s.batchName, s.programmeCode , s.sec_startId ,s.sec_endId, b.bat_term, b.bat_year  FROM `tbl_admission` as a RIGHT OUTER JOIN `tbl_section` as s ON ( a.batchName=s.batchName and a.programmeCode=s.programmeCode)  RIGHT OUTER JOIN `tbl_batch` as b  ON (s.batchName=b.batchName and s.programmeCode=b.programmeCode)  WHERE s.sectionName='' and b.batchName= and b.programmeCode='' GROUP BY b.programmeCode;' in C:\wamp\Dropbox\yii_framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\wamp\Dropbox\yii_framework\db\CDbCommand.php(376): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\Dropbox\muErpSolV1\protected\components\DBhelper.php(95): CDbCommand->query()
+#2 C:\wamp\Dropbox\muErpSolV1\protected\controllers\AdmissionController.php(96): DBhelper::getStudentId(NULL, NULL, NULL)
+#3 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): AdmissionController->actionCreate()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\Dropbox\yii_framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\Dropbox\yii_framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\Dropbox\yii_framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\Dropbox\yii_framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\Dropbox\yii_framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController('admission/creat...')
+#14 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\wamp\Dropbox\muErpSolV1\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/muErpSolV1/index.php?r=admission/create
+HTTP_REFERER=http://localhost:8082/muErpSolV1/index.php?r=site/login
+---
+2013/07/22 13:51:37 [error] [php] array_diff_key() [<a href='function.array-diff-key'>function.array-diff-key</a>]: Argument #1 is not an array (C:\wamp\Dropbox\muErpSolV1\protected\extensions\bootstrap\helpers\TbHtml.php:4143)
+Stack trace:
+#0 C:\wamp\Dropbox\muErpSolV1\protected\extensions\bootstrap\helpers\TbHtml.php(2351): btn()
+#1 C:\wamp\Dropbox\muErpSolV1\protected\views\site\login.php(49): submitButton()
+#2 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(126): require()
+#3 C:\wamp\Dropbox\yii_framework\web\CBaseController.php(95): SiteController->renderInternal()
+#4 C:\wamp\Dropbox\yii_framework\web\CController.php(869): SiteController->renderFile()
+#5 C:\wamp\Dropbox\yii_framework\web\CController.php(782): SiteController->renderPartial()
+#6 C:\wamp\Dropbox\muErpSolV1\protected\controllers\SiteController.php(123): SiteController->render()
+#7 C:\wamp\Dropbox\yii_framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 C:\wamp\Dropbox\yii_framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\Dropbox\yii_framework\web\CController.php(286): SiteController->runAction()
+#10 C:\wamp\Dropbox\yii_framework\web\CController.php(265): SiteController->runActionWithFilters()
+#11 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(282): SiteController->run()
+#12 C:\wamp\Dropbox\yii_framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\Dropbox\yii_framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\wamp\Dropbox\muErpSolV1\index.php(13): CWebApplication->run()
+REQUEST_URI=/muErpSolV1/index.php?r=site/login
+in C:\wamp\Dropbox\muErpSolV1\protected\extensions\bootstrap\helpers\TbHtml.php (4143)
+in C:\wamp\Dropbox\muErpSolV1\protected\extensions\bootstrap\helpers\TbHtml.php (2464)
+in C:\wamp\Dropbox\muErpSolV1\protected\extensions\bootstrap\helpers\TbHtml.php (2351)

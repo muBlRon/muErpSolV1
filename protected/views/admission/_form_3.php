@@ -5,9 +5,10 @@
         'enableClientValidation'=>false,
 )); 
 
-echo "--:".$person->per_criminalConviction;
-?>
+echo "--:".$_REQUEST['HasPreDegree'];
 
+?>
+ 
 
 <div id="form">
 
@@ -257,7 +258,7 @@ echo "--:".$person->per_criminalConviction;
     	<div class="">
 		
             <?php 
-              
+            echo CHtml::hiddenField('HasPreDegree', $_REQUEST['HasPreDegree']);
               echo TbHtml::submitButton('Back', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'size' => TbHtml::BUTTON_SIZE_LARGE))."   ".
              TbHtml::button('Submit', array('color' => TbHtml::BUTTON_COLOR_SUCCESS, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'submit' => array('create', 'preview'=>0)));
             

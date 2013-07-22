@@ -107,7 +107,7 @@
                     <?php echo $form->error($person,'per_maritulStatus'); ?>
             </div>
 
-            <div class="row">
+            <div id="maritulStatus" class="row" style="<?php echo ($person->per_maritulStatus=='married'?'display:inline':'display:none');  ?>">
                     <?php echo $form->labelEx($person,'per_spouseName'); ?>
                     <?php echo $form->textField($person,'per_spouseName'); ?>
                     <?php echo $form->error($person,'per_spouseName'); ?>
@@ -152,13 +152,15 @@
                     <?php echo $form->textField($person,'per_telephone'); ?>
                     <?php echo $form->error($person,'per_telephone'); ?>
             </div> 
+            
+   
             <div class="row">
                     <?php echo $form->labelEx($person,'per_criminalConviction'); ?>
                     <?php echo $form->checkBox($person,'per_criminalConviction', array('value'=>1, 'uncheckValue'=>0)); ?>
                     <?php echo $form->error($person,'per_criminalConviction'); ?>
             </div>
             
-            <div id="crimiCon" class="row" >
+            <div id="crimiCon" class="row" style="<?php echo ($person->per_criminalConviction==1?'display:inline':'display:none');  ?>">
                     <?php echo $form->labelEx($person,'per_convictionDetails'); ?>
                     <?php echo $form->textArea($person,'per_convictionDetails'); ?>
                     <?php echo $form->error($person,'per_convictionDetails');  ?>
@@ -212,15 +214,22 @@
                     <?php echo $form->error($student,'stu_conditions'); ?>
             </div>
             <div class="row">
-                    <?php echo $form->labelEx($student,'stu_previousID'); ?>
-                    <?php echo $form->textField($student,'stu_previousID'); ?>
-                    <?php echo $form->error($student,'stu_previousID'); ?>
+                <strong><?php echo CHtml::encode("Achived any previous degree form this University"); ?></strong><br/>
+                    <?php echo CHtml::checkBox('HasPreDegree',$_REQUEST['HasPreDegree']); ?>
+                    
             </div>
-            <div class="row">
-                    <?php echo $form->labelEx($student,'stu_previousDegree'); ?>
-                    <?php echo $form->dropDownList($student,'stu_previousDegree', CHtml::listData(Programme::model()->findAll(),
-                   'pro_name','pro_name'),array('prompt' => '--Select Degree--','value' => '0',));?>
-                    <?php echo $form->error($student,'stu_previousDegree'); ?>
+            <div id="preDegree" style="<?php echo ($_REQUEST['HasPreDegree']==1?'display:inline':'display:none');  ?>">
+                <div class="row">
+                        <?php echo $form->labelEx($student,'stu_previousID'); ?>
+                        <?php echo $form->textField($student,'stu_previousID'); ?>
+                        <?php echo $form->error($student,'stu_previousID'); ?>
+                </div>
+                <div class="row">
+                        <?php echo $form->labelEx($student,'stu_previousDegree'); ?>
+                        <?php echo $form->dropDownList($student,'stu_previousDegree', CHtml::listData(Programme::model()->findAll(),
+                       'pro_name','pro_name'),array('prompt' => '--Select Degree--','value' => '0',));?>
+                        <?php echo $form->error($student,'stu_previousDegree'); ?>
+                </div>
             </div>
         </div>
         <hr/>
@@ -250,7 +259,7 @@
                             <td><?php echo ZHtml::enumDropDownList('ach_board[0]',$acHistory->ach_board[0],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[0]',$acHistory->ach_institution[0],array("style"=>"width:100px;")); ?></td>
                             <td><?php echo CHtml::textField('ach_passingYear[0]',$acHistory->ach_passingYear[0],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[0]',$acHistory->ach_result[0],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[0]',$acHistory->ach_result[0],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1}[.]\d{1,2}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
                             <td><?php echo CHtml::dropDownList('ach_degree[1]',$acHistory->ach_degree[1],array('H.S.C.'=>'H.S.C.','ALIM'=>'ALIM','GCE A-Level'=>'GCE A-Level'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
@@ -259,7 +268,7 @@
                             <td><?php echo ZHtml::enumDropDownList('ach_board[1]',$acHistory->ach_board[1],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[1]',$acHistory->ach_institution[1],array("style"=>"width:100px;")); ?></td>
                             <td><?php echo CHtml::textField('ach_passingYear[1]',$acHistory->ach_passingYear[1],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[1]',$acHistory->ach_result[1],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[1]',$acHistory->ach_result[1],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1}[.]\d{1,2}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
                             <td><?php echo CHtml::dropDownList('ach_degree[2]',$acHistory->ach_degree[2],array('Graduation'=>'Graduation','Deploma'=>'Deploma'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
@@ -268,7 +277,7 @@
                             <td><?php echo ZHtml::enumDropDownList('ach_board[2]',$acHistory->ach_board[2],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[2]',$acHistory->ach_institution[2],array("style"=>"width:100px;")); ?></td>
                             <td><?php echo CHtml::textField('ach_passingYear[2]',$acHistory->ach_passingYear[2],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[2]',$acHistory->ach_result[2],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[2]',$acHistory->ach_result[2],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1}[.]\d{1,2}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         <tr>
                             <td><?php echo CHtml::dropDownList('ach_degree[3]',$acHistory->ach_degree[3],array('Post Graduation'=>'Post Graduation','Post Graduation Deploma'=>'Post Graduation Deploma'),array('prompt' => '--Select Degree--','value' => '0','style'=>'width:145px;')); ?></td>
@@ -277,7 +286,7 @@
                             <td><?php echo ZHtml::enumDropDownList('ach_board[3]',$acHistory->ach_board[3],$acHistory,array('prompt' => '--Select Board--','value' => '0','style'=>'width:145px;')); ?></td>
                             <td><?php echo CHtml::textField('ach_institution[3]',$acHistory->ach_institution[3],array("style"=>"width:100px;")); ?></td>
                             <td><?php echo CHtml::textField('ach_passingYear[3]',$acHistory->ach_passingYear[3],array('style'=>'width:50px;','pattern'=>'\d{4}','title'=>'It Should be Year like 2013',)); ?></td>
-                            <td><?php echo CHtml::textField('ach_result[3]',$acHistory->ach_result[3],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1,1}.\d{1,1}','title'=>'It should by GPA like 5.0')); ?></td>
+                            <td><?php echo CHtml::textField('ach_result[3]',$acHistory->ach_result[3],array('type'=>'number',"style"=>"width:50px;",'pattern'=>'\d{1}[.]\d{1,2}','title'=>'It should by GPA like 5.0')); ?></td>
                         </tr>
                         
                     </tbody>
@@ -403,5 +412,68 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+<script type="text/javascript">
+    
+    
+    //---------------
+    $( "#Person_per_criminalConviction").on( "click", function()
+    {
+        
+        
+    if ( $(this).prop('checked') ){
+        $("#crimiCon").show('slow');
+        $("#Person_per_convictionDetails").attr('required',true);
+    }
+    else 
+        {
+            $("#crimiCon").hide('slow');
+            $("#Person_per_convictionDetails").attr('required',false);
+            $("#Person_per_convictionDetails").val('');
+        }
+        
 
+    } );
+    
+    //---------------------//
+    $( "#HasPreDegree").on( "click", function()
+    {
+        
+        
+        if ( $(this).prop('checked') ){
+            $("#preDegree").show('slow');
+            $("#Student_stu_previousID").attr('required',true);
+            $("#Student_stu_previousDegree").attr('required',true);
+        }
+        else 
+        {
+            $("#preDegree").hide('slow');
+            $("#Student_stu_previousID").attr('required',false);
+            $("#Student_stu_previousID").val('');
+            $("#Student_stu_previousDegree").attr('required',false);
+            $("#Student_stu_previousDegree").val('');
+        }
+        
+
+    } );
+    
+    //---------------
+    $( "input[type='radio']").on( "click", function()
+    {
+        
+        
+    if ( $(this).attr('value')=='married' ){//alert('dd');
+        $("#maritulStatus").show('slow');
+        $("#Person_per_spouseName").attr('required',true);
+    }
+    else 
+        {
+            $("#maritulStatus").hide('slow');
+            $("Person_per_spouseName").attr('required',false);
+            $("#Person_per_spouseName").val('');
+        }
+        
+
+    } );
+    
+    </script>
 </div><!-- form -->

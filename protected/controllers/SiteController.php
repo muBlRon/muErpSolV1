@@ -52,6 +52,11 @@ class SiteController extends Controller
 		$this->render('StudentAdministration');
 	}
         
+        public function actionJavaScriptTest()
+	{
+		$this->render('JavaScriptTest');
+	}
+        
 	/**
 	 * This is the action to handle external exceptions.
 	 */
