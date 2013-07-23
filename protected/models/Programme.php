@@ -123,4 +123,17 @@ class Programme extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function getProgrammeByGroupDemo()
+        {
+               return array(
+                        array('id'=>256,'text'=>'TV','group'=>'Electrical'),
+                        array('id'=>257,'text'=>'Radio','group'=>'Electrical'),
+                        array('id'=>256,'text'=>'TV','group'=>'other'),
+                        array('id'=>257,'text'=>'Radio','group'=>'other'),
+                );
+            
+            
+             
+        }
 }

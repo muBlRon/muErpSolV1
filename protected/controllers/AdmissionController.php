@@ -62,6 +62,10 @@ class AdmissionController extends Controller
         {
             
             
+            
+            
+            
+            
             $admission = new Admission();
             $form = "_form_1";
             $this->render('create',array(

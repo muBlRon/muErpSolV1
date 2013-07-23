@@ -15,10 +15,11 @@
 
 	<?php echo $form->errorSummary($admission); ?>
 
+        
 	<div class="row">
 		<?php echo $form->labelEx($admission,'programmeCode'); ?>
-		<?php echo CHtml::dropDownList('programmeCode','programmeCode', CHtml::listData(Programme::model()->findAll(),
-                   'programmeCode','pro_name'),array(
+		<?php echo CHtml::dropDownList('programmeCode','programmeCode', CHtml::listData(DBhelper::getProgrammeByGroup(),
+                   'programmeCode','pro_name','group'),array(
                         'prompt' => '--Please Select --',
                         'value' => '0',
                     'ajax' => array(

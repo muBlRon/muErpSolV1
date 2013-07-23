@@ -128,7 +128,39 @@ class DBhelper {
         return $model->programmeCode.": ".$model->pro_name." [".$model->pro_shortName."]";
     }
         
+        public static function getProgrammeByGroup()
+        {
+               /*return array(
+                        array('id'=>256,'text'=>'TV','group'=>'Electrical'),
+                        array('id'=>257,'text'=>'Radio','group'=>'Electrical'),
+                        array('id'=>256,'text'=>'TV','group'=>'other'),
+                        array('id'=>257,'text'=>'Radio','group'=>'other'),
+                );*/
+            
+            $dpt = Department::model()->findAll();
+            
+            $data =array();
+            $i=0;
+            foreach ($dpt as $itme)
+            {
+                    $pro = Programme::model()->findAllByAttributes(array('departmentID'=>$itme->departmentID));
+                    
+                    
+                    foreach ($pro as $item2) {
+
         
+                     $data[$i]= array('programmeCode'=>$item2->programmeCode,'pro_name'=>$item2->pro_name,'group'=>$itme->dpt_name);   
+                     //echo CHtml::listData($item2, 'programmeCode', 'pro_name','departmentID');
+                
+                     $i++;
+                    }
+                
+            }
+            
+               
+            return $data;
+             
+        }
         
         
         
