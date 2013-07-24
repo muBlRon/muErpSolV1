@@ -47,10 +47,6 @@ class SiteController extends Controller
 		$this->render('Administration');
 	}
         
-        public function actionStudentAdministration()
-	{
-		$this->render('StudentAdministration');
-	}
         
         public function actionJavaScriptTest()
 	{

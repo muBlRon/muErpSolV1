@@ -28,11 +28,11 @@ class AdmissionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','getBatch','getSection'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','getAdmission'),
+				'actions'=>array('index','view','getBatch','getSection','StudentAdministration','create','update','getAdmission'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,6 +45,11 @@ class AdmissionController extends Controller
 		);
 	}
 
+        public function actionStudentAdministration()
+	{
+		$this->render('StudentAdministration');
+	}
+        
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -62,10 +67,6 @@ class AdmissionController extends Controller
         {
             
             
-            
-            
-            
-            
             $admission = new Admission();
             $form = "_form_1";
             $this->render('create',array(
@@ -80,11 +81,15 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-                $flag=false;$form ="_form_2";
+                //$flag=false;
+                $form ="_form_2";
                     if(isset($_REQUEST['sectionName']))
                     {
                         
-                        yii::app()->session['secName']=$_REQUEST['sectionName'];
+                        
+                        
+                        yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                        yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
                     }
             
                     
@@ -119,7 +124,7 @@ class AdmissionController extends Controller
 
 		if(isset($_REQUEST['Person']) && isset($_REQUEST['Admission']) && isset($_REQUEST['Student']))
 		{
-                    $flag = TRUE;
+                    //$flag = TRUE;
                     CActiveForm::validate($person);
                     CActiveForm::validate($admission);
                     CActiveForm::validate($student);
@@ -226,24 +231,24 @@ class AdmissionController extends Controller
                         }
 		}
                 
-                        if(!$flag)
+                       /* if(!$flag)
                         {
-                        $this->renderPartial('create',array(
+                        $this->render('create',array(
                             'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
                         ),false,false);
                         }
                         else {
-                  
+                  */
                                   $this->render('create',array(
                             'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
-                        ),false,false);
+                        ));
                             
-                        }
+                    //    }
                     
                 
 		
 	}
-
+/*
         public function actionGetBatch()
         {
             
@@ -281,6 +286,57 @@ class AdmissionController extends Controller
                 }
         }
         
+  */      
+        public function actionGetBatch()
+        {
+            
+            
+		if(isset($_REQUEST['programmeCode']))
+		{
+			
+                        
+			//echo "programme code:".$_REQUEST['programmeCode'];
+		
+                    yii::app()->session['proCode']=$_REQUEST['programmeCode'];
+
+                    $model =  Batch::model()->findAllByAttributes(array('programmeCode'=>$_REQUEST['programmeCode']));
+                    
+                    if(!$model)
+                    {
+                        echo CHtml::tag('span',array('style'=>'color:red;'),CHtml::encode("-- no batch found--"),true);
+                        
+                    }
+                    else    
+                    {
+                           
+                           
+                           
+
+                           $data =array();
+                           $i=0;
+                           foreach ($model as $bat)
+                           {
+                                    $section = Section::model()->findAllByAttributes(array('programmeCode'=>$bat->programmeCode,'batchName'=>$bat->batchName));
+
+                                    
+                                    foreach ($section as $sec) {
+
+
+                                     $data[$i]= array('sec'=>$sec->batchName.'-'.$sec->sectionName,'sectionName'=>'section '.$bat->batchName.FormUtil::getBatchNameSufix($sec->batchName).' '.$sec->sectionName,'group'=> '----- '.$bat->batchName.FormUtil::getBatchNameSufix($sec->batchName).' Batch -----' );   
+                                    
+
+                                     $i++;
+                                    }
+
+                           }
+
+
+                           $this->renderPartial('_form_1_1',array('data'=>$data),false,true);
+
+                    }
+                }
+        }
+        /*
         public function actionGetSection()
         {
             
@@ -322,7 +378,7 @@ class AdmissionController extends Controller
                 
                 
         }
-
+*/
         /**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -366,7 +422,25 @@ class AdmissionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Admission');
+            
+            if(isset($_REQUEST['sectionName']))
+            {
+                yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
+            }
+            
+                    $proCode=yii::app()->session['proCode'];
+                    $batName=yii::app()->session['batName'];
+                    $secName=yii::app()->session['secName'];
+                    
+                    $condition = "sectionName='{$secName}' and batchName='{$batName}' and programmeCode='{$proCode}'";
+                
+		$dataProvider=new CActiveDataProvider('Admission', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>25,)
+                 ));
+                
+		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
