@@ -9,7 +9,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admission-form1',
 	'enableAjaxValidation'=>true,
-        'action'=>CController::createUrl('index'),
+        'action'=>CController::createUrl('admin'),
 )); ?>
 
 

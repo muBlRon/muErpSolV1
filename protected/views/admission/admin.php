@@ -3,7 +3,7 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
+	'Student Admission'=>array('index'),
 	'Manage',
 );
 
@@ -14,11 +14,11 @@ $this->menu=array(
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
-	$('.search-form').toggle();
+	$('.search-form').toggle('slow');
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('administration-grid', {
+	$.fn.yiiGridView.update('admission-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Administrations</h1>
+<h1>Manage Admission</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -41,16 +41,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'administration-grid',
-	'dataProvider'=>$model->search(),
+	'id'=>'admission-grid',
+	'dataProvider'=>$model->search(yii::app()->session['secName'],yii::app()->session['batName'],yii::app()->session['proCode']),
 	'filter'=>$model,
 	'columns'=>array(
-		'administrationCode',
-		'adm_name',
-		'adm_location',
-		'adm_remarks',
-		'adm_contactNo',
-		'adm_email',
+                        'studentID',
+                        'per_title',
+                        'per_firstName',
+                        'per_lastName',
+			'academicYear',
+			'batchName' ,
+			'programmeCode',
+			'per_bloodGroup' ,
+			
 		array(
 			'class'=>'CButtonColumn',
 		),

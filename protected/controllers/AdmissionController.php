@@ -83,7 +83,7 @@ class AdmissionController extends Controller
 	{
                 //$flag=false;
                 $form ="_form_2";
-                    if(isset($_REQUEST['sectionName']))
+                   /* if(isset($_REQUEST['sectionName']))
                     {
                         
                         
@@ -91,7 +91,7 @@ class AdmissionController extends Controller
                         yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
                         yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
                     }
-            
+            */
                     
                     $data = array();
                     
@@ -451,11 +451,18 @@ class AdmissionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Administration('search');
+		$model=new Admission('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Admission']))
 			$model->attributes=$_GET['Admission'];
 
+            if(isset($_REQUEST['sectionName']))
+            {
+                yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
+            }
+             
+                
 		$this->render('admin',array(
 			'model'=>$model,
 		));

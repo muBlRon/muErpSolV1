@@ -32,7 +32,17 @@ class Admission extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Admission the static model class
 	 */
-	public static function model($className=__CLASS__)
+        public $academicYear;
+        public $academicTerm;
+        public $per_title;
+        public $per_firstName;
+        public $per_lastName;
+        public $per_gender;
+        public $per_bloodGroup;
+        
+        public $per_mobile;
+        
+        public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
@@ -60,7 +70,7 @@ class Admission extends CActiveRecord
 			array('adm_date,', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('studentID, sectionName, batchName, programmeCode, adm_date, adm_status, adm_creditTransfered, adm_remarks, employeeID', 'safe', 'on'=>'search'),
+			array('studentID, sectionName, batchName, programmeCode,per_bloodGroup, per_title, per_firstName, per_lastName, adm_date, adm_status, adm_creditTransfered, adm_remarks, employeeID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,6 +109,10 @@ class Admission extends CActiveRecord
 			'adm_creditTransfered' => 'Adm Credit Transfered',
 			'adm_remarks' => 'Adm Remarks',
 			'employeeID' => 'Employee',
+                        'per_title' => 'Title',
+                    'per_firstName' => 'First Name',
+                    'per_lastName' => 'Last Name',
+                        'per_bloodGroup' => 'Blood Group',
 		);
 	}
 
@@ -106,13 +120,32 @@ class Admission extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($secName,$batName,$proCode)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+                $criteria->select=array(
+                't.*', 
+                's.stu_guardiansMobile AS guardiansMobile',
+                's.stu_academicTerm AS academicTerm',
+                's.stu_academicYear AS academicYear',
+                    'p.per_title',
+                    'p.per_firstName',
+                    'p.per_lastName',
+                    'p.per_gender',
+                    'p.per_bloodGroup',
+                    'p.per_firstName',
+                    'p.per_mobile',
+            );
+              
+                $criteria->join="JOIN {{student}} AS s ON s.studentID = t.studentID";
+                $criteria->join.=" JOIN {{person}} AS p ON p.personID = s.personID";
+                $criteria->condition="t.programmeCode=:proCode and t.batchName=:batName and t.sectionName=:secName";
+                $criteria->params=array(':proCode'=>$proCode,':batName'=>$batName,':secName'=>$secName);
 
+                
 		$criteria->compare('studentID',$this->studentID,true);
 		$criteria->compare('sectionName',$this->sectionName,true);
 		$criteria->compare('batchName',$this->batchName);
@@ -122,7 +155,12 @@ class Admission extends CActiveRecord
 		$criteria->compare('adm_creditTransfered',$this->adm_creditTransfered);
 		$criteria->compare('adm_remarks',$this->adm_remarks,true);
 		$criteria->compare('employeeID',$this->employeeID);
-
+                $criteria->compare('per_firstName',$this->per_firstName,true);
+                $criteria->compare('per_lastName',$this->per_lastName,true);
+                $criteria->compare('per_title',$this->per_title,true);
+                $criteria->compare('per_bloodGroup',$this->per_bloodGroup,true);
+                
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
