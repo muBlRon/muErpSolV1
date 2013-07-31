@@ -34,9 +34,9 @@
                     //leave out the data key to pass all form values through
                     )*/ ));?>
 	</div>
-        <div class="row">
-           <?php  //echo TbHtml::button('Submit', array('color' => TbHtml::BUTTON_COLOR_SUCCESS, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'submit' => array('create',))); 
-            echo TbHtml::submitButton('Submit', array('color' => TbHtml::BUTTON_COLOR_SUCCESS, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'url'=>CController::createUrl('admission/create')));
+        <div class="row btn-large">
+           <?php  
+            echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary btn-large'));
            ?>
         </div>
         

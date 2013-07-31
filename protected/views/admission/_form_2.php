@@ -10,6 +10,7 @@
 	'id'=>'admission-form',
 	'enableAjaxValidation'=>false,
         'enableClientValidation'=>true,
+    'action'=>CController::createUrl('create'),
 )); ?>
 
 	
@@ -359,7 +360,7 @@
                             
                             <td><?php echo CHtml::textField('joe_employer[1]',$jobExp->joe_employer[1],array("style"=>"width:150px;")); ?></td>
                             <td><?php echo CHtml::textArea('joe_address[1]',$jobExp->joe_address[1],array('style'=>'width:150px;')); ?></td>
-                            <td><?php echo CHtml::textField('joe_contact[1]',$jobExp->joe_contact[1],array("style"=>"width:80px;")); ?></td>
+                            <td><?php echo CHtml::textField('joe_contact[1]',$jobExp->joe_contact[1],array("style"=>'width:80px;','pattern'=>'\d{1,14}','title'=>'It Should be Numeric')); ?></td>
                             <td><?php echo CHtml::textField('joe_position[1]',$jobExp->joe_position[1],array("style"=>"width:100px;")); ?></td>
                             
                              <td>
@@ -405,10 +406,10 @@
 		
             <?php 
            echo CHtml::hiddenField('preview', 1);
-            echo TbHtml::submitButton('Submit', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'size' => TbHtml::BUTTON_SIZE_LARGE));
+            echo CHtml::submitButton('Preview', array('class' => 'btn btn-primary btn-large','data-loading-text'=>'Loading....'));
             
             ?>
-            
+            	
 	</div>
 
 <?php $this->endWidget(); ?>

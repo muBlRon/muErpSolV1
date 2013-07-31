@@ -28,11 +28,11 @@ class AdmissionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array(),
+				'actions'=>array('index','test','view','renderButtons','update'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','getBatch','getSection','StudentAdministration','create','update','getAdmission'),
+				'actions'=>array('getBatch','create','StudentAdministration','getAdmission'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -81,7 +81,16 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-                //$flag=false;
+            if($_REQUEST['flag'])
+            {
+                yii::app()->session['stuCreate']=true;
+            }
+            
+            if(!yii::app()->session['stuCreate'])
+            {
+                $this->redirect(array('admin'));
+            }
+                
                 $form ="_form_2";
                    /* if(isset($_REQUEST['sectionName']))
                     {
@@ -101,7 +110,7 @@ class AdmissionController extends Controller
                     $acHistory = new AcademicHistory();
                     $jobExp= new JobExperiance();
                     
-      
+                    
                     if($data = DBhelper::getStudentId(yii::app()->session['secName'], yii::app()->session['batName'],yii::app()->session['proCode']))
                     {
                         
@@ -124,7 +133,8 @@ class AdmissionController extends Controller
 
 		if(isset($_REQUEST['Person']) && isset($_REQUEST['Admission']) && isset($_REQUEST['Student']))
 		{
-                    //$flag = TRUE;
+                    
+                        
                     CActiveForm::validate($person);
                     CActiveForm::validate($admission);
                     CActiveForm::validate($student);
@@ -163,10 +173,10 @@ class AdmissionController extends Controller
                                    $form="_form_3";
                                            
                                }
-                               elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==0)
+                               elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==2 && yii::app()->session['stuCreate'])
                                { //echo "saved:".$_REQUEST['preview'];
                             
-                                    if($person->save())
+                                   if($person->save())
                                     {	
 
                                     $student->personID= $person->personID;
@@ -219,31 +229,25 @@ class AdmissionController extends Controller
                                         {
                                             if($achFlag)Yii::app()->db->createCommand($sql)->execute();
                                             if($joeFlag)Yii::app()->db->createCommand($sql2)->execute();
-                                            $this->redirect(array('getAdmission'));
+                                            yii::app()->session['stuCreate']=false;
+                                            $this->redirect(array('admin'));
                                         }
 
                                     }
                               }
                             
          
-                               
+                              
                             
                         }
 		}
                 
-                       /* if(!$flag)
-                        {
-                        $this->render('create',array(
-                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
-                        ),false,false);
-                        }
-                        else {
-                  */
+                    
                                   $this->render('create',array(
                             'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
                         ));
                             
-                    //    }
+                   
                     
                 
 		
@@ -290,7 +294,7 @@ class AdmissionController extends Controller
         public function actionGetBatch()
         {
             
-            
+            //echo "test";
 		if(isset($_REQUEST['programmeCode']))
 		{
 			
@@ -386,6 +390,7 @@ class AdmissionController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+            echo $id;
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -398,12 +403,15 @@ class AdmissionController extends Controller
 				$this->redirect(array('view','id'=>$model->studentID));
 		}
 
-		$this->render('update',array(
+		/*$this->render('update',array(
 			'model'=>$model,
-		));
+		));*/
 	}
+        
+        
+                
 
-	/**
+        /**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
@@ -468,6 +476,8 @@ class AdmissionController extends Controller
 		));
 	}
 
+        
+        
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -475,7 +485,7 @@ class AdmissionController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Administration::model()->findByPk($id);
+		$model=  Admission::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

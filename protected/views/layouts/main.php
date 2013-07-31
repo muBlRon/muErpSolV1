@@ -54,7 +54,7 @@
 	<?php if(isset($this->breadcrumbs)):?>
 		<!-- breadcrumbs -->
                 
-                    <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                    <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                     'links' => $this->breadcrumbs,
                     )); ?>
 	<?php endif?>

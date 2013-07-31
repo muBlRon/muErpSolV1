@@ -46,7 +46,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo TbHtml::submitButton('Login',array( 'size'=>TbHtml::BUTTON_SIZE_LARGE)); ?>
+		<?php  echo  CHtml::submitButton('Login', array('class' =>'btn btn-success btn-large')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

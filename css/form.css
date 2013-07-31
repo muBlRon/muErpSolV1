@@ -86,6 +86,7 @@ div.form div.error label:first-child,
 div.form label.error,
 div.form span.error
 {
+    
 	color: #C00;
 }
 
@@ -96,6 +97,7 @@ div.form input.error,
 div.form textarea.error,
 div.form select.error
 {
+    
 	background: #FEE;
 	border-color: #C00;
 }
