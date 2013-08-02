@@ -98,8 +98,8 @@ class Administration extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('administrationCode',$this->administrationCode,true);
-		$criteria->compare('adm_name',$this->adm_name,true);
+		//$criteria->compare('administrationCode',$this->administrationCode,true);
+		//$criteria->compare('adm_name',$this->adm_name,true);
 		
 
 		return new CActiveDataProvider($this, array(

@@ -11,14 +11,15 @@
 	'enableAjaxValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
-	<?php echo $form->errorSummary($admission); ?>
+	<?php //echo $form->errorSummary($admission); ?>
 
+        
 	<div class="row">
-		<?php echo $form->labelEx($admission,'programmeCode'); ?>
-		<?php echo CHtml::dropDownList('programmeCode','programmeCode', CHtml::listData(Programme::model()->findAll(),
-                   'programmeCode','pro_name'),array(
+		<?php //echo $form->labelEx($admission,'programmeCode'); ?>
+		<?php echo CHtml::dropDownList('programmeCode','programmeCode', CHtml::listData(DBhelper::getProgrammeByGroup(),
+                   'programmeCode','pro_name','group'),array(
                         'prompt' => '--Please Select --',
                         'value' => '0',
                     'ajax' => array(
@@ -29,12 +30,12 @@
                     //'data'=>'js: $(this).val()' 
                     //leave out the data key to pass all form values through
                     )));?>
-            	<?php echo $form->error($admission,'programmeCode'); ?>
+            	<?php //echo $form->error($admission,'programmeCode'); ?>
 	</div>
-        <div class="row" id="batch">
+        <!--div class="row" id="batch">
             
 		
-                <?php  echo $form->labelEx($admission,'batchName'); ?>
+                <?php /* echo $form->labelEx($admission,'batchName'); ?>
 		<?php echo CHtml::dropDownList('batchName','batchName',array(),array(
                     'prompt' => '--Select Programme First--',
                         'value' => '0',
@@ -62,9 +63,11 @@
                     //'data'=>'js: $(this).val()' 
                     //leave out the data key to pass all form values through
                     )));?>
-            	<?php echo $form->error($admission,'sectionName'); ?>
-	</div>
-
+            	<?php echo $form->error($admission,'sectionName'); */?>
+	</div-->
+        <div id="batchName" class="row">
+            
+        </div>
         
         
 <?php $this->endWidget(); ?>

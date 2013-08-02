@@ -10,19 +10,21 @@
 	'id'=>'admission-form',
 	'enableAjaxValidation'=>false,
         'enableClientValidation'=>true,
+    'action'=>CController::createUrl('create'),
 )); ?>
 
 	
 
-	
-
-        <div class="title">
-            <h4><strong>Programme:</strong> <?php  echo DBhelper::getProgrammeByCode($admission->programmeCode); ?></h4>
-            <h4><strong>Batch:</strong> <?php echo $admission->batchName.FormUtil::getBatchNameSufix($admission->batchName); ?>  <strong>Section:</strong> <?php echo $admission->sectionName; ?></h4>
-            <h4><strong>Academic Year:</strong> <?php  echo FormUtil::getTerm($student->stu_academicTerm)." ".$student->stu_academicYear;  ?></h4>
-            <h3><strong>Student ID:</strong> <?php echo $student->studentID;  ?></h3>
+	<div class="preview">
+            
+            <h4><strong>Programme: </strong> <?php  echo DBhelper::getProgrammeByCode($admission->programmeCode); ?></h4>
+            <h4><strong>Batch: </strong><span class="label label-success"> <?php echo $admission->batchName.FormUtil::getBatchNameSufix($admission->batchName); ?>  </span><strong>Section: </strong><span class="label label-important"> <?php echo $admission->sectionName; ?></span></h4>
+            <h4><strong>Academic Year: </strong><span class="label label-info"><?php  echo FormUtil::getTerm($student->stu_academicTerm)." ".$student->stu_academicYear;  ?></span></h4>
+            <h3><strong>Student ID: </strong><span class="label label-warning"><?php echo $student->studentID;  ?></span></h3>
         
         </div>
+
+        
         <hr/>
         <div id="step1">
             
@@ -359,7 +361,7 @@
                             
                             <td><?php echo CHtml::textField('joe_employer[1]',$jobExp->joe_employer[1],array("style"=>"width:150px;")); ?></td>
                             <td><?php echo CHtml::textArea('joe_address[1]',$jobExp->joe_address[1],array('style'=>'width:150px;')); ?></td>
-                            <td><?php echo CHtml::textField('joe_contact[1]',$jobExp->joe_contact[1],array("style"=>"width:80px;")); ?></td>
+                            <td><?php echo CHtml::textField('joe_contact[1]',$jobExp->joe_contact[1],array("style"=>'width:80px;','pattern'=>'\d{1,14}','title'=>'It Should be Numeric')); ?></td>
                             <td><?php echo CHtml::textField('joe_position[1]',$jobExp->joe_position[1],array("style"=>"width:100px;")); ?></td>
                             
                              <td>
@@ -405,10 +407,10 @@
 		
             <?php 
            echo CHtml::hiddenField('preview', 1);
-            echo TbHtml::submitButton('Submit', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'size' => TbHtml::BUTTON_SIZE_LARGE));
+            echo CHtml::submitButton('Preview', array('class' => 'btn btn-primary btn-large','data-loading-text'=>'Loading....'));
             
             ?>
-            
+            	
 	</div>
 
 <?php $this->endWidget(); ?>

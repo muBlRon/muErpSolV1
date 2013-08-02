@@ -1,5 +1,5 @@
 <?php
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+//Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -12,13 +12,13 @@ return array(
                 'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
             ),*/
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','bootstrap'),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-                'bootstrap.helpers.TbHtml',
+                //'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
@@ -95,9 +95,13 @@ return array(
                     'connectionID' => 'db',
                     'sessionTableName' => 'tbl_YiiMySession',
                 ),
-                'bootstrap' => array(
+                /*'bootstrap' => array(
                 'class' => 'bootstrap.components.TbApi',   
-                  ),
+                  ),*/
+            'bootstrap' => array(
+	    'class' => 'ext.bootstrap.components.Bootstrap',
+	    'responsiveCss' => true,
+	),
 	),//end of 'component'
 
 	// application-level parameters that can be accessed
