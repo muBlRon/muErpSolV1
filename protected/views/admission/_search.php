@@ -12,7 +12,7 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'administrationCode'); ?>
+		<?php /* echo $form->label($model,'administrationCode'); ?>
 		<?php echo $form->textField($model,'administrationCode',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton('Search'); */?>
 	</div>
 
 <?php $this->endWidget(); ?>

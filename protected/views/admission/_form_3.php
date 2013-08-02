@@ -3,6 +3,7 @@
 	'id'=>'admission-form3',
 	'enableAjaxValidation'=>false,
         'enableClientValidation'=>false,
+    'action'=>CController::createUrl('create'),
 )); 
 
 echo "--:".$_REQUEST['HasPreDegree'];
@@ -255,12 +256,12 @@ echo "--:".$_REQUEST['HasPreDegree'];
             
             
         </div>
-    	<div class="">
+    	<div>
 		
             <?php 
             echo CHtml::hiddenField('HasPreDegree', $_REQUEST['HasPreDegree']);
-              echo TbHtml::submitButton('Back', array('color' => TbHtml::BUTTON_COLOR_PRIMARY, 'size' => TbHtml::BUTTON_SIZE_LARGE))."   ".
-             TbHtml::button('Submit', array('color' => TbHtml::BUTTON_COLOR_SUCCESS, 'size' => TbHtml::BUTTON_SIZE_LARGE, 'submit' => array('create', 'preview'=>0)));
+            //echo CHtml::hiddenField('preview', false);
+              echo  CHtml::submitButton('Back', array('class' =>'btn btn-success btn-large'))." ".CHtml::button('Submit', array('class'=>'btn btn-danger btn-large', 'submit' => array('create', 'preview'=>2)));
             
             ?>
             

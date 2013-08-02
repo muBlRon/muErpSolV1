@@ -28,11 +28,11 @@ class AdmissionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','getBatch','getSection'),
+				'actions'=>array('index','test','view','renderButtons','update'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','getAdmission'),
+				'actions'=>array('getBatch','create','StudentAdministration','getAdmission'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,14 +45,23 @@ class AdmissionController extends Controller
 		);
 	}
 
+        public function actionStudentAdministration()
+	{
+		$this->render('StudentAdministration');
+	}
+        
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
 	{
+                $student=Student::model()->findByPk($id);
+            echo $student->personID;
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'admission'=>  Admission::model()->findByPk(array('studentID'=>$id,'sectionName'=>yii::app()->session['secName'],'batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode'])),
+                        'student'=> $student,
+                        'person'=> Person::model()->findByPk($student->personID)
 		));
 	}
 
@@ -76,13 +85,26 @@ class AdmissionController extends Controller
 	 */
 	public function actionCreate()
 	{
-                $flag=false;$form ="_form_2";
-                    if(isset($_REQUEST['sectionName']))
+            if($_REQUEST['flag'])
+            {
+                yii::app()->session['stuCreate']=true;
+            }
+            
+            if(!yii::app()->session['stuCreate'])
+            {
+                $this->redirect(array('admin'));
+            }
+                
+                $form ="_form_2";
+                   /* if(isset($_REQUEST['sectionName']))
                     {
                         
-                        yii::app()->session['secName']=$_REQUEST['sectionName'];
+                        
+                        
+                        yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                        yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
                     }
-            
+            */
                     
                     $data = array();
                     
@@ -92,7 +114,7 @@ class AdmissionController extends Controller
                     $acHistory = new AcademicHistory();
                     $jobExp= new JobExperiance();
                     
-      
+                    
                     if($data = DBhelper::getStudentId(yii::app()->session['secName'], yii::app()->session['batName'],yii::app()->session['proCode']))
                     {
                         
@@ -115,7 +137,8 @@ class AdmissionController extends Controller
 
 		if(isset($_REQUEST['Person']) && isset($_REQUEST['Admission']) && isset($_REQUEST['Student']))
 		{
-                    $flag = TRUE;
+                    
+                        
                     CActiveForm::validate($person);
                     CActiveForm::validate($admission);
                     CActiveForm::validate($student);
@@ -154,10 +177,10 @@ class AdmissionController extends Controller
                                    $form="_form_3";
                                            
                                }
-                               elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==0)
+                               elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']==2 && yii::app()->session['stuCreate'])
                                { //echo "saved:".$_REQUEST['preview'];
                             
-                                    if($person->save())
+                                   if($person->save())
                                     {	
 
                                     $student->personID= $person->personID;
@@ -210,36 +233,30 @@ class AdmissionController extends Controller
                                         {
                                             if($achFlag)Yii::app()->db->createCommand($sql)->execute();
                                             if($joeFlag)Yii::app()->db->createCommand($sql2)->execute();
-                                            $this->redirect(array('getAdmission'));
+                                            yii::app()->session['stuCreate']=false;
+                                            $this->redirect(array('admin'));
                                         }
 
                                     }
                               }
                             
          
-                               
+                              
                             
                         }
 		}
                 
-                        if(!$flag)
-                        {
-                        $this->renderPartial('create',array(
-                            'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
-                        ),false,false);
-                        }
-                        else {
-                  
+                    
                                   $this->render('create',array(
                             'admission'=>$admission,'student'=>$student,'person'=>$person,'acHistory'=>$acHistory,'jobExp'=>$jobExp, 'form'=>$form
-                        ),false,false);
+                        ));
                             
-                        }
+                   
                     
                 
 		
 	}
-
+/*
         public function actionGetBatch()
         {
             
@@ -277,6 +294,57 @@ class AdmissionController extends Controller
                 }
         }
         
+  */      
+        public function actionGetBatch()
+        {
+            
+            //echo "test";
+		if(isset($_REQUEST['programmeCode']))
+		{
+			
+                        
+			//echo "programme code:".$_REQUEST['programmeCode'];
+		
+                    yii::app()->session['proCode']=$_REQUEST['programmeCode'];
+
+                    $model =  Batch::model()->findAllByAttributes(array('programmeCode'=>$_REQUEST['programmeCode']));
+                    
+                    if(!$model)
+                    {
+                        echo CHtml::tag('span',array('style'=>'color:red;'),CHtml::encode("-- no batch found--"),true);
+                        
+                    }
+                    else    
+                    {
+                           
+                           
+                           
+
+                           $data =array();
+                           $i=0;
+                           foreach ($model as $bat)
+                           {
+                                    $section = Section::model()->findAllByAttributes(array('programmeCode'=>$bat->programmeCode,'batchName'=>$bat->batchName));
+
+                                    
+                                    foreach ($section as $sec) {
+
+
+                                     $data[$i]= array('sec'=>$sec->batchName.'-'.$sec->sectionName,'sectionName'=>'section '.$bat->batchName.FormUtil::getBatchNameSufix($sec->batchName).' '.$sec->sectionName,'group'=> '----- '.$bat->batchName.FormUtil::getBatchNameSufix($sec->batchName).' Batch -----' );   
+                                    
+
+                                     $i++;
+                                    }
+
+                           }
+
+
+                           $this->renderPartial('_form_1_1',array('data'=>$data),false,true);
+
+                    }
+                }
+        }
+        /*
         public function actionGetSection()
         {
             
@@ -318,7 +386,7 @@ class AdmissionController extends Controller
                 
                 
         }
-
+*/
         /**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -326,24 +394,44 @@ class AdmissionController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+            
+                $admission=  Admission::model()->findByPk(array('studentID'=>$id,'sectionName'=>yii::app()->session['secName'],'batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode']));
+		$student= Student::model()->findByPk($id);
+                $person= Person::model()->findByPk($student->personID);
+                //echo $person->per_mobile;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_REQUEST['Admission']))
+		if(isset($_REQUEST['Admission'],$_REQUEST['Student'],$_REQUEST['Person']))
 		{
-			$model->attributes=$_REQUEST['Admission'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->studentID));
+                    
+                    CActiveForm::validate($person);
+                    CActiveForm::validate($admission);
+                    CActiveForm::validate($student);
+                    
+			$admission->attributes=$_REQUEST['Admission'];
+                        $student->attributes=$_REQUEST['Student'];
+                        $person->attributes=$_REQUEST['Person'];
+ 
+                        if($person->validate() && $student->validate() && $admission->validate()  )
+                        {
+                            if($admission->save() && $student->save() && $person->save())
+                            {	//$this->redirect(array('view','id'=>$model->studentID));
+                                $this->redirect(array('admin'));
+                            }
+     
+                        }
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'admission'=>$admission,'student'=>$student,'person'=>$person
 		));
 	}
+        
+        
+                
 
-	/**
+        /**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
@@ -362,7 +450,25 @@ class AdmissionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Admission');
+            
+            if(isset($_REQUEST['sectionName']))
+            {
+                yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
+            }
+            
+                    $proCode=yii::app()->session['proCode'];
+                    $batName=yii::app()->session['batName'];
+                    $secName=yii::app()->session['secName'];
+                    
+                    $condition = "sectionName='{$secName}' and batchName='{$batName}' and programmeCode='{$proCode}'";
+                
+		$dataProvider=new CActiveDataProvider('Admission', array(
+                'criteria'=>array('condition'=>$condition),
+                'pagination'=>array('pageSize'=>25,)
+                 ));
+                
+		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -373,27 +479,36 @@ class AdmissionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Administration('search');
+		$model=new Admission('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Admission']))
 			$model->attributes=$_GET['Admission'];
 
+            if(isset($_REQUEST['sectionName']))
+            {
+                yii::app()->session['batName']=substr($_REQUEST['sectionName'], '-',-2);
+                yii::app()->session['secName']=substr($_REQUEST['sectionName'], -1);
+            }
+             
+                
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
+        
+        
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel($id)
+	public function loadModel($id )
 	{
-		$model=Administration::model()->findByPk($id);
-		if($model===null)
+		$admission=  Admission::model()->findByPk($id);
+		if($admission===null)
 			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		return $admission;
 	}
 
 	/**

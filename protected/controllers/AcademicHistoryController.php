@@ -128,7 +128,7 @@ class AcademicHistoryController extends Controller
                 
                 
 		
-                $condition = "personId={$id}";
+                $condition = "personID={$id}";
                 
 		$dataProvider=new CActiveDataProvider('AcademicHistory', array(
                 'criteria'=>array('condition'=>$condition),

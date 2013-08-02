@@ -36,7 +36,7 @@
 				array('label'=>'Home', 'url'=>array('/site/index'), 'itemOptions'=>array('class'=>'about')),
 
                                 array('label'=>'Registry', 'url'=>array('site/registry')),
-                                array('label'=>'Student Administration', 'url'=>array('site/studentAdministration')),
+                                array('label'=>'Student Administration', 'url'=>array('admission/studentAdministration')),
                                 array('label'=>'Examination', 'url'=>array('/employee/index')),
                                 array('label'=>'User Management', 'url'=>array('/employee/index')),
                                 array('label'=>'Settings', 'url'=>array('/site/index')),
@@ -54,7 +54,7 @@
 	<?php if(isset($this->breadcrumbs)):?>
 		<!-- breadcrumbs -->
                 
-                    <?php $this->widget('bootstrap.widgets.TbBreadcrumb', array(
+                    <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
                     'links' => $this->breadcrumbs,
                     )); ?>
 	<?php endif?>

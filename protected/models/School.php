@@ -58,7 +58,7 @@ class School extends CActiveRecord
                         array('sch_deanStatus', 'in', 'range'=>array('Dean', 'Dean in Charge')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('sch_code, sch_name, schoolID', 'safe', 'on'=>'search'),
+			array('sch_code, sch_name, sch_remarks, schoolID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -103,6 +103,7 @@ class School extends CActiveRecord
 
 		$criteria->compare('sch_code',$this->sch_code,true);
 		$criteria->compare('sch_name',$this->sch_name,true);
+                $criteria->compare('sch_remarks',$this->sch_remarks,true);
 		
 		
 		$criteria->compare('schoolID',$this->schoolID);
