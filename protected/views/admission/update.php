@@ -3,19 +3,26 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Administrations'=>array('index'),
-	$model->administrationCode=>array('view','id'=>$model->administrationCode),
+	'Admin'=>array('index'),
+	$admission->studentID =>array('view','id'=>$admission->studentID),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Administration', 'url'=>array('index')),
-	array('label'=>'Create Administration', 'url'=>array('create')),
-	array('label'=>'View Administration', 'url'=>array('view', 'id'=>$model->administrationCode)),
-	array('label'=>'Manage Administration', 'url'=>array('admin')),
+	array('label'=>'Student Info', 'url'=>array('admin')),
+	array('label'=>'Edit Student Info', 'active'=>true),
+	
 );
 ?>
 
-<h1>Update Administration <?php echo $model->administrationCode; ?></h1>
+<h1>Edit Student Info </h1>
+<div class="title">
+            <h4><strong>Programme:</strong> <?php  echo DBhelper::getProgrammeByCode($admission->programmeCode); ?></h4>
+            <h3><strong>Batch:</strong> <?php echo $admission->batchName.FormUtil::getBatchNameSufix($admission->batchName); ?>  <strong>Section:</strong> <?php echo $admission->sectionName; ?></h3>
+            <h4><strong>Academic Year:</strong> <?php  echo FormUtil::getTerm($student->stu_academicTerm)." ".$student->stu_academicYear;  ?></h4>
+            <h3><strong>Student ID:</strong> <?php echo $student->studentID;  ?></h3>
+        
+        </div>
+        <hr/>
 
-<?php echo $this->renderPartial('_form_1', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_update', array('admission'=>$admission,'student'=>$student,'person'=>$person)); ?>

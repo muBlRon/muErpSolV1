@@ -57,7 +57,7 @@ class TbBreadcrumbs extends CBreadcrumbs
 		$links = '';
 
 		if (!isset($this->homeLink)) {
-			$content = CHtml::link(Yii::t('zii', 'Home'), Yii::app()->homeUrl);
+			$content = CHtml::link('', Yii::app()->homeUrl,array('class'=>'icon icon-home'));
 			$links .= $this->renderItem($content);
 		} else if ($this->homeLink !== false) {
 			$links .= $this->renderItem($this->homeLink);

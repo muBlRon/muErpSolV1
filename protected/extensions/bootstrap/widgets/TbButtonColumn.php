@@ -74,9 +74,18 @@ class TbButtonColumn extends CButtonColumn
 			return;
 		}
 
-		$label = isset($button['label']) ? $button['label'] : $id;
-		$url = isset($button['url']) ? $this->evaluateExpression($button['url'], array('data' => $data, 'row' => $row))
-			: '#';
+                
+                if(isset($button['labelExpression']))
+			$label=$this->evaluateExpression($button['labelExpression'],array('data'=>$data,'row'=>$row));
+		else
+			$label = isset($button['label']) ? $button['label'] : $id;
+                
+                
+		
+               
+
+                //$label = isset($button['label']) ? $this->evaluateExpression($button['label'],array('data'=>$data,'row'=>$row)) : $id;
+		$url = isset($button['url']) ? $this->evaluateExpression($button['url'], array('data' => $data, 'row' => $row)): '#';
 		$options = isset($button['options']) ? $button['options'] : array();
 
 		if (!isset($options['title'])) {
@@ -85,7 +94,9 @@ class TbButtonColumn extends CButtonColumn
 
 		if (!isset($options['rel'])) {
 			$options['rel'] = 'tooltip';
-		}
+		}  else {
+                    $options['rel']=$this->evaluateExpression($options['rel'],array('data'=>$data,'row'=>$row));
+                }
 
 		if (isset($button['icon'])) {
 			if (strpos($button['icon'], 'icon') === false) {

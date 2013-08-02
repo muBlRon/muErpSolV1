@@ -3,8 +3,8 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Student Admission'=>array('index'),
-	'Manage',
+	'Student Administration'=>array('StudentAdministration'),
+	'Information',
 );
 
 $this->menu=array(
@@ -25,14 +25,12 @@ $('.search-form form').submit(function(){
 });
 ");
 ?>
-
-<h1>Manage Admission</h1>
-
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
+<div class="preview">
+    <h1>Student Information </h1>
+    <h4><strong>Programme: </strong> <?php  echo DBhelper::getProgrammeByCode(yii::app()->session['proCode']); ?></h4>
+    <h4><strong>Batch: </strong><span class="label label-success "> <?php echo yii::app()->session['batName'].FormUtil::getBatchNameSufix(yii::app()->session['batName']); ?>  </span><strong>Section: </strong><span class="label label-important"> <?php echo yii::app()->session['secName']; ?></span></h4>
+    <h4><strong>Academic Year: </strong><span class="label label-info"><?php  echo FormUtil::getTerm(Batch::model()->findByPk(array('batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode']))->bat_term)." ".Batch::model()->findByPk(array('batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode']))->bat_year ;  ?></span></h4>
+</div>
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -98,7 +96,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                 (
                     'label'=>'View Details',
                     'icon'=>'search white',
-                    'url'=>'Yii::app()->createUrl("customer/update", array("id"=>$data->personID))',
+                    'url'=>'Yii::app()->createUrl("admission/view", array("id"=>$data->studentID))',
                     'options'=>array(
                         'class'=>'btn btn-mini btn-success',
                         'data-toggle'=>'tooltip',
@@ -109,10 +107,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                 (
                     'label'=>'Edit Info',
                     'icon'=>'pencil white',
-                    'url'=>'Yii::app()->createUrl("admission/update", array("id"=>$data->studentID))',
+                    'url'=>'Yii::app()->createUrl("admission/update", array("id"=>$data->studentID,"img"=>$data->ex_per_image))',
                     'options'=>array(
                         'class'=>'btn btn-mini btn-warning',
                         'data-toggle'=>'tooltip',
+                        'rel'=>'$data->ex_per_image',
+                        
                         
                     ),
                 ),
@@ -141,3 +141,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 
 ?>
+
+<script type="text/javascript">
+    
+    
+    //---------------
+    //---------------
+    $( "a[rel=1]").attr('class','btn btn-mini btn-danger');
+    $( "a[rel=1]").attr('title','Edit Info [   !! No Photograph included of this Student   ]');
+        
+    
+    
+    </script>

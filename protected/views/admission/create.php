@@ -3,7 +3,7 @@
 /* @var $model Administration */
 
 $this->breadcrumbs=array(
-	'Admission'=>array('index'),
+	'Admission'=>array('admin'),
 	'Create',
 );
 /*

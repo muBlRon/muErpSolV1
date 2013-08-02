@@ -56,8 +56,12 @@ class AdmissionController extends Controller
 	 */
 	public function actionView($id)
 	{
+                $student=Student::model()->findByPk($id);
+            echo $student->personID;
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'admission'=>  Admission::model()->findByPk(array('studentID'=>$id,'sectionName'=>yii::app()->session['secName'],'batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode'])),
+                        'student'=> $student,
+                        'person'=> Person::model()->findByPk($student->personID)
 		));
 	}
 
@@ -390,22 +394,38 @@ class AdmissionController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-            echo $id;
-		$model=$this->loadModel($id);
-
+            
+                $admission=  Admission::model()->findByPk(array('studentID'=>$id,'sectionName'=>yii::app()->session['secName'],'batchName'=>yii::app()->session['batName'],'programmeCode'=>yii::app()->session['proCode']));
+		$student= Student::model()->findByPk($id);
+                $person= Person::model()->findByPk($student->personID);
+                //echo $person->per_mobile;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_REQUEST['Admission']))
+		if(isset($_REQUEST['Admission'],$_REQUEST['Student'],$_REQUEST['Person']))
 		{
-			$model->attributes=$_REQUEST['Admission'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->studentID));
+                    
+                    CActiveForm::validate($person);
+                    CActiveForm::validate($admission);
+                    CActiveForm::validate($student);
+                    
+			$admission->attributes=$_REQUEST['Admission'];
+                        $student->attributes=$_REQUEST['Student'];
+                        $person->attributes=$_REQUEST['Person'];
+ 
+                        if($person->validate() && $student->validate() && $admission->validate()  )
+                        {
+                            if($admission->save() && $student->save() && $person->save())
+                            {	//$this->redirect(array('view','id'=>$model->studentID));
+                                $this->redirect(array('admin'));
+                            }
+     
+                        }
 		}
 
-		/*$this->render('update',array(
-			'model'=>$model,
-		));*/
+		$this->render('update',array(
+			'admission'=>$admission,'student'=>$student,'person'=>$person
+		));
 	}
         
         
@@ -483,12 +503,12 @@ class AdmissionController extends Controller
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel($id)
+	public function loadModel($id )
 	{
-		$model=  Admission::model()->findByPk($id);
-		if($model===null)
+		$admission=  Admission::model()->findByPk($id);
+		if($admission===null)
 			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		return $admission;
 	}
 
 	/**

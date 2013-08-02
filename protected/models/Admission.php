@@ -25,26 +25,58 @@
  * @property Termadmission[] $termadmissions2
  * @property Termadmission[] $termadmissions3
  */
-class Admission extends CActiveRecord
+class Admission extends CActiveRecord 
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return Admission the static model class
 	 */
-        public $academicYear;
-        public $academicTerm;
-        public $personID;
-       // public $per_name;
-        public $per_title;
+    
+        //public $programmeCode;
         
+        public $personID;
+        public $per_name;
+        public $per_title;
         public $per_firstName;
         public $per_lastName;
         public $per_gender;
+        public $per_dateofBirth;
         public $per_bloodGroup;
-        
+        public $per_nationality;
+        public $per_fathersName;
+        public $per_mothersName;
+ 
+        public $per_parmanentAddress;
+        public $per_postCode;
+        public $per_telephone;
         public $per_mobile;
         public $per_email;
+        public $per_presentAddress;
+        public $per_maritulStatus;
+        public $per_spouseName;
+        public $per_personalStatment;
+        public $per_criminalConviction;
+        public $per_convictionDetails;
+        public $ex_per_image;
+        public $studentID;
+ 
+        public $stu_academicTerm;
+        public $stu_academicYear;
+ 
+        public $stu_conditions;
+        public $stu_previousID;
+        public $stu_previousDegree;
+        public $stu_guardiansName;
+        public $stu_guardiansAddress;
+ 
+        public $stu_guardiansMobile;
+ 
+ 
+        public $employeeID;
+ 
+
+        
         
         public static function model($className=__CLASS__)
 	{
@@ -136,10 +168,11 @@ class Admission extends CActiveRecord
 		$criteria=new CDbCriteria;
                 $criteria->select=array(
                 't.*', 
-                's.stu_guardiansMobile AS guardiansMobile',
-                's.stu_academicTerm AS academicTerm',
-                's.stu_academicYear AS academicYear',
+                's.stu_guardiansMobile',
+                's.stu_academicTerm ',
+                's.stu_academicYear ',
                     'p.personID',
+                    //'p.*',
                    // 'concat(p.per_title," ",  p.per_firstName," ", p.per_lastName) as per_name',
                     'p.per_title',
                     'p.per_firstName',
@@ -149,6 +182,7 @@ class Admission extends CActiveRecord
                     'p.per_firstName',
                     'p.per_mobile',
                     'p.per_email',
+                    'p.ex_per_image'
             );
               
                 $criteria->join="JOIN {{student}} AS s ON s.studentID = t.studentID";
@@ -177,4 +211,32 @@ class Admission extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function loadDetails($id,$secName,$batName,$proCode)
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+                $criteria->select=array(
+                't.*',
+                's.*',    
+                'p.*',
+                'concat(p.per_title," ",  p.per_firstName," ", p.per_lastName) as per_name',
+                    
+            );
+              
+                $criteria->join="JOIN {{student}} AS s ON s.studentID = t.studentID";
+                $criteria->join.=" JOIN {{person}} AS p ON p.personID = s.personID";
+                $criteria->condition="t.programmeCode=:proCode and t.batchName=:batName and t.sectionName=:secName and t.studentID=:studentID";
+                $criteria->params=array(':proCode'=>$proCode,':batName'=>$batName,':secName'=>$secName,':studentID'=>$id);
+
+                
+                
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        
 }
